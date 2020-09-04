@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaladorApi", "InstaladorApi\InstaladorApi.csproj", "{67FAC05A-FEFB-4A69-92AF-628165BC5595}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{67FAC05A-FEFB-4A69-92AF-628165BC5595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FAC05A-FEFB-4A69-92AF-628165BC5595}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FAC05A-FEFB-4A69-92AF-628165BC5595}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FAC05A-FEFB-4A69-92AF-628165BC5595}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6665FC65-CF9E-4C28-ABC7-C6979E920749}
+	EndGlobalSection
+EndGlobal
