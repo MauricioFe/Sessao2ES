@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj": {}
+    "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2ES\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj": {
+    "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2ES\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj",
+        "projectUniqueName": "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2ES\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj",
         "projectName": "Sessao2Api",
-        "projectPath": "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj",
+        "projectPath": "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2ES\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj",
         "packagesPath": "C:\\Users\\mauri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2Api\\Sessao2Api\\obj\\",
+        "outputPath": "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2ES\\Sessao2Api\\Sessao2Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
