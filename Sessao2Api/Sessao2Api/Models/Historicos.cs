@@ -7,5 +7,9 @@ namespace Sessao2Api.Models
 {
     public class Historicos
     {
+        public int Cod_jog { get; set; }
+        public DateTime Dat_ini { get; set; }
+        public int Cod_time { get; set; }
+        public DateTime Dat_fim { get; set; }
     }
 }
