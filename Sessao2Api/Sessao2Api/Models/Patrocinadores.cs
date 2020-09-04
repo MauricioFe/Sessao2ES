@@ -7,5 +7,8 @@ namespace Sessao2Api.Models
 {
     public class Patrocinadores
     {
+        public int Cod_pat { get; set; }
+        public string Nom_pat { get; set; }
+        public string Pais{get; set; }
     }
 }
