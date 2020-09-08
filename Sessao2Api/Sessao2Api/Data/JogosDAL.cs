@@ -27,7 +27,7 @@ namespace Sessao2Api.Data
         SqlDataAdapter adapter;
         public void Add(Jogos jogos)
         {
-            cmd = new SqlCommand($"insert into jogos values ( {jogos.Cod_camp},  {jogos.Cod_time1},  {jogos.Cod_time2}, {jogos.Cod_estadio}, '{jogos.Data}', {jogos.resultado} )", conn);
+            cmd = new SqlCommand($"insert into jogos values ( {jogos.Cod_camp},  {jogos.Cod_time1},  {jogos.Cod_time2}, {jogos.Cod_estadio}, '{jogos.Data}', {jogos.Resultado} )", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -49,7 +49,7 @@ namespace Sessao2Api.Data
                 jogos.Cod_time2 = Convert.ToInt32(item[2]);
                 jogos.Cod_estadio = Convert.ToInt32(item[3]);
                 jogos.Data = Convert.ToDateTime(item[4]);
-                jogos.resultado = Convert.ToInt32(item[5]);
+                jogos.Resultado = Convert.ToInt32(item[5]);
                 jogosList.Add(jogos);
             }
             conn.Close();
@@ -67,7 +67,7 @@ namespace Sessao2Api.Data
 
         public void Update(Jogos jogos, int codCampeonato, int codTime1, int codTime2)
         {
-            cmd = new SqlCommand($"Update jogos set cod_camp = {jogos.Cod_camp},  cod_time1 = {jogos.Cod_time1},  cod_time2 = {jogos.Cod_time2}, cod_estadio = {jogos.Cod_estadio}, data = '{jogos.Data}', resultado = {jogos.resultado}  where cod_camp ={codCampeonato} and cod_time1 ={codTime1} and cod_time2 ={codTime2} ", conn);
+            cmd = new SqlCommand($"Update jogos set cod_camp = {jogos.Cod_camp},  cod_time1 = {jogos.Cod_time1},  cod_time2 = {jogos.Cod_time2}, cod_estadio = {jogos.Cod_estadio}, data = '{jogos.Data}', resultado = {jogos.Resultado}  where cod_camp ={codCampeonato} and cod_time1 ={codTime1} and cod_time2 ={codTime2} ", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();

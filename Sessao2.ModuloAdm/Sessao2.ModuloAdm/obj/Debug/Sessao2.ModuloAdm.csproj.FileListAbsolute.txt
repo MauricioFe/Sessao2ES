@@ -1,0 +1,10 @@
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\bin\Debug\Sessao2.ModuloAdm.exe.config
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\bin\Debug\Sessao2.ModuloAdm.exe
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\bin\Debug\Sessao2.ModuloAdm.pdb
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.csprojAssemblyReference.cache
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.Form1.resources
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.Properties.Resources.resources
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.csproj.GenerateResource.cache
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.csproj.CoreCompileInputs.cache
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.exe
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.pdb

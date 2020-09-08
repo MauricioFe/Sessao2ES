@@ -28,6 +28,7 @@ namespace Sessao2Api.Controllers
         }
         
         [HttpPost]
+        [Route("cadastrar")]
         public void Post([FromBody] Jogos jogos)
         {
             _dal.Add(jogos);
@@ -40,8 +41,7 @@ namespace Sessao2Api.Controllers
             _dal.Update(jogos, codCampeonato, codTime1, codTime2);
         }
 
-        
-        [HttpDelete("{id}")]
+        [HttpDelete("{codCamp}/{codtime1}/{codtime2}")]
         public void Delete(int codCampeonato, int codTime1, int codTime2)
         {
             _dal.Remove(codCampeonato, codTime1, codTime2);
