@@ -21,11 +21,6 @@ namespace InstaladorApi
         {
             InitializeComponent();
             label1.Text = "Bem-vindo ao Serviço \n WSTowers";
-
-            this.BackColor = Color.Magenta;
-            this.TransparencyKey = Color.Magenta;
-            this.FormBorderStyle = FormBorderStyle.None;
-
         }
 
         private void FrmApi_Load(object sender, EventArgs e)
