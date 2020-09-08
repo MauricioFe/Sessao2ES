@@ -34,9 +34,7 @@ namespace Sessao2Api.Controllers
             _dal.Add(jogos);
         }
 
-
-        [HttpDelete("{codCamp}/{codtime1}/{codtime2}")]
-        [Route("atualizar")]
+        [Route("atualizar/{codCamp}/{codtime1}/{codtime2}")]
         public void Put(int codCamp, int codTime1, int codTime2, [FromBody] Jogos jogos)
         {
             _dal.Update(jogos, codCamp, codTime1, codTime2);
