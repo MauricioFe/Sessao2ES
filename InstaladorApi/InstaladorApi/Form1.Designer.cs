@@ -51,7 +51,8 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnIniciar.FlatAppearance.BorderSize = 0;
+            this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Location = new System.Drawing.Point(261, 253);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(166, 36);
@@ -62,6 +63,8 @@
             // 
             // btnParar
             // 
+            this.btnParar.FlatAppearance.BorderSize = 0;
+            this.btnParar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnParar.Location = new System.Drawing.Point(503, 253);
             this.btnParar.Name = "btnParar";
             this.btnParar.Size = new System.Drawing.Size(166, 36);
@@ -113,7 +116,7 @@
             this.Controls.Add(this.btnIniciar);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.Name = "FrmApi";

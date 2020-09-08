@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,29 +29,20 @@ namespace InstaladorApi
         protected override void OnPaint(PaintEventArgs e)
         {
             GraphicsPath path = new GraphicsPath();
-            path.AddEllipse(0,0, btnIniciar.Width, btnIniciar.Height);
+            path.AddEllipse(0, 0, btnIniciar.Width, btnIniciar.Height);
             btnIniciar.Region = new Region(path);
         }
         Process processo = new Process();
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            var path = $@"\\{Environment.MachineName}\root\SecurityCenter2";
-            var searcher = new ManagementObjectSearcher(path, "Select * From AntivirusProduct");
-            bool ativo = false;
-            foreach (var item in searcher.Get())
-            {
-                if ((item["ProductState"].ToString() == "401664"))
-                {
-                    ativo = true;
-                }
-
-            }
-            if (ativo)
+            bool ativo = isFirewallEnabled();
+            if (!ativo)
             {
                 lblStaus.Text = "INICIADO";
                 lblStaus.Visible = true;
                 processo.StartInfo.FileName = @"C:\ApiWSTower\Sessao2Api.exe";
                 processo.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
+                lblFirewall.Enabled = false;
                 processo.Start();
             }
             else
@@ -58,9 +50,8 @@ namespace InstaladorApi
                 lblStaus.Text = "PARADO";
                 lblStaus.Visible = true;
                 lblFirewall.Visible = true;
-                ativo = false;
             }
-            
+
 
 
         }
@@ -68,13 +59,51 @@ namespace InstaladorApi
         private void btnParar_Click(object sender, EventArgs e)
         {
 
-            Process[] macProcessos = Process.GetProcessesByName("Sessao2Api"); 
+            Process[] macProcessos = Process.GetProcessesByName("Sessao2Api");
             lblStaus.Text = "PARADO";
             lblStaus.Visible = true;
-
+            lblFirewall.Visible = false;
             foreach (Process processo in macProcessos)
             {
                 processo.CloseMainWindow();
+            }
+        }
+
+        public static bool isFirewallEnabled()
+        {
+            try
+            {
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey("System\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\StandardProfile"))
+                {
+                    if (key == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        Object o = key.GetValue("EnableFirewall");
+                        if (o == null)
+                        {
+                            return false;
+                        }
+                        else
+                        {
+                            int firewall = (int)o;
+                            if (firewall == 1)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
     }
