@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Sessao2Api.Models
 {
-    public class jogadores
+    public class Jogadores
     {
         public int Cod_jog { get; set; }
         public DateTime Dat_nasc { get; set; }

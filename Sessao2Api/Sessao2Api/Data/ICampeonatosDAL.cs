@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sessao2Api.Data
 {
-    public interface IJogosDAL
+    public interface ICampeonatosDAL
     {
-        IEnumerable<Jogos> GetAll();
-        void Add(Jogos jogos);
-        void Update(Jogos jogos);
+        IEnumerable<Campeonatos> GetAll();
+        void Add(Campeonatos campeonatos);
+        void Update(Campeonatos campeonatos);
         void Remove(int id);
     }
 }
