@@ -40,6 +40,7 @@ namespace Sessao2Api.Data
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             conn.Open();
+            adapter.Fill(dt);
             foreach (DataRow item in dt.Rows)
             {
                 Jogos jogos = new Jogos();

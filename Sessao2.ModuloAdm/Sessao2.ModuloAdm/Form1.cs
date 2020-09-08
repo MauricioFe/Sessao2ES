@@ -16,5 +16,15 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            int cod_camp = 1;
+            int cod_time1 = 1;
+            int cod_time2 = 2;
+            int cod_estadio = 1;
+            DateTime date = DateTime.Now.Date;
+            int resultado = 0;
+        }
     }
 }
