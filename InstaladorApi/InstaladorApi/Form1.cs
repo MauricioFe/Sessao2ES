@@ -130,5 +130,10 @@ namespace InstaladorApi
                 processo.CloseMainWindow();
             }
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
