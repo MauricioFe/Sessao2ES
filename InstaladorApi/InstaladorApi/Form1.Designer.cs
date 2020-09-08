@@ -60,9 +60,9 @@
             this.btnIniciar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
             this.btnIniciar.FlatAppearance.BorderSize = 0;
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIniciar.Location = new System.Drawing.Point(351, 303);
+            this.btnIniciar.Location = new System.Drawing.Point(340, 291);
             this.btnIniciar.Name = "btnIniciar";
-            this.btnIniciar.Size = new System.Drawing.Size(166, 36);
+            this.btnIniciar.Size = new System.Drawing.Size(177, 60);
             this.btnIniciar.TabIndex = 2;
             this.btnIniciar.Text = "Iniciar Serviço";
             this.btnIniciar.UseVisualStyleBackColor = false;
@@ -73,9 +73,9 @@
             this.btnParar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
             this.btnParar.FlatAppearance.BorderSize = 0;
             this.btnParar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParar.Location = new System.Drawing.Point(593, 303);
+            this.btnParar.Location = new System.Drawing.Point(583, 291);
             this.btnParar.Name = "btnParar";
-            this.btnParar.Size = new System.Drawing.Size(166, 36);
+            this.btnParar.Size = new System.Drawing.Size(177, 60);
             this.btnParar.TabIndex = 3;
             this.btnParar.Text = "Parar Serviço";
             this.btnParar.UseVisualStyleBackColor = false;

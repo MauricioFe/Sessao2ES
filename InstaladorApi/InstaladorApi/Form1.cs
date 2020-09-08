@@ -30,12 +30,26 @@ namespace InstaladorApi
 
         private void FrmApi_Load(object sender, EventArgs e)
         {
+
+        }
+        public void ArredondaButton(Button btn)
+        {
+            Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
+            GraphicsPath GraphPath = new GraphicsPath();
+            GraphPath.AddArc(Rect.X, Rect.Y, 50, 50, 180, 90);
+            GraphPath.AddArc(Rect.X + Rect.Width - 50, Rect.Y, 50, 50, 270, 90);
+            GraphPath.AddArc(Rect.X + Rect.Width - 50, Rect.Y + Rect.Height - 50, 50, 50, 0, 90);
+            GraphPath.AddArc(Rect.X, Rect.Y + Rect.Height - 50, 50, 50, 90, 90);
+            btn.Region = new Region(GraphPath);
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            //GraphicsPath path = new GraphicsPath();
-            //path.AddEllipse(0, 0, btnIniciar.Width, btnIniciar.Height);
-            //btnIniciar.Region = new Region(path);
+            base.OnPaint(e);
+            ArredondaButton(btnIniciar);
+            ArredondaButton(btnParar);
+
+
+
         }
         Process processo = new Process();
         private void btnIniciar_Click(object sender, EventArgs e)
