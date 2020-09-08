@@ -34,17 +34,18 @@ namespace Sessao2Api.Controllers
             _dal.Add(jogos);
         }
 
-        
-        [HttpPut("{id}")]
-        public void Put(int codCampeonato, int codTime1, int codTime2, [FromBody] Jogos jogos)
-        {
-            _dal.Update(jogos, codCampeonato, codTime1, codTime2);
-        }
 
         [HttpDelete("{codCamp}/{codtime1}/{codtime2}")]
-        public void Delete(int codCampeonato, int codTime1, int codTime2)
+        [Route("atualizar")]
+        public void Put(int codCamp, int codTime1, int codTime2, [FromBody] Jogos jogos)
         {
-            _dal.Remove(codCampeonato, codTime1, codTime2);
+            _dal.Update(jogos, codCamp, codTime1, codTime2);
+        }
+
+        [Route("excluir/{codCamp}/{codtime1}/{codtime2}")]
+        public void Delete(int codCamp, int codTime1, int codTime2)
+        {
+            _dal.Remove(codCamp, codTime1, codTime2);
         }
     }
 }

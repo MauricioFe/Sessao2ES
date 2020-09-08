@@ -20,30 +20,46 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
-        string URI = "http://localhost:5005/wstowers/api/jogos/cadastrar";
+        string URI = "http://localhost:5005/wstowers/api/jogos";
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             Jogos jogos = new Jogos();
             jogos.Cod_camp = 3;
             jogos.Cod_time1 = 1;
-            jogos.Cod_time2 = 2;
+            jogos.Cod_time2 = 3;
             jogos.Cod_estadio = 7;
             jogos.Data = DateTime.Now.Date;
             jogos.Resultado = 0;
+            //Post(jogos);
+            Delete(jogos.Cod_camp, jogos.Cod_time1, jogos.Cod_time2);
+           // Put(jogos.Cod_camp, jogos.Cod_time1, jogos.Cod_time2, jogos);
+        }
 
+        private void Put(int cod_camp, int cod_time1, int cod_time2, Jogos jogos)
+        {
+            throw new NotImplementedException();
+        }
+
+        private async void Delete(int codCampeonato, int codTime1, int codTime2)
+        {
+            using (var cliente = new HttpClient())
+            {
+                var result = await cliente.DeleteAsync($"{URI}/excluir/{codCampeonato}/{codTime1}/{codTime2}");
+            }
+        }
+
+        public async void Post(Jogos jogos)
+        {
             using (var cliente = new HttpClient())
             {
                 var parseJson = new DataContractJsonSerializer(typeof(Jogos));
                 MemoryStream memory = new MemoryStream();
-                parseJson.WriteObject(memory,jogos);
+                parseJson.WriteObject(memory, jogos);
                 var jsonString = Encoding.UTF8.GetString(memory.ToArray());
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                var result = await cliente.PostAsync(URI, content);
-                
+                var result = await cliente.PostAsync($"{URI}/cadastrar", content);
             }
-            
-
         }
     }
 }
