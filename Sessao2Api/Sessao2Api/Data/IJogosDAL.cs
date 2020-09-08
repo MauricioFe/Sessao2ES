@@ -10,7 +10,7 @@ namespace Sessao2Api.Data
     {
         IEnumerable<Jogos> GetAll();
         void Add(Jogos jogos);
-        void Update(Jogos jogos);
-        void Remove(int id);
+        void Update(Jogos jogos, int codCampeonato, int codTime1, int codTime2);
+        void Remove(int codCampeonato, int codTime1, int codTime2);
     }
 }
