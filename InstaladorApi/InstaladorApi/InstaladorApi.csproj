@@ -84,5 +84,11 @@
   <ItemGroup>
     <None Include="Resources\modelo-formulario.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

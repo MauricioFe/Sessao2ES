@@ -33,6 +33,10 @@
             this.btnParar = new System.Windows.Forms.Button();
             this.lblStaus = new System.Windows.Forms.Label();
             this.lblFirewall = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -51,6 +55,7 @@
             // 
             // btnIniciar
             // 
+            this.btnIniciar.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnIniciar.FlatAppearance.BorderSize = 0;
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Location = new System.Drawing.Point(261, 253);
@@ -58,11 +63,12 @@
             this.btnIniciar.Size = new System.Drawing.Size(166, 36);
             this.btnIniciar.TabIndex = 2;
             this.btnIniciar.Text = "Iniciar Serviço";
-            this.btnIniciar.UseVisualStyleBackColor = true;
+            this.btnIniciar.UseVisualStyleBackColor = false;
             this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // btnParar
             // 
+            this.btnParar.BackColor = System.Drawing.Color.White;
             this.btnParar.FlatAppearance.BorderSize = 0;
             this.btnParar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnParar.Location = new System.Drawing.Point(503, 253);
@@ -70,7 +76,7 @@
             this.btnParar.Size = new System.Drawing.Size(166, 36);
             this.btnParar.TabIndex = 3;
             this.btnParar.Text = "Parar Serviço";
-            this.btnParar.UseVisualStyleBackColor = true;
+            this.btnParar.UseVisualStyleBackColor = false;
             this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
             // 
             // lblStaus
@@ -103,13 +109,40 @@
             this.lblFirewall.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblFirewall.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::InstaladorApi.Properties.Resources._1;
+            this.pictureBox1.Location = new System.Drawing.Point(709, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(29, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::InstaladorApi.Properties.Resources._2;
+            this.pictureBox2.Location = new System.Drawing.Point(744, 79);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(29, 29);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // FrmApi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.BackgroundImage = global::InstaladorApi.Properties.Resources.modelo_formulario;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(903, 558);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblFirewall);
             this.Controls.Add(this.lblStaus);
             this.Controls.Add(this.btnParar);
@@ -122,7 +155,10 @@
             this.Name = "FrmApi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "API sessão 2";
+            this.TransparencyKey = System.Drawing.Color.White;
             this.Load += new System.EventHandler(this.FrmApi_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,6 +171,8 @@
         private System.Windows.Forms.Button btnParar;
         private System.Windows.Forms.Label lblStaus;
         private System.Windows.Forms.Label lblFirewall;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

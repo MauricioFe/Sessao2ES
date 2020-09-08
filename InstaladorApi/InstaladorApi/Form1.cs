@@ -21,6 +21,11 @@ namespace InstaladorApi
         {
             InitializeComponent();
             label1.Text = "Bem-vindo ao Serviço \n WSTowers";
+
+            this.BackColor = Color.Magenta;
+            this.TransparencyKey = Color.Magenta;
+            this.FormBorderStyle = FormBorderStyle.None;
+
         }
 
         private void FrmApi_Load(object sender, EventArgs e)
@@ -28,9 +33,9 @@ namespace InstaladorApi
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            GraphicsPath path = new GraphicsPath();
-            path.AddEllipse(0, 0, btnIniciar.Width, btnIniciar.Height);
-            btnIniciar.Region = new Region(path);
+            //GraphicsPath path = new GraphicsPath();
+            //path.AddEllipse(0, 0, btnIniciar.Width, btnIniciar.Height);
+            //btnIniciar.Region = new Region(path);
         }
         Process processo = new Process();
         private void btnIniciar_Click(object sender, EventArgs e)
@@ -105,6 +110,16 @@ namespace InstaladorApi
             {
                 return false;
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
