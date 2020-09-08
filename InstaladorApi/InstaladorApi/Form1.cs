@@ -47,7 +47,7 @@ namespace InstaladorApi
                 lblStaus.Visible = true;
                 processo.StartInfo.FileName = @"C:\ApiWSTower\Sessao2Api.exe";
                 processo.StartInfo.WindowStyle = ProcessWindowStyle.Minimized;
-                lblFirewall.Enabled = false;
+                lblFirewall.Visible = false;
                 processo.Start();
             }
             else
@@ -120,6 +120,15 @@ namespace InstaladorApi
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FrmApi_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Process[] macProcessos = Process.GetProcessesByName("Sessao2Api");
+            foreach (Process processo in macProcessos)
+            {
+                processo.CloseMainWindow();
+            }
         }
     }
 }
