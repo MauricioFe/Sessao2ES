@@ -45,8 +45,8 @@ namespace Sessao2Api.Data
             {
                 Times times = new Times();
                 times.Cod_time = Convert.ToInt32(item[0]);
-                times.Nom_time = item[1].ToString();
-                times.Uf_time = item[2].ToString();
+                times.Nom_time = item[2].ToString();
+                times.Uf_time = item[1].ToString();
                 timesList.Add(times);
             }
             conn.Close();
