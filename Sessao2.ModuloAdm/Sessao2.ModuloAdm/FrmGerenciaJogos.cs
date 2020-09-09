@@ -52,15 +52,24 @@ namespace Sessao2.ModuloAdm
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     var result = await cliente.PostAsync($"{FrmMenu.URI}/jogos/cadastrar", content);
-                    AtaulizaGridAsync();
+                    if (result.IsSuccessStatusCode)
+                    {
+                        AtaulizaGridAsync();
+                        MessageBox.Show("Inserido com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao cadastrar jogo");
+                    }
+
+
                 }
             }
             catch (Exception)
             {
 
-                throw;
             }
-            MessageBox.Show("Inserido com sucesso");
+
         }
         public async void Put(Jogos jogos, int cod_camp, int cod_time1, int cod_time2)
         {
@@ -75,6 +84,7 @@ namespace Sessao2.ModuloAdm
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     var result = await cliente.PutAsync($"{FrmMenu.URI}/jogos/atualizar/{cod_camp}/{cod_time1}/{cod_time2}", content);
                     AtaulizaGridAsync();
+                    MessageBox.Show("Editado com sucesso");
                 }
             }
             catch (Exception)
@@ -82,7 +92,6 @@ namespace Sessao2.ModuloAdm
 
                 throw;
             }
-            MessageBox.Show("Editado com sucesso");
         }
         public async void Delete(int cod_camp, int cod_time1, int cod_time2)
         {

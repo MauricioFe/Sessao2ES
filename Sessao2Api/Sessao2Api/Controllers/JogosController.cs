@@ -35,6 +35,11 @@ namespace Sessao2Api.Controllers
             {
                 return BadRequest();
             }
+
+            if (!_dal.ValidaJogo48H(jogos.Cod_time1, jogos.Cod_time2, jogos.Data))
+            {
+                return BadRequest("Os jogos devem ter um espaço maior que 24 para acontecerem");
+            }
             _dal.Add(jogos);
             return Ok("Operação realizada com sucesso");
         }
@@ -54,7 +59,7 @@ namespace Sessao2Api.Controllers
         public IActionResult Delete(int codCamp, int codTime1, int codTime2)
         {
             _dal.Remove(codCamp, codTime1, codTime2);
-            return Ok("Operação realizada com sucesso"); 
+            return Ok("Operação realizada com sucesso");
         }
     }
 }

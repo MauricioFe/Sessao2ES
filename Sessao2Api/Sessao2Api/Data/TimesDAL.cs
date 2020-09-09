@@ -53,33 +53,7 @@ namespace Sessao2Api.Data
 
             return timesList;
         }
-        public bool ValidaJogo48H(int cod_time1, int cod_time2, DateTime data)
-        {
-            DateTime teste = data.AddDays(-2);
-            cmd = new SqlCommand($"select * from jogos where cod_time1 = {cod_time1} and data Between '{teste.ToString("yyyy-MM-dd")}' and '{data.ToString("yyyy-MM-dd")}'", conn);
-            conn.Open();
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
-            int time1 = dt.Rows.Count;
-            conn.Close();
-            cmd = new SqlCommand($"select * from jogos where cod_time2 = { cod_time2 } and data Between '{teste.ToString("yyyy-MM-dd")}' and '{data.ToString("yyyy-MM-dd")}'", conn);
-            conn.Open();
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
-            int time2 = dt.Rows.Count;
-            conn.Close();
-            if (time1 > 0 && time2 > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
+      
 
         //public void Remove(int codCampeonato)
         //{
