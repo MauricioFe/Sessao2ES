@@ -99,7 +99,7 @@ namespace Sessao2.ModuloAdm
                     }
                     else
                     {
-                        MessageBox.Show("Erro ao cadastrar jogo");
+                        MessageBox.Show("Erro ao cadastrar");
                     }
 
 
@@ -205,6 +205,14 @@ namespace Sessao2.ModuloAdm
             }
         }
 
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            
+            if (txtNome.Text != "" && txtSalario.Text != "" && cboPosicao.Text != "" && cboTime.Text != "" && dtpDataNascimento.Value != null)
+            {
+                Delete(CodJogador);
+            }
+        }
     }
 }
 

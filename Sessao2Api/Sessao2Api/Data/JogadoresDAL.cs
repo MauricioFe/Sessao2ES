@@ -62,7 +62,7 @@ namespace Sessao2Api.Data
 
         public void Remove(int codJogadores)
         {
-            cmd = new SqlCommand($"Delete from Jogadores where cod_Jog ={codJogadores}");
+            cmd = new SqlCommand($"Delete from Jogadores where cod_Jog ={codJogadores}",conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -70,7 +70,7 @@ namespace Sessao2Api.Data
 
         public void Update(Jogadores jogadores, int codJogadores)
         {
-            cmd = new SqlCommand($"Update jogadores set dat_nasc = '{jogadores.Dat_nasc.ToString("yyyy-MM-dd")}',  salario = {jogadores.Salario}, cod_pos = {jogadores.Cod_pos}, nom_jog = '{jogadores.Nom_jog}', cod_time = {jogadores.Cod_time}  where  cod_Jog ={codJogadores} ", conn);
+            cmd = new SqlCommand($"Update jogadores set dat_nasc = '{jogadores.Dat_nasc.ToString("yyyy-MM-dd")}',  salario = {jogadores.Salario}, cod_pos = {jogadores.Cod_pos}, nom_jog = '{jogadores.Nom_jog}', cod_time ={jogadores.Cod_time}  where  cod_Jog ={codJogadores} ", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
