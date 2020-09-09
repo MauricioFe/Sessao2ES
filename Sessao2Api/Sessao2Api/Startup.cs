@@ -26,6 +26,7 @@ namespace Sessao2Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IJogosDAL, JogosDAL>();
+            services.AddTransient<ICampeonatosDAL, CampeonatosDAL>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

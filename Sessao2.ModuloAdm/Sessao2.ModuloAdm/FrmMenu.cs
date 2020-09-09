@@ -36,6 +36,7 @@ namespace Sessao2.ModuloAdm
             ArredondaButton(btnJogos);
             ArredondaButton(btnJogadores);
             ArredondaButton(btnCampeonatos);
+            Delete(3, 1, 3);
         }
 
 
@@ -73,7 +74,7 @@ namespace Sessao2.ModuloAdm
             }
         }
 
-    
+
         private void btnJogos_Click(object sender, EventArgs e)
         {
             FrmGerenciaJogos form = new FrmGerenciaJogos();
