@@ -20,30 +20,41 @@ namespace Sessao2Api.Controllers
         {
             _dal = dal;
         }
-        
+
         [HttpGet]
         public IEnumerable<Jogos> Get()
         {
             return _dal.GetAll();
         }
-        
+
         [HttpPost]
         [Route("cadastrar")]
-        public void Post([FromBody] Jogos jogos)
+        public IActionResult Post([FromBody] Jogos jogos)
         {
+            if (jogos == null)
+            {
+                return BadRequest();
+            }
             _dal.Add(jogos);
+            return Ok("Operação realizada com sucesso");
         }
 
         [Route("atualizar/{codCamp}/{codtime1}/{codtime2}")]
-        public void Put(int codCamp, int codTime1, int codTime2, [FromBody] Jogos jogos)
+        public IActionResult Put(int codCamp, int codTime1, int codTime2, [FromBody] Jogos jogos)
         {
+            if (jogos == null)
+            {
+                return BadRequest();
+            }
             _dal.Update(jogos, codCamp, codTime1, codTime2);
+            return Ok("Operação realizada com sucesso");
         }
 
         [Route("excluir/{codCamp}/{codtime1}/{codtime2}")]
-        public void Delete(int codCamp, int codTime1, int codTime2)
+        public IActionResult Delete(int codCamp, int codTime1, int codTime2)
         {
             _dal.Remove(codCamp, codTime1, codTime2);
+            return Ok("Operação realizada com sucesso");
         }
     }
 }

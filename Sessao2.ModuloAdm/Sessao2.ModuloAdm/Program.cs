@@ -16,7 +16,7 @@ namespace Sessao2.ModuloAdm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FrmMenu());
         }
     }
 }

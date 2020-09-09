@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Sessao2.ModuloAdm
 {
-    public partial class Form1 : Form
+    public partial class FrmMenu : Form
     {
-        public Form1()
+        public FrmMenu()
         {
             InitializeComponent();
         }
@@ -79,6 +79,11 @@ namespace Sessao2.ModuloAdm
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                 var result = await cliente.PostAsync($"{URI}/cadastrar", content);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
