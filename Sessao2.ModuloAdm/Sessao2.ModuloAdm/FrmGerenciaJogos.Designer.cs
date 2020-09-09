@@ -54,6 +54,7 @@
             this.dgvJogos.Name = "dgvJogos";
             this.dgvJogos.Size = new System.Drawing.Size(548, 225);
             this.dgvJogos.TabIndex = 0;
+            this.dgvJogos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJogos_CellClick);
             // 
             // cboTime1
             // 
@@ -201,6 +202,7 @@
             this.btnEditar.TabIndex = 14;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnExcluir
             // 
