@@ -54,7 +54,7 @@ namespace Sessao2Api.Controllers
         public IActionResult Delete(int codCamp, int codTime1, int codTime2)
         {
             _dal.Remove(codCamp, codTime1, codTime2);
-            return Ok("Operação realizada com sucesso");
+            return Ok("Operação realizada com sucesso"); 
         }
     }
 }

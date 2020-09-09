@@ -19,7 +19,7 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
-        string URI = "http://localhost:5005/wstowers/api/jogos";
+        public static string URI = "http://localhost:5005/wstowers/api/jogos";
 
         public static void ArredondaButton(Button btn)
         {
@@ -36,32 +36,8 @@ namespace Sessao2.ModuloAdm
             ArredondaButton(btnJogos);
             ArredondaButton(btnJogadores);
             ArredondaButton(btnCampeonatos);
-
-            Jogos jogos = new Jogos();
-            jogos.Cod_camp = 3;
-            jogos.Cod_time1 = 1;
-            jogos.Cod_time2 = 3;
-            jogos.Cod_estadio = 7;
-            jogos.Data = DateTime.Now.Date;
-            jogos.Resultado = 0;
-            //Get();
-            //Post(jogos);
-            //Delete(jogos.Cod_camp, jogos.Cod_time1, jogos.Cod_time2);
-            //jogos.Resultado = 1;
-            //Put(jogos.Cod_camp, jogos.Cod_time1, jogos.Cod_time2, jogos);
         }
 
-        private async void Get()
-        {
-            List<Jogos> jogosList = new List<Jogos>();
-            using (var client = new HttpClient())
-            {
-                var response = await client.GetAsync(URI);
-                var jogos = await response.Content.ReadAsStringAsync();
-                jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
-                //dataGridView1.DataSource = jogosList;
-            }
-        }
 
         private async void Put(int cod_camp, int cod_time1, int cod_time2, Jogos jogos)
         {

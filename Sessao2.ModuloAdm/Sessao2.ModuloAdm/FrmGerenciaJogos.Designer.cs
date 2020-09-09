@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvJogos = new System.Windows.Forms.DataGridView();
             this.cboTime1 = new System.Windows.Forms.ComboBox();
             this.cboTime2 = new System.Windows.Forms.ComboBox();
             this.cboCampeonato = new System.Windows.Forms.ComboBox();
@@ -44,16 +44,16 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJogos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvJogos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(288, 265);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(548, 225);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvJogos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJogos.Location = new System.Drawing.Point(288, 265);
+            this.dgvJogos.Name = "dgvJogos";
+            this.dgvJogos.Size = new System.Drawing.Size(548, 225);
+            this.dgvJogos.TabIndex = 0;
             // 
             // cboTime1
             // 
@@ -238,12 +238,13 @@
             this.Controls.Add(this.cboCampeonato);
             this.Controls.Add(this.cboTime2);
             this.Controls.Add(this.cboTime1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvJogos);
             this.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmGerenciaJogos";
             this.Text = "FrmGerenciaJogos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FrmGerenciaJogos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJogos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,7 +252,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvJogos;
         private System.Windows.Forms.ComboBox cboTime1;
         private System.Windows.Forms.ComboBox cboTime2;
         private System.Windows.Forms.ComboBox cboCampeonato;
