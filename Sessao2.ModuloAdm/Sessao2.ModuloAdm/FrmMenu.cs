@@ -21,7 +21,7 @@ namespace Sessao2.ModuloAdm
         }
         string URI = "http://localhost:5005/wstowers/api/jogos";
 
-        public void ArredondaButton(Button btn)
+        public static void ArredondaButton(Button btn)
         {
             Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
             GraphicsPath GraphPath = new GraphicsPath();

@@ -16,5 +16,10 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
