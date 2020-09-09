@@ -20,6 +20,7 @@ namespace Sessao2Api.Data
         {
             _conn = config.GetConnectionString("DefaultConnection");
             conn = new SqlConnection(_conn);
+            
         }
 
         SqlCommand cmd;
@@ -98,6 +99,31 @@ namespace Sessao2Api.Data
                 return false;
             }
 
+        }
+        public bool ValidaJogoCampeonato(int cod_camp, int cod_time1, int cod_time2)
+        {
+            cmd = new SqlCommand($"select * from participacoes where cod_camp = {cod_camp} and cod_time = {cod_time1}", conn);
+            conn.Open();
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            int time1 = dt.Rows.Count;
+            conn.Close();
+            cmd = new SqlCommand($"select * from participacoes where cod_camp = {cod_camp} and cod_time = {cod_time2}", conn);
+            conn.Open();
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            int time2 = dt.Rows.Count;
+            conn.Close();
+            if (time1 > 0 && time2 > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

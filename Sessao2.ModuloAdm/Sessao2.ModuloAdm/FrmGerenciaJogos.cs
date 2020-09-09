@@ -24,15 +24,20 @@ namespace Sessao2.ModuloAdm
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            if (cboTime1.Text == cboTime2.Text)
+            {
+                MessageBox.Show("Um jogo só pode ocorrer entre times diferentes");
+                return;
+            }
             Jogos jogos = new Jogos();
-            if (cboTime1.Text != "" && cboTime2.Text != "" && cboCampeonato.Text != "" && cboEstadio.Text != "" && dtpData.Value != null && txtVencedor.Text != "")
+            if (cboTime1.Text != "" && cboTime2.Text != "" && cboCampeonato.Text != "" && cboEstadio.Text != "" && dtpData.Value != null)
             {
                 jogos.Cod_camp = int.Parse(cboCampeonato.SelectedValue.ToString());
                 jogos.Cod_time1 = int.Parse(cboTime1.SelectedValue.ToString());
                 jogos.Cod_estadio = int.Parse(cboEstadio.SelectedValue.ToString());
                 jogos.Cod_time2 = int.Parse(cboTime2.SelectedValue.ToString());
                 jogos.Data = dtpData.Value;
-                jogos.Resultado = int.Parse(txtVencedor.Text);
+                jogos.Resultado = int.Parse(txtVencedor.Text == "" ? "0" : txtVencedor.Text);
                 Post(jogos);
             }
             else
@@ -196,15 +201,20 @@ namespace Sessao2.ModuloAdm
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (cboTime1.Text == cboTime2.Text)
+            {
+                MessageBox.Show("Um jogo só pode ocorrer entre times diferentes");
+                return;
+            }
             Jogos jogos = new Jogos();
-            if (cboTime1.Text != "" && cboTime2.Text != "" && cboCampeonato.Text != "" && cboEstadio.Text != "" && dtpData.Value != null && txtVencedor.Text != "")
+            if (cboTime1.Text != "" && cboTime2.Text != "" && cboCampeonato.Text != "" && cboEstadio.Text != "" && dtpData.Value != null)
             {
                 jogos.Cod_camp = int.Parse(cboCampeonato.SelectedValue.ToString());
                 jogos.Cod_time1 = int.Parse(cboTime1.SelectedValue.ToString());
                 jogos.Cod_estadio = int.Parse(cboEstadio.SelectedValue.ToString());
                 jogos.Cod_time2 = int.Parse(cboTime2.SelectedValue.ToString());
                 jogos.Data = dtpData.Value;
-                jogos.Resultado = int.Parse(txtVencedor.Text);
+                jogos.Resultado = int.Parse(txtVencedor.Text == "" ? "0" : txtVencedor.Text);
                 Put(jogos, Convert.ToInt32(cboCampeonato.SelectedValue), Convert.ToInt32(cboTime1.SelectedValue), Convert.ToInt32(cboTime2.SelectedValue));
 
             }
