@@ -29,6 +29,7 @@ namespace Sessao2Api
             services.AddTransient<IJogadoresDAL, JogadoresDAL>();
             services.AddTransient<ICampeonatosDAL, CampeonatosDAL>();
             services.AddTransient<ITimesDAL, TimesDAL>();
+            services.AddTransient<IPosicoesDAL, PosicoesDAL>();
             services.AddTransient<IEstadiosDAL, EstadiosDAL>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

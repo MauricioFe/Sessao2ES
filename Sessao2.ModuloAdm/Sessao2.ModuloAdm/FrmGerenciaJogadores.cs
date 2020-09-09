@@ -65,15 +65,16 @@ namespace Sessao2.ModuloAdm
                 var response = await client.GetAsync($"{FrmMenu.URI}/posicoes");
                 var posicao = await response.Content.ReadAsStringAsync();
                 posicoesList = new JavaScriptSerializer().Deserialize<List<Posicoes>>(posicao);
-                cboTime.DataSource = posicoesList;
-                cboTime.DisplayMember = "Nom_time";
-                cboTime.ValueMember = "Cod_time";
+                cboPosicao.DataSource = posicoesList;
+                cboPosicao.DisplayMember = "Dsc_pos";
+                cboPosicao.ValueMember = "Cod_pos";
             }
         }
         private void FrmGerenciaJogadores_Load(object sender, EventArgs e)
         {
             AtualizaCboTime();
             AtaulizaGridAsync();
+            AtualizaCboPosicao();
         }
     }
 }
