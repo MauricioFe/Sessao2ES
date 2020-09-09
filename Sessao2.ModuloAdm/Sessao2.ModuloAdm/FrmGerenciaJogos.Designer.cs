@@ -325,8 +325,10 @@
             this.Controls.Add(this.cboTime1);
             this.Controls.Add(this.dgvJogos);
             this.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmGerenciaJogos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmGerenciaJogos";
             this.Load += new System.EventHandler(this.FrmGerenciaJogos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogos)).EndInit();
