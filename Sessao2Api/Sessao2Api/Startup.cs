@@ -26,6 +26,7 @@ namespace Sessao2Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IJogosDAL, JogosDAL>();
+            services.AddTransient<IJogadoresDAL, JogadoresDAL>();
             services.AddTransient<ICampeonatosDAL, CampeonatosDAL>();
             services.AddTransient<ITimesDAL, TimesDAL>();
             services.AddTransient<IEstadiosDAL, EstadiosDAL>();
