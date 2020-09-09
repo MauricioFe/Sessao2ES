@@ -21,6 +21,7 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
+        int CodJogador = 0;
         public async void AtaulizaGridAsync()
         {
             List<Jogadores> jogadoresList = new List<Jogadores>();
@@ -156,7 +157,7 @@ namespace Sessao2.ModuloAdm
             Jogadores jogadores = new Jogadores();
             if (txtNome.Text != "" && txtSalario.Text != "" && cboPosicao.Text != "" && cboTime.Text != "" && dtpDataNascimento.Value != null)
             {
-                for (int i = 0; i < dgvJogadores.Rows.Count-1; i++)
+                for (int i = 0; i < dgvJogadores.Rows.Count - 1; i++)
                 {
                     jogadores.Cod_jog = Convert.ToInt32(dgvJogadores.Rows[i].Cells[5].Value);
                 }
@@ -173,5 +174,37 @@ namespace Sessao2.ModuloAdm
                 MessageBox.Show("Preencha todos os campos");
             }
         }
+
+        private void dgvJogadores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNome.Text = dgvJogadores.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtSalario.Text = dgvJogadores.Rows[e.RowIndex].Cells[2].Value.ToString();
+            dtpDataNascimento.Value = Convert.ToDateTime(dgvJogadores.Rows[e.RowIndex].Cells[1].Value);
+            cboPosicao.SelectedValue = dgvJogadores.Rows[e.RowIndex].Cells[7].Value;
+            cboTime.SelectedValue = dgvJogadores.Rows[e.RowIndex].Cells[6].Value;
+            CodJogador = Convert.ToInt32(dgvJogadores.Rows[e.RowIndex].Cells[5].Value);
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Jogadores jogadores = new Jogadores();
+            if (txtNome.Text != "" && txtSalario.Text != "" && cboPosicao.Text != "" && cboTime.Text != "" && dtpDataNascimento.Value != null)
+            {
+
+                jogadores.Cod_jog = CodJogador;
+                jogadores.Nom_jog = txtNome.Text;
+                jogadores.Salario = Decimal.Parse(txtSalario.Text);
+                jogadores.Cod_pos = int.Parse(cboPosicao.SelectedValue.ToString());
+                jogadores.Cod_time = int.Parse(cboTime.SelectedValue.ToString());
+                jogadores.Dat_nasc = dtpDataNascimento.Value;
+                Put(jogadores, CodJogador);
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os campos");
+            }
+        }
+
     }
 }
+

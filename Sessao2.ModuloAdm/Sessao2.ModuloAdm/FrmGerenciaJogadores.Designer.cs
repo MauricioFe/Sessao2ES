@@ -80,6 +80,7 @@
             this.btnEditar.TabIndex = 30;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnSalvar
             // 
@@ -191,6 +192,7 @@
             this.dgvJogadores.Name = "dgvJogadores";
             this.dgvJogadores.Size = new System.Drawing.Size(544, 235);
             this.dgvJogadores.TabIndex = 16;
+            this.dgvJogadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJogadores_CellClick);
             // 
             // label7
             // 

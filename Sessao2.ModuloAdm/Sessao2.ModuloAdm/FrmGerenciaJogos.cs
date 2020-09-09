@@ -21,7 +21,6 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (cboTime1.Text == cboTime2.Text)
