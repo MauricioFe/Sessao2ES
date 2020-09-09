@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -27,7 +29,6 @@ namespace Sessao2.ModuloAdm
                 var response = await client.GetAsync($"{FrmMenu.URI}/jogadores");
                 var jogadores = await response.Content.ReadAsStringAsync();
                 jogadoresList = new JavaScriptSerializer().Deserialize<List<Jogadores>>(jogadores);
-                //dgvJogos.DataSource = jogosList;
                 dgvJogadores.Rows.Clear();
                 foreach (var item in jogadoresList)
                 {
@@ -75,6 +76,102 @@ namespace Sessao2.ModuloAdm
             AtualizaCboTime();
             AtaulizaGridAsync();
             AtualizaCboPosicao();
+        }
+
+
+        public async void Post(Jogadores jogadores)
+        {
+            try
+            {
+                using (var cliente = new HttpClient())
+                {
+                    var parseJson = new DataContractJsonSerializer(typeof(Jogadores));
+                    MemoryStream memory = new MemoryStream();
+                    parseJson.WriteObject(memory, jogadores);
+                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = await cliente.PostAsync($"{FrmMenu.URI}/jogadores/cadastrar", content);
+                    if (result.IsSuccessStatusCode)
+                    {
+                        AtaulizaGridAsync();
+                        MessageBox.Show("Inserido com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao cadastrar jogo");
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+        public async void Put(Jogadores jogadores, int codJogador)
+        {
+            try
+            {
+                using (var cliente = new HttpClient())
+                {
+                    var parseJson = new DataContractJsonSerializer(typeof(Jogadores));
+                    MemoryStream memory = new MemoryStream();
+                    parseJson.WriteObject(memory, jogadores);
+                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = await cliente.PutAsync($"{FrmMenu.URI}/jogadores/atualizar/{codJogador}", content);
+                    AtaulizaGridAsync();
+                    MessageBox.Show("Editado com sucesso");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public async void Delete(int codJogador)
+        {
+            try
+            {
+                using (var cliente = new HttpClient())
+                {
+                    var result = await cliente.DeleteAsync($"{FrmMenu.URI}/jogadores/excluir/{codJogador}");
+                    AtaulizaGridAsync();
+                    MessageBox.Show("Deletado com sucesso");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Jogadores jogadores = new Jogadores();
+            if (txtNome.Text != "" && txtSalario.Text != "" && cboPosicao.Text != "" && cboTime.Text != "" && dtpDataNascimento.Value != null)
+            {
+                for (int i = 0; i < dgvJogadores.Rows.Count-1; i++)
+                {
+                    jogadores.Cod_jog = Convert.ToInt32(dgvJogadores.Rows[i].Cells[5].Value);
+                }
+                jogadores.Cod_jog++;
+                jogadores.Nom_jog = txtNome.Text;
+                jogadores.Salario = Decimal.Parse(txtSalario.Text);
+                jogadores.Cod_pos = int.Parse(cboPosicao.SelectedValue.ToString());
+                jogadores.Cod_time = int.Parse(cboTime.SelectedValue.ToString());
+                jogadores.Dat_nasc = dtpDataNascimento.Value;
+                Post(jogadores);
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os campos");
+            }
         }
     }
 }
