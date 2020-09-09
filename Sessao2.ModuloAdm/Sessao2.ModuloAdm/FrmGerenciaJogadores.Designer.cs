@@ -60,7 +60,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.White;
-            this.btnExcluir.Location = new System.Drawing.Point(643, 527);
+            this.btnExcluir.Location = new System.Drawing.Point(653, 527);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(97, 42);
             this.btnExcluir.TabIndex = 31;
@@ -74,7 +74,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(510, 527);
+            this.btnEditar.Location = new System.Drawing.Point(520, 527);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(97, 42);
             this.btnEditar.TabIndex = 30;
@@ -88,7 +88,7 @@
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(377, 527);
+            this.btnSalvar.Location = new System.Drawing.Point(387, 527);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(97, 42);
             this.btnSalvar.TabIndex = 29;
@@ -187,9 +187,9 @@
             this.codJogador,
             this.codTime,
             this.codPosicao});
-            this.dgvJogadores.Location = new System.Drawing.Point(251, 262);
+            this.dgvJogadores.Location = new System.Drawing.Point(287, 264);
             this.dgvJogadores.Name = "dgvJogadores";
-            this.dgvJogadores.Size = new System.Drawing.Size(612, 235);
+            this.dgvJogadores.Size = new System.Drawing.Size(544, 235);
             this.dgvJogadores.TabIndex = 16;
             // 
             // label7
