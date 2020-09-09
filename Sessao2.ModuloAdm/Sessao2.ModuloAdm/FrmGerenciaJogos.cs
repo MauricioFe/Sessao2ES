@@ -34,6 +34,7 @@ namespace Sessao2.ModuloAdm
                 jogos.Data = dtpData.Value;
                 jogos.Resultado = int.Parse(txtVencedor.Text);
                 Post(jogos);
+                AtaulizaGridAsync();
             }
             else
             {
@@ -42,15 +43,66 @@ namespace Sessao2.ModuloAdm
         }
         public async void Post(Jogos jogos)
         {
-            using (var cliente = new HttpClient())
+            try
             {
-                var parseJson = new DataContractJsonSerializer(typeof(Jogos));
-                MemoryStream memory = new MemoryStream();
-                parseJson.WriteObject(memory, jogos);
-                var jsonString = Encoding.UTF8.GetString(memory.ToArray());
-                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                var result = await cliente.PostAsync($"{FrmMenu.URI}/jogos/cadastrar", content);
+                using (var cliente = new HttpClient())
+                {
+                    var parseJson = new DataContractJsonSerializer(typeof(Jogos));
+                    MemoryStream memory = new MemoryStream();
+                    parseJson.WriteObject(memory, jogos);
+                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = await cliente.PostAsync($"{FrmMenu.URI}/jogos/cadastrar", content);
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            MessageBox.Show("Inserido com sucesso");
+        }
+        public async void Put(Jogos jogos)
+        {
+            try
+            {
+                using (var cliente = new HttpClient())
+                {
+                    var parseJson = new DataContractJsonSerializer(typeof(Jogos));
+                    MemoryStream memory = new MemoryStream();
+                    parseJson.WriteObject(memory, jogos);
+                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = await cliente.PostAsync($"{FrmMenu.URI}/jogos/cadastrar", content);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            MessageBox.Show("Editado com sucesso");
+        }
+        public async void Delete(Jogos jogos)
+        {
+            try
+            {
+                using (var cliente = new HttpClient())
+                {
+                    var parseJson = new DataContractJsonSerializer(typeof(Jogos));
+                    MemoryStream memory = new MemoryStream();
+                    parseJson.WriteObject(memory, jogos);
+                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = await cliente.PostAsync($"{FrmMenu.URI}/jogos/cadastrar", content);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            MessageBox.Show("Deletado com sucesso");
         }
         public async void AtaulizaGridAsync()
         {
@@ -65,18 +117,64 @@ namespace Sessao2.ModuloAdm
         }
         public async void AtualizaCboCampeonatos()
         {
-            List<Campeonatos> jogosList = new List<Campeonatos>();
+            List<Campeonatos> campeonatosList = new List<Campeonatos>();
             using (var client = new HttpClient())
             {
                 var response = await client.GetAsync($"{FrmMenu.URI}/campeonatos");
                 var campeonatos = await response.Content.ReadAsStringAsync();
-                jogosList = new JavaScriptSerializer().Deserialize<List<Campeonatos>>(campeonatos);
-                .DataSource = jogosList;
+                campeonatosList = new JavaScriptSerializer().Deserialize<List<Campeonatos>>(campeonatos);
+                cboCampeonato.DataSource = campeonatosList;
+                cboCampeonato.DisplayMember = "Dsc_camp";
+                cboCampeonato.ValueMember = "Cod_camp";
+            }
+        }
+        public async void AtualizaCboTime1()
+        {
+            List<Times> timesList = new List<Times>();
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{FrmMenu.URI}/times");
+                var times = await response.Content.ReadAsStringAsync();
+                timesList = new JavaScriptSerializer().Deserialize<List<Times>>(times);
+                cboTime1.DataSource = timesList;
+                cboTime1.DisplayMember = "Nom_time";
+                cboTime1.ValueMember = "Cod_time";
+            }
+        }
+        public async void AtualizaCboTime2()
+        {
+            List<Times> timesList = new List<Times>();
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{FrmMenu.URI}/times");
+                var times = await response.Content.ReadAsStringAsync();
+                timesList = new JavaScriptSerializer().Deserialize<List<Times>>(times);
+                cboTime2.DataSource = timesList;
+                cboTime2.DisplayMember = "Nom_time";
+                cboTime2.ValueMember = "Cod_time";
+            }
+        }
+
+        public async void AtualizaCboEstadios()
+        {
+            List<Estadios> estadiosList = new List<Estadios>();
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{FrmMenu.URI}/estadios");
+                var estadios = await response.Content.ReadAsStringAsync();
+                estadiosList = new JavaScriptSerializer().Deserialize<List<Estadios>>(estadios);
+                cboEstadio.DataSource = estadiosList;
+                cboEstadio.DisplayMember = "Nom_est";
+                cboEstadio.ValueMember = "Cod_est";
             }
         }
         private void FrmGerenciaJogos_Load(object sender, EventArgs e)
         {
             AtaulizaGridAsync();
+            AtualizaCboCampeonatos();
+            AtualizaCboTime1();
+            AtualizaCboTime2();
+            AtualizaCboEstadios();
         }
     }
 }
