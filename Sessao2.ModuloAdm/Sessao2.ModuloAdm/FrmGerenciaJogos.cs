@@ -62,7 +62,7 @@ namespace Sessao2.ModuloAdm
             }
             MessageBox.Show("Inserido com sucesso");
         }
-        public async void Put(Jogos jogos)
+        public async void Put(Jogos jogos, int cod_camp, int cod_time1, int cod_time2)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Sessao2.ModuloAdm
                     parseJson.WriteObject(memory, jogos);
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                    var result = await cliente.PostAsync($"{FrmMenu.URI}/jogos/cadastrar", content);
+                    var result = await cliente.PutAsync($"{FrmMenu.URI}/jogos/atualizar/{cod_camp}/{cod_time1}/{cod_time2}", content);
                 }
             }
             catch (Exception)
@@ -83,18 +83,13 @@ namespace Sessao2.ModuloAdm
             }
             MessageBox.Show("Editado com sucesso");
         }
-        public async void Delete(Jogos jogos)
+        public async void Delete(int cod_camp, int cod_time1, int cod_time2)
         {
             try
             {
                 using (var cliente = new HttpClient())
                 {
-                    var parseJson = new DataContractJsonSerializer(typeof(Jogos));
-                    MemoryStream memory = new MemoryStream();
-                    parseJson.WriteObject(memory, jogos);
-                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
-                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                    var result = await cliente.PostAsync($"{FrmMenu.URI}/jogos/cadastrar", content);
+                    var result = await cliente.DeleteAsync($"{FrmMenu.URI}/jogos/excluir/{cod_camp}/{cod_time1}/{cod_time2}");
                 }
             }
             catch (Exception)
