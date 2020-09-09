@@ -99,7 +99,7 @@ namespace Sessao2.ModuloAdm
                     }
                     else
                     {
-                        MessageBox.Show("Erro ao cadastrar");
+                        MessageBox.Show("Erro ao cadastrar Idade mínima 17");
                     }
 
 
