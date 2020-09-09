@@ -90,6 +90,7 @@
             // 
             // dtpData
             // 
+            this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpData.Location = new System.Drawing.Point(311, 178);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(256, 25);
@@ -217,6 +218,7 @@
             this.btnExcluir.TabIndex = 15;
             this.btnExcluir.Text = "Exluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // FrmGerenciaJogos
             // 

@@ -204,5 +204,14 @@ namespace Sessao2.ModuloAdm
                 MessageBox.Show("Preencha todos os campos");
             }
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            Jogos jogos = new Jogos();
+            if (cboTime1.Text != "" && cboTime2.Text != "" && cboCampeonato.Text != "" && cboEstadio.Text != "" && dtpData.Value != null && txtVencedor.Text != "")
+            {
+                Delete(Convert.ToInt32(cboCampeonato.SelectedValue), Convert.ToInt32(cboTime1.SelectedValue), Convert.ToInt32(cboTime2.SelectedValue));
+            }
+        }
     }
 }
