@@ -288,6 +288,7 @@
             this.Name = "FrmGerenciaJogadores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmGerenciaJogadores";
+            this.Load += new System.EventHandler(this.FrmGerenciaJogadores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogadores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

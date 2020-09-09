@@ -73,6 +73,7 @@
       <DependentUpon>FrmGerenciaCampeonatos.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Estadio.cs" />
+    <Compile Include="Models\Jogadores.cs" />
     <Compile Include="Models\Times.cs" />
     <Compile Include="Models\Campeonatos.cs" />
     <Compile Include="Models\Jogos.cs" />
