@@ -97,9 +97,26 @@ namespace Sessao2.ModuloAdm
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+    
+        private void btnJogos_Click(object sender, EventArgs e)
         {
+            FrmGerenciaJogos form = new FrmGerenciaJogos();
+            form.Show();
+            this.Hide();
+        }
 
+        private void btnJogadores_Click(object sender, EventArgs e)
+        {
+            FrmGerenciaJogadores form = new FrmGerenciaJogadores();
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnCampeonatos_Click(object sender, EventArgs e)
+        {
+            FrmGerenciaCampeonatos form = new FrmGerenciaCampeonatos();
+            form.Show();
+            this.Hide();
         }
     }
 }

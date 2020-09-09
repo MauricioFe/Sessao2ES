@@ -45,6 +45,7 @@
             this.btnJogos.TabIndex = 0;
             this.btnJogos.Text = "Gerenciamento de jogos";
             this.btnJogos.UseVisualStyleBackColor = true;
+            this.btnJogos.Click += new System.EventHandler(this.btnJogos_Click);
             // 
             // btnJogadores
             // 
@@ -57,7 +58,7 @@
             this.btnJogadores.TabIndex = 1;
             this.btnJogadores.Text = "Gerenciamento de Jogadores";
             this.btnJogadores.UseVisualStyleBackColor = true;
-            this.btnJogadores.Click += new System.EventHandler(this.button2_Click);
+            this.btnJogadores.Click += new System.EventHandler(this.btnJogadores_Click);
             // 
             // btnCampeonatos
             // 
@@ -70,6 +71,7 @@
             this.btnCampeonatos.TabIndex = 2;
             this.btnCampeonatos.Text = "Gerenciamento de Campeonatos";
             this.btnCampeonatos.UseVisualStyleBackColor = true;
+            this.btnCampeonatos.Click += new System.EventHandler(this.btnCampeonatos_Click);
             // 
             // label1
             // 
