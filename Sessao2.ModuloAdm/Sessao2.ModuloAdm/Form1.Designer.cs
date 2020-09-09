@@ -28,41 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnJogos = new System.Windows.Forms.Button();
+            this.btnJogadores = new System.Windows.Forms.Button();
+            this.btnCampeonatos = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnJogos
             // 
-            this.button1.Location = new System.Drawing.Point(378, 168);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 60);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Gerenciamento de jogos";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnJogos.FlatAppearance.BorderSize = 0;
+            this.btnJogos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJogos.Location = new System.Drawing.Point(378, 168);
+            this.btnJogos.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnJogos.Name = "btnJogos";
+            this.btnJogos.Size = new System.Drawing.Size(233, 60);
+            this.btnJogos.TabIndex = 0;
+            this.btnJogos.Text = "Gerenciamento de jogos";
+            this.btnJogos.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnJogadores
             // 
-            this.button2.Location = new System.Drawing.Point(378, 255);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(233, 60);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Gerenciamento de Jogadores";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnJogadores.FlatAppearance.BorderSize = 0;
+            this.btnJogadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJogadores.Location = new System.Drawing.Point(378, 255);
+            this.btnJogadores.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnJogadores.Name = "btnJogadores";
+            this.btnJogadores.Size = new System.Drawing.Size(233, 60);
+            this.btnJogadores.TabIndex = 1;
+            this.btnJogadores.Text = "Gerenciamento de Jogadores";
+            this.btnJogadores.UseVisualStyleBackColor = true;
+            this.btnJogadores.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnCampeonatos
             // 
-            this.button3.Location = new System.Drawing.Point(378, 336);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(233, 60);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Gerenciamento de Campeonatos";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCampeonatos.FlatAppearance.BorderSize = 0;
+            this.btnCampeonatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCampeonatos.Location = new System.Drawing.Point(378, 336);
+            this.btnCampeonatos.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnCampeonatos.Name = "btnCampeonatos";
+            this.btnCampeonatos.Size = new System.Drawing.Size(233, 60);
+            this.btnCampeonatos.TabIndex = 2;
+            this.btnCampeonatos.Text = "Gerenciamento de Campeonatos";
+            this.btnCampeonatos.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(130)))), ((int)(((byte)(53)))));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(361, 90);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(275, 37);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Menu WSTowers";
             // 
             // FrmMenu
             // 
@@ -71,9 +90,10 @@
             this.BackgroundImage = global::Sessao2.ModuloAdm.Properties.Resources.modelo_formulario;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(940, 499);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCampeonatos);
+            this.Controls.Add(this.btnJogadores);
+            this.Controls.Add(this.btnJogos);
             this.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmMenu";
@@ -81,14 +101,16 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnJogos;
+        private System.Windows.Forms.Button btnJogadores;
+        private System.Windows.Forms.Button btnCampeonatos;
+        private System.Windows.Forms.Label label1;
     }
 }
 

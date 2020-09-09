@@ -1,6 +1,8 @@
 ﻿using Sessao2.ModuloAdm.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -19,8 +21,22 @@ namespace Sessao2.ModuloAdm
         }
         string URI = "http://localhost:5005/wstowers/api/jogos";
 
+        public void ArredondaButton(Button btn)
+        {
+            Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
+            GraphicsPath GraphPath = new GraphicsPath();
+            GraphPath.AddArc(Rect.X, Rect.Y, 50, 50, 180, 90);
+            GraphPath.AddArc(Rect.X + Rect.Width - 50, Rect.Y, 50, 50, 270, 90);
+            GraphPath.AddArc(Rect.X + Rect.Width - 50, Rect.Y + Rect.Height - 50, 50, 50, 0, 90);
+            GraphPath.AddArc(Rect.X, Rect.Y + Rect.Height - 50, 50, 50, 90, 90);
+            btn.Region = new Region(GraphPath);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            ArredondaButton(btnJogos);
+            ArredondaButton(btnJogadores);
+            ArredondaButton(btnCampeonatos);
+
             Jogos jogos = new Jogos();
             jogos.Cod_camp = 3;
             jogos.Cod_time1 = 1;
@@ -28,7 +44,7 @@ namespace Sessao2.ModuloAdm
             jogos.Cod_estadio = 7;
             jogos.Data = DateTime.Now.Date;
             jogos.Resultado = 0;
-            Get();
+            //Get();
             //Post(jogos);
             //Delete(jogos.Cod_camp, jogos.Cod_time1, jogos.Cod_time2);
             //jogos.Resultado = 1;
@@ -43,7 +59,7 @@ namespace Sessao2.ModuloAdm
                 var response = await client.GetAsync(URI);
                 var jogos = await response.Content.ReadAsStringAsync();
                 jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
-                dataGridView1.DataSource = jogosList;
+                //dataGridView1.DataSource = jogosList;
             }
         }
 
