@@ -19,7 +19,7 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
-        public static string URI = "http://localhost:5005/wstowers/api/jogos";
+        public static string URI = "http://localhost:5005/wstowers/api/";
 
         public static void ArredondaButton(Button btn)
         {
