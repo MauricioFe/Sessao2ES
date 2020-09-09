@@ -38,12 +38,17 @@ namespace Sessao2Api.Controllers
 
             if (!_dal.ValidaJogo48H(jogos.Cod_time1, jogos.Cod_time2, jogos.Data))
             {
-                return BadRequest("Os jogos devem ter um espaço maior que 24 para acontecerem");
+                return BadRequest("Os jogos devem ter um espaço maior que 48 horas para acontecerem");
             }
             if (!_dal.ValidaJogoCampeonato(jogos.Cod_camp, jogos.Cod_time1, jogos.Cod_time2))
             {
                 return BadRequest("Os times precisam estar inscritos no mesmo campeonato");
             }
+            if (!_dal.ValidaDataCampeonato(jogos.Cod_camp, jogos.Data))
+            {
+                return BadRequest("A data tem que estar nos limites do campeonato");
+            }
+
             _dal.Add(jogos);
             return Ok("Operação realizada com sucesso");
         }

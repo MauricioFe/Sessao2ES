@@ -14,6 +14,7 @@ namespace Sessao2Api.Data
         void Remove(int codCampeonato, int codTime1, int codTime2);
         bool ValidaJogo48H(int cod_time1, int cod_time2, DateTime data);
         bool ValidaJogoCampeonato(int cod_camp, int cod_time1, int cod_time2);
+        bool ValidaDataCampeonato(int cod_camp, DateTime date);
 
     }
 }

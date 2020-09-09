@@ -123,7 +123,23 @@ namespace Sessao2.ModuloAdm
                 var response = await client.GetAsync($"{FrmMenu.URI}/jogos");
                 var jogos = await response.Content.ReadAsStringAsync();
                 jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
-                dgvJogos.DataSource = jogosList;
+                //dgvJogos.DataSource = jogosList;
+                dgvJogos.Rows.Clear();
+                foreach (var item in jogosList)
+                {
+                    int n = dgvJogos.Rows.Add();
+                    dgvJogos.Rows[n].Cells[0].Value = item.Campeonatos;
+                    dgvJogos.Rows[n].Cells[1].Value = item.Time1;
+                    dgvJogos.Rows[n].Cells[2].Value = item.Time2;
+                    dgvJogos.Rows[n].Cells[3].Value = item.Estadio;
+                    dgvJogos.Rows[n].Cells[4].Value = item.Data;
+                    dgvJogos.Rows[n].Cells[5].Value = item.Resultado;
+                    dgvJogos.Rows[n].Cells[6].Value = item.Cod_camp;
+                    dgvJogos.Rows[n].Cells[7].Value = item.Cod_time1;
+                    dgvJogos.Rows[n].Cells[8].Value = item.Cod_time2;
+                    dgvJogos.Rows[n].Cells[9].Value = item.Cod_estadio;
+
+                }
             }
         }
         public async void AtualizaCboCampeonatos()
@@ -190,10 +206,10 @@ namespace Sessao2.ModuloAdm
 
         private void dgvJogos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            cboCampeonato.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[0].Value;
-            cboTime1.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[1].Value;
-            cboTime2.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[2].Value;
-            cboEstadio.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[3].Value;
+            cboCampeonato.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[6].Value;
+            cboTime1.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[7].Value;
+            cboTime2.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[8].Value;
+            cboEstadio.SelectedValue = dgvJogos.Rows[e.RowIndex].Cells[9].Value;
             dtpData.Value = Convert.ToDateTime(dgvJogos.Rows[e.RowIndex].Cells[4].Value);
             txtVencedor.Text = dgvJogos.Rows[e.RowIndex].Cells[5].Value.ToString();
 

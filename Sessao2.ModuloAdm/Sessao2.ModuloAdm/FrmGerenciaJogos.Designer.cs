@@ -44,22 +44,43 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.Campeonato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resultado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codCamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codTime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codTime2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codEstadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogos)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvJogos
             // 
             this.dgvJogos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJogos.Location = new System.Drawing.Point(288, 265);
+            this.dgvJogos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Campeonato,
+            this.Time1,
+            this.Time2,
+            this.Estadio,
+            this.Data,
+            this.Resultado,
+            this.codCamp,
+            this.codTime1,
+            this.codTime2,
+            this.codEstadio});
+            this.dgvJogos.Location = new System.Drawing.Point(257, 265);
             this.dgvJogos.Name = "dgvJogos";
-            this.dgvJogos.Size = new System.Drawing.Size(548, 225);
+            this.dgvJogos.Size = new System.Drawing.Size(612, 235);
             this.dgvJogos.TabIndex = 0;
             this.dgvJogos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJogos_CellClick);
             // 
             // cboTime1
             // 
             this.cboTime1.FormattingEnabled = true;
-            this.cboTime1.Location = new System.Drawing.Point(438, 126);
+            this.cboTime1.Location = new System.Drawing.Point(469, 126);
             this.cboTime1.Name = "cboTime1";
             this.cboTime1.Size = new System.Drawing.Size(121, 28);
             this.cboTime1.TabIndex = 1;
@@ -67,7 +88,7 @@
             // cboTime2
             // 
             this.cboTime2.FormattingEnabled = true;
-            this.cboTime2.Location = new System.Drawing.Point(565, 126);
+            this.cboTime2.Location = new System.Drawing.Point(596, 126);
             this.cboTime2.Name = "cboTime2";
             this.cboTime2.Size = new System.Drawing.Size(121, 28);
             this.cboTime2.TabIndex = 2;
@@ -75,15 +96,15 @@
             // cboCampeonato
             // 
             this.cboCampeonato.FormattingEnabled = true;
-            this.cboCampeonato.Location = new System.Drawing.Point(311, 126);
+            this.cboCampeonato.Location = new System.Drawing.Point(296, 126);
             this.cboCampeonato.Name = "cboCampeonato";
-            this.cboCampeonato.Size = new System.Drawing.Size(121, 28);
+            this.cboCampeonato.Size = new System.Drawing.Size(167, 28);
             this.cboCampeonato.TabIndex = 3;
             // 
             // cboEstadio
             // 
             this.cboEstadio.FormattingEnabled = true;
-            this.cboEstadio.Location = new System.Drawing.Point(692, 126);
+            this.cboEstadio.Location = new System.Drawing.Point(723, 126);
             this.cboEstadio.Name = "cboEstadio";
             this.cboEstadio.Size = new System.Drawing.Size(121, 28);
             this.cboEstadio.TabIndex = 4;
@@ -109,7 +130,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(130)))), ((int)(((byte)(53)))));
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(308, 106);
+            this.label1.Location = new System.Drawing.Point(300, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 17);
             this.label1.TabIndex = 7;
@@ -121,7 +142,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(130)))), ((int)(((byte)(53)))));
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(435, 106);
+            this.label2.Location = new System.Drawing.Point(466, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 8;
@@ -133,7 +154,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(130)))), ((int)(((byte)(53)))));
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(689, 106);
+            this.label3.Location = new System.Drawing.Point(720, 106);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 17);
             this.label3.TabIndex = 9;
@@ -145,7 +166,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(130)))), ((int)(((byte)(53)))));
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(562, 106);
+            this.label4.Location = new System.Drawing.Point(593, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 10;
@@ -220,6 +241,66 @@
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // Campeonato
+            // 
+            this.Campeonato.HeaderText = "Campeonato";
+            this.Campeonato.Name = "Campeonato";
+            this.Campeonato.ReadOnly = true;
+            // 
+            // Time1
+            // 
+            this.Time1.HeaderText = "Time1";
+            this.Time1.Name = "Time1";
+            this.Time1.ReadOnly = true;
+            // 
+            // Time2
+            // 
+            this.Time2.HeaderText = "Time2";
+            this.Time2.Name = "Time2";
+            this.Time2.ReadOnly = true;
+            // 
+            // Estadio
+            // 
+            this.Estadio.HeaderText = "Estadio";
+            this.Estadio.Name = "Estadio";
+            this.Estadio.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // Resultado
+            // 
+            this.Resultado.HeaderText = "Resultado";
+            this.Resultado.Name = "Resultado";
+            this.Resultado.ReadOnly = true;
+            // 
+            // codCamp
+            // 
+            this.codCamp.HeaderText = "codCamp";
+            this.codCamp.Name = "codCamp";
+            this.codCamp.Visible = false;
+            // 
+            // codTime1
+            // 
+            this.codTime1.HeaderText = "codTime1";
+            this.codTime1.Name = "codTime1";
+            this.codTime1.Visible = false;
+            // 
+            // codTime2
+            // 
+            this.codTime2.HeaderText = "codTime2";
+            this.codTime2.Name = "codTime2";
+            this.codTime2.Visible = false;
+            // 
+            // codEstadio
+            // 
+            this.codEstadio.HeaderText = "codEstadio";
+            this.codEstadio.Name = "codEstadio";
+            this.codEstadio.Visible = false;
+            // 
             // FrmGerenciaJogos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -272,5 +353,15 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Campeonato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estadio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Resultado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codCamp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codTime1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codTime2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codEstadio;
     }
 }
