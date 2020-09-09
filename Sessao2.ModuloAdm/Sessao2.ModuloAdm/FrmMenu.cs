@@ -36,7 +36,7 @@ namespace Sessao2.ModuloAdm
             ArredondaButton(btnJogos);
             ArredondaButton(btnJogadores);
             ArredondaButton(btnCampeonatos);
-            Delete(3, 1, 3);
+            //Delete(3, 1, 3);
         }
 
 
