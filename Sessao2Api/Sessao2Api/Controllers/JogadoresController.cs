@@ -46,7 +46,12 @@ namespace Sessao2Api.Controllers
                 return BadRequest("A idade do jogador deve ser maior que 17");
             }
             _dal.Add(jogadores);
-            return Ok("Operação realizada com sucesso");
+
+            return Ok(new
+            {
+                Result = "Sucess",
+                Message = "Operação realizada com sucesso"
+            });
         }
 
         [Route("atualizar/{codJogador}")]
@@ -57,14 +62,24 @@ namespace Sessao2Api.Controllers
                 return BadRequest();
             }
             _dal.Update(jogadores, codJogador);
-            return Ok("Operação realizada com sucesso");
+
+            return Ok(new
+            {
+                Result = "Sucess",
+                Message = "Operação realizada com sucesso"
+            });
         }
 
         [Route("excluir/{codJogador}")]
         public IActionResult Delete(int codJogador)
         {
             _dal.Remove(codJogador);
-            return Ok("Operação realizada com sucesso");
+
+            return Ok(new
+            {
+                Result = "Sucess",
+                Message = "Operação realizada com sucesso"
+            });
         }
     }
 }

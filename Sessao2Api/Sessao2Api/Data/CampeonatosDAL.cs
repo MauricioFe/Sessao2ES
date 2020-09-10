@@ -20,7 +20,6 @@ namespace Sessao2Api.Data
         {
             _conn = config.GetConnectionString("DefaultConnection");
             conn = new SqlConnection(_conn);
-            ValidaEdicaoData(3, 2021, Convert.ToDateTime("2020-04-08"), Convert.ToDateTime("2020-11-08"));
         }
 
         SqlCommand cmd;
@@ -28,7 +27,7 @@ namespace Sessao2Api.Data
         SqlDataAdapter adapter;
         public void Add(Campeonatos campeonatos)
         {
-            cmd = new SqlCommand($"insert into campeonatos values ( {campeonatos.Cod_camp},  '{campeonatos.Dsc_camp}',  {campeonatos.Ano}, '{campeonatos.Tipo}', '{campeonatos.Data_ini.ToString("yyyy-MM-dd")}', '{campeonatos.Data_fim.ToString("yyyy-MM-dd")}', '{campeonatos.Def_tipo}')", conn);
+            cmd = new SqlCommand($"insert into campeonatos values ( {campeonatos.Cod_camp},  '{campeonatos.Descricao}',  {campeonatos.Ano}, '{campeonatos.Tipo}', '{campeonatos.DataInicio}', '{campeonatos.DataFim}', '{campeonatos.Def_tipo}')", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -46,11 +45,11 @@ namespace Sessao2Api.Data
             {
                 Campeonatos campeonatos = new Campeonatos();
                 campeonatos.Cod_camp = Convert.ToInt32(item[0]);
-                campeonatos.Dsc_camp = item[1].ToString();
+                campeonatos.Descricao = item[1].ToString();
                 campeonatos.Ano = Convert.ToInt32(item[2]);
                 campeonatos.Tipo = item[3].ToString();
-                campeonatos.Data_ini = Convert.ToDateTime(item[4]);
-                campeonatos.Data_fim = Convert.ToDateTime(item[5]);
+                campeonatos.DataInicio = item[4].ToString();
+                campeonatos.DataFim = item[5].ToString();
                 campeonatos.Def_tipo = item[6].ToString();
                 campeonatosList.Add(campeonatos);
             }
@@ -73,20 +72,20 @@ namespace Sessao2Api.Data
 
                 return;
             }
-           
+
         }
 
         public void Update(Campeonatos campeonatos, int codCampeonato)
         {
-            cmd = new SqlCommand($"Update campeonatos set dsc_camp = '{campeonatos.Dsc_camp}',  ano = {campeonatos.Ano}, tipo ='{campeonatos.Tipo}', dat_ini = '{campeonatos.Data_ini.ToString("yyyy-MM-dd")}', dat_fim = '{campeonatos.Data_fim.ToString("yyyy-MM-dd")}', def_tipo = '{campeonatos.Def_tipo}'  where cod_camp ={codCampeonato}", conn);
+            cmd = new SqlCommand($"Update campeonatos set dsc_camp = '{campeonatos.Descricao}',  ano = {campeonatos.Ano}, tipo ='{campeonatos.Tipo}', dat_ini = '{campeonatos.DataInicio}', dat_fim = '{campeonatos.DataFim}', def_tipo = '{campeonatos.Def_tipo}'  where cod_camp ={codCampeonato}", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
         }
 
-        public bool ValidaEdicaoData(int codCamp, int Ano, DateTime dataInicio, DateTime dataFim)
+        public bool ValidaEdicaoData(int codCamp, int Ano, string dataInicio, string dataFim)
         {
-            cmd = new SqlCommand($"select * from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp where campeonatos.cod_camp = {codCamp} and jogos.data not between '{dataInicio.ToString("yyyy-MM-dd")}' and '{dataFim.ToString("yyyy-MM-dd")}' and DATEPART(YEAR,jogos.data) = {Ano}", conn);
+            cmd = new SqlCommand($"select * from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp where campeonatos.cod_camp = {codCamp} and jogos.data not between '{dataInicio}' and '{dataFim}' and DATEPART(YEAR,jogos.data) = {Ano}", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             conn.Open();

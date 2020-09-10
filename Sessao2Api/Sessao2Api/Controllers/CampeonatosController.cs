@@ -32,7 +32,9 @@ namespace Sessao2Api.Controllers
         [Route("cadastrar")]
         public IActionResult Post([FromHeader] string tokenTowersAdm, [FromBody] Campeonatos campeonatos)
         {
-            if (tokenTowersAdm == null || tokenTowersAdm != "a5b01115-7d82-4f6a-bc45-9fd49eacd2e2")
+            DateTime dataFim = DateTime.Parse(campeonatos.DataFim.Insert(4, "-").Insert(7, "-"));
+            DateTime dataInicio = DateTime.Parse(campeonatos.DataInicio.Insert(4,"-").Insert(7,"-"));
+            if (tokenTowersAdm == null || tokenTowersAdm != "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7")
             {
                 return BadRequest(new
                 {
@@ -48,7 +50,7 @@ namespace Sessao2Api.Controllers
                     Mesage = "Contact the admnistrator"
                 });
             }
-            if (campeonatos.Ano != campeonatos.Data_fim.Year && campeonatos.Ano != campeonatos.Data_ini.Year)
+            if (campeonatos.Ano != dataInicio.Year && campeonatos.Ano != dataFim.Year)
             {
 
                 return BadRequest(new
@@ -57,7 +59,7 @@ namespace Sessao2Api.Controllers
                     Mesage = "As datas não podem ser de anos diferentes"
                 });
             }
-            if (campeonatos.Data_ini.AddMonths(2) > campeonatos.Data_fim)
+            if (dataInicio.AddMonths(2) > dataFim)
             {
                 return BadRequest(new
                 {
@@ -66,26 +68,55 @@ namespace Sessao2Api.Controllers
                 });
             }
             _dal.Add(campeonatos);
-            return Ok("Operação realizada com sucesso");
+
+            return Ok(new
+            {
+                Result = "Sucess",
+                Message = "Operação realizada com sucesso"
+            });
         }
 
         [Route("atualizar/{codCamp}")]
         public IActionResult Put(int codCamp, [FromBody] Campeonatos campeonatos)
         {
+            DateTime dataFim = DateTime.Parse(campeonatos.DataFim.Insert(4, "-").Insert(7, "-"));
+            DateTime dataInicio = DateTime.Parse(campeonatos.DataInicio.Insert(4, "-").Insert(7, "-"));
             if (campeonatos == null)
             {
-                return BadRequest();
+                return BadRequest(new
+                {
+                    Result = "error",
+                    Mesage = "Contact the admnistrator"
+                });
             }
-            if (campeonatos.Ano != campeonatos.Data_fim.Year && campeonatos.Ano != campeonatos.Data_ini.Year)
+            if (campeonatos.Ano != dataInicio.Year && campeonatos.Ano != dataFim.Year)
             {
-                return BadRequest("As datas não podem ser de anos diferentes");
+
+                return BadRequest(new
+                {
+                    Result = "Business_rule_error",
+                    Mesage = "As datas não podem ser de anos diferentes"
+                });
             }
-            if (_dal.ValidaEdicaoData(codCamp, campeonatos.Ano, campeonatos.Data_ini, campeonatos.Data_fim))
+            if (dataInicio.AddMonths(2) > dataFim)
+            {
+                return BadRequest(new
+                {
+                    Result = "Business_rule_error",
+                    Mesage = "Um campeonato tem que ter uma duração de no mínimo dois meses"
+                });
+            }
+            if (_dal.ValidaEdicaoData(codCamp, campeonatos.Ano, campeonatos.DataInicio, campeonatos.DataFim))
             {
                 return BadRequest("Não é possível editar a data desse campeonato pois ainda tem jogos para acontecer");
             }
             _dal.Update(campeonatos, codCamp);
-            return Ok("Operação realizada com sucesso");
+
+            return Ok(new
+            {
+                Result = "Sucess",
+                Message = "Operação realizada com sucesso"
+            });
         }
 
         [Route("excluir/{codCamp}")]
@@ -93,7 +124,11 @@ namespace Sessao2Api.Controllers
         {
             _dal.Remove(codCamp);
 
-            return Ok("Operação realizada com sucesso");
+            return Ok(new
+            {
+                Result = "Sucess",
+                Message = "Operação realizada com sucesso"
+            });
         }
     }
 }
