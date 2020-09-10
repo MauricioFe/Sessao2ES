@@ -130,13 +130,21 @@ namespace Sessao2Api.Controllers
                     Mesage = "Você não está autorizado a acessar esses dados"
                 });
             }
-            _dal.Remove(codJogador);
-
-            return Ok(new
+            if (_dal.Remove(codJogador))
             {
-                Result = "Sucess",
-                Message = "Operação realizada com sucesso"
+                return Ok(new
+                {
+                    Result = "Sucess",
+                    Message = "Operação realizada com sucesso"
+                });
+            }
+            return BadRequest(new
+            {
+                Result = "Error",
+                Message = "Contact the administrator"
             });
+
+
         }
     }
 }

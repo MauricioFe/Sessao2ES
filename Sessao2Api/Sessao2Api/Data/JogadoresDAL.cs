@@ -28,7 +28,7 @@ namespace Sessao2Api.Data
         SqlDataAdapter adapter;
         public void Add(Jogadores jogadores)
         {
-            cmd = new SqlCommand($"insert into jogadores values ( {jogadores.Cod_jog},  '{jogadores.DataNascimento}',  {jogadores.Salario.ToString().Replace(",",".")}, {jogadores.Posicao}, '{jogadores.Nome}', {jogadores.Time} )", conn);
+            cmd = new SqlCommand($"insert into jogadores values ( {jogadores.Cod_jog},  '{jogadores.DataNascimento}',  {jogadores.Salario.ToString().Replace(",", ".")}, {jogadores.Posicao}, '{jogadores.Nome}', {jogadores.Time} )", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -47,9 +47,9 @@ namespace Sessao2Api.Data
                 Jogadores jogadores = new Jogadores();
                 jogadores.Cod_jog = Convert.ToInt32(item[0]);
                 jogadores.DataNascimento = item[1].ToString();
-                jogadores.Salario= Convert.ToDecimal(item[2]);
-                jogadores.Posicao= Convert.ToInt32(item[3]);
-                jogadores.Nome= item[4].ToString();
+                jogadores.Salario = Convert.ToDecimal(item[2]);
+                jogadores.Posicao = Convert.ToInt32(item[3]);
+                jogadores.Nome = item[4].ToString();
                 jogadores.Time = Convert.ToInt32(item[5]);
                 jogadores.TimeStr = item[6].ToString();
                 jogadores.PosicaoStr = item[7].ToString();
@@ -60,12 +60,22 @@ namespace Sessao2Api.Data
             return jogadoresList;
         }
 
-        public void Remove(int codJogadores)
+        public bool Remove(int codJogadores)
         {
-            cmd = new SqlCommand($"Delete from Jogadores where cod_Jog ={codJogadores}",conn);
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            try
+            {
+                cmd = new SqlCommand($"Delete from Jogadores where cod_Jog ={codJogadores}", conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
         }
 
         public void Update(Jogadores jogadores, int codJogadores)
