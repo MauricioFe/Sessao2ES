@@ -255,7 +255,7 @@ namespace Sessao2.ModuloAdm
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Dispose();
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
