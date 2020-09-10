@@ -56,7 +56,7 @@ namespace Sessao2Api.Controllers
                 return BadRequest(new
                 {
                     Result = "Business_rule_error",
-                    Mesage = "As datas não podem ser de anos diferentes"
+                    Mesage = "O ano das datas está diferente do ano do campeonato"
                 });
             }
             if (dataInicio.AddMonths(2) > dataFim)
@@ -67,6 +67,11 @@ namespace Sessao2Api.Controllers
                     Mesage = "Um campeonato tem que ter uma duração de no mínimo dois meses"
                 });
             }
+            foreach (var item in _dal.GetAll())
+            {
+                campeonatos.Cod_camp = item.Cod_camp;
+            }
+            campeonatos.Cod_camp++;
             _dal.Add(campeonatos);
 
             return Ok(new
@@ -95,7 +100,7 @@ namespace Sessao2Api.Controllers
                 return BadRequest(new
                 {
                     Result = "Business_rule_error",
-                    Mesage = "As datas não podem ser de anos diferentes"
+                    Mesage = "O ano das datas está diferente do ano do campeonato"
                 });
             }
             if (dataInicio.AddMonths(2) > dataFim)
@@ -108,7 +113,11 @@ namespace Sessao2Api.Controllers
             }
             if (_dal.ValidaEdicaoData(codCamp, campeonatos.Ano, campeonatos.DataInicio, campeonatos.DataFim))
             {
-                return BadRequest("Não é possível editar a data desse campeonato pois ainda tem jogos para acontecer");
+                return BadRequest(new
+                {
+                    Result = "Business_rule_error",
+                    Mesage = "Não é possível editar a data desse campeonato pois ainda tem jogos para acontecer"
+                });
             }
             _dal.Update(campeonatos, codCamp);
 
@@ -122,13 +131,22 @@ namespace Sessao2Api.Controllers
         [Route("excluir/{codCamp}")]
         public IActionResult Delete(int codCamp)
         {
-            _dal.Remove(codCamp);
-
-            return Ok(new
+            if (_dal.Remove(codCamp))
             {
-                Result = "Sucess",
-                Message = "Operação realizada com sucesso"
-            });
+                return Ok(new
+                {
+                    Result = "Sucess",
+                    Message = "Operação realizada com sucesso"
+                });
+            }
+            else
+            {
+                return BadRequest(new
+                {
+                    Result = "error",
+                    Mesage = "Contact the admnistrator"
+                });
+            }         
         }
     }
 }

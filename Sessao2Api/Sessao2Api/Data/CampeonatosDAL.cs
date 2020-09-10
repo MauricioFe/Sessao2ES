@@ -58,7 +58,7 @@ namespace Sessao2Api.Data
             return campeonatosList;
         }
 
-        public void Remove(int codCampeonato)
+        public bool Remove(int codCampeonato)
         {
             try
             {
@@ -66,11 +66,11 @@ namespace Sessao2Api.Data
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
+                return true;
             }
             catch (Exception)
             {
-
-                return;
+                return false;
             }
 
         }

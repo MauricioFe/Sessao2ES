@@ -11,7 +11,7 @@ namespace Sessao2Api.Data
         IEnumerable<Campeonatos> GetAll();
         void Add(Campeonatos campeonatos);
         void Update(Campeonatos campeonatos, int codCampeonato);
-        void Remove(int codCampeonato);
+        bool Remove(int codCampeonato);
         bool ValidaEdicaoData(int codCamp, int Ano, string dataInicio, string dataFim);
     }
 }
