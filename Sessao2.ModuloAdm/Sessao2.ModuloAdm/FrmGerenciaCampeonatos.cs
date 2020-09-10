@@ -116,7 +116,7 @@ namespace Sessao2.ModuloAdm
                     var result = await client.DeleteAsync($"{FrmMenu.URI}/campeonatos/excluir/{codCampeonato}");
                     if (result.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Editado com sucesso");
+                        MessageBox.Show("Excluído com sucesso");
                         AtualizaGrid();
                     }
                     else

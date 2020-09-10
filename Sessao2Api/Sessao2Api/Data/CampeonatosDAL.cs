@@ -68,7 +68,7 @@ namespace Sessao2Api.Data
 
         public void Update(Campeonatos campeonatos, int codCampeonato)
         {
-            cmd = new SqlCommand($"Update campeonatos set dsc_camp = '{campeonatos.Dsc_camp}',  ano = {campeonatos.Ano}, tipo ='{campeonatos.Tipo}', data_ini = '{campeonatos.Data_ini.ToString("yyyy-MM-dd")}', data_fim = '{campeonatos.Data_fim.ToString("yyyy-MM-dd")}', def_tipo = {campeonatos.Def_tipo}  where cod_camp ={codCampeonato}", conn);
+            cmd = new SqlCommand($"Update campeonatos set dsc_camp = '{campeonatos.Dsc_camp}',  ano = {campeonatos.Ano}, tipo ='{campeonatos.Tipo}', dat_ini = '{campeonatos.Data_ini.ToString("yyyy-MM-dd")}', dat_fim = '{campeonatos.Data_fim.ToString("yyyy-MM-dd")}', def_tipo = '{campeonatos.Def_tipo}'  where cod_camp ={codCampeonato}", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
