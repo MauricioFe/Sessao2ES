@@ -35,10 +35,19 @@ namespace Sessao2Api.Controllers
             {
                 return BadRequest();
             }
-            if (jogadores.Dat_nasc.Year - DateTime.Now.Year < 17 && jogadores.Dat_nasc.Month >= DateTime.Now.Month)
+            int idade = new DateTime(DateTime.Now.Subtract(jogadores.Dat_nasc).Ticks).Year;
+            int meses = 0;
+            DateTime anosPercorridos = jogadores.Dat_nasc.AddYears(idade);
+            if (anosPercorridos > DateTime.Now)
             {
-                return BadRequest("o jogador tem que ter no mínimo 17 anos");
+                idade -= 1;
             }
+            if (idade < 17)
+            {
+                return BadRequest("A idade do jogador deve ser maior que 17");
+            }
+
+            
             _dal.Add(jogadores);
             return Ok("Operação realizada com sucesso");
         }
