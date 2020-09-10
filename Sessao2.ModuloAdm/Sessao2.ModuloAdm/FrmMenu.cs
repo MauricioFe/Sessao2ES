@@ -36,45 +36,7 @@ namespace Sessao2.ModuloAdm
             ArredondaButton(btnJogos);
             ArredondaButton(btnJogadores);
             ArredondaButton(btnCampeonatos);
-            //Delete(3, 1, 3);
         }
-
-
-        private async void Put(int cod_camp, int cod_time1, int cod_time2, Jogos jogos)
-        {
-            using (var cliente = new HttpClient())
-            {
-                var parseJson = new DataContractJsonSerializer(typeof(Jogos));
-                MemoryStream memory = new MemoryStream();
-                parseJson.WriteObject(memory, jogos);
-                var jsonString = Encoding.UTF8.GetString(memory.ToArray());
-                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                var result = await cliente.PutAsync($"{URI}/atualizar/{cod_camp}/{cod_time1}/{cod_time2}", content);
-            }
-        }
-
-        private async void Delete(int codCampeonato, int codTime1, int codTime2)
-        {
-            using (var cliente = new HttpClient())
-            {
-                var result = await cliente.DeleteAsync($"{URI}/excluir/{codCampeonato}/{codTime1}/{codTime2}");
-            }
-        }
-
-        public async void Post(Jogos jogos)
-        {
-            using (var cliente = new HttpClient())
-            {
-                var parseJson = new DataContractJsonSerializer(typeof(Jogos));
-                MemoryStream memory = new MemoryStream();
-                parseJson.WriteObject(memory, jogos);
-                var jsonString = Encoding.UTF8.GetString(memory.ToArray());
-                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                var result = await cliente.PostAsync($"{URI}/cadastrar", content);
-            }
-        }
-
-
         private void btnJogos_Click(object sender, EventArgs e)
         {
             FrmGerenciaJogos form = new FrmGerenciaJogos();
@@ -91,6 +53,16 @@ namespace Sessao2.ModuloAdm
         {
             FrmGerenciaCampeonatos form = new FrmGerenciaCampeonatos();
             form.ShowDialog();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

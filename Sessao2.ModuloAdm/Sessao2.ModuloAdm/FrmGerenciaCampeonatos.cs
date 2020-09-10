@@ -16,5 +16,15 @@ namespace Sessao2.ModuloAdm
         {
             InitializeComponent();
         }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

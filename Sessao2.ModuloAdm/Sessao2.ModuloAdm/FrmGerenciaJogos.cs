@@ -252,5 +252,15 @@ namespace Sessao2.ModuloAdm
                 Delete(Convert.ToInt32(cboCampeonato.SelectedValue), Convert.ToInt32(cboTime1.SelectedValue), Convert.ToInt32(cboTime2.SelectedValue));
             }
         }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
     }
 }

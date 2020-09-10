@@ -33,46 +33,59 @@
             this.btnCampeonatos = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnFechar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             this.SuspendLayout();
             // 
             // btnJogos
             // 
+            this.btnJogos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.btnJogos.FlatAppearance.BorderSize = 0;
             this.btnJogos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJogos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJogos.ForeColor = System.Drawing.Color.White;
             this.btnJogos.Location = new System.Drawing.Point(378, 168);
             this.btnJogos.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnJogos.Name = "btnJogos";
             this.btnJogos.Size = new System.Drawing.Size(233, 60);
             this.btnJogos.TabIndex = 0;
             this.btnJogos.Text = "Gerenciamento de jogos";
-            this.btnJogos.UseVisualStyleBackColor = true;
+            this.btnJogos.UseVisualStyleBackColor = false;
             this.btnJogos.Click += new System.EventHandler(this.btnJogos_Click);
             // 
             // btnJogadores
             // 
+            this.btnJogadores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.btnJogadores.FlatAppearance.BorderSize = 0;
             this.btnJogadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnJogadores.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJogadores.ForeColor = System.Drawing.Color.White;
             this.btnJogadores.Location = new System.Drawing.Point(378, 255);
             this.btnJogadores.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnJogadores.Name = "btnJogadores";
             this.btnJogadores.Size = new System.Drawing.Size(233, 60);
             this.btnJogadores.TabIndex = 1;
             this.btnJogadores.Text = "Gerenciamento de Jogadores";
-            this.btnJogadores.UseVisualStyleBackColor = true;
+            this.btnJogadores.UseVisualStyleBackColor = false;
             this.btnJogadores.Click += new System.EventHandler(this.btnJogadores_Click);
             // 
             // btnCampeonatos
             // 
+            this.btnCampeonatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             this.btnCampeonatos.FlatAppearance.BorderSize = 0;
             this.btnCampeonatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCampeonatos.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCampeonatos.ForeColor = System.Drawing.Color.White;
             this.btnCampeonatos.Location = new System.Drawing.Point(378, 336);
             this.btnCampeonatos.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnCampeonatos.Name = "btnCampeonatos";
             this.btnCampeonatos.Size = new System.Drawing.Size(233, 60);
             this.btnCampeonatos.TabIndex = 2;
             this.btnCampeonatos.Text = "Gerenciamento de Campeonatos";
-            this.btnCampeonatos.UseVisualStyleBackColor = true;
+            this.btnCampeonatos.UseVisualStyleBackColor = false;
             this.btnCampeonatos.Click += new System.EventHandler(this.btnCampeonatos_Click);
             // 
             // label1
@@ -97,6 +110,30 @@
             this.pictureBox1.TabIndex = 35;
             this.pictureBox1.TabStop = false;
             // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
+            this.btnMinimizar.Image = global::Sessao2.ModuloAdm.Properties.Resources._1;
+            this.btnMinimizar.Location = new System.Drawing.Point(778, 71);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(30, 29);
+            this.btnMinimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimizar.TabIndex = 36;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(206)))), ((int)(((byte)(206)))));
+            this.btnFechar.Image = global::Sessao2.ModuloAdm.Properties.Resources._2;
+            this.btnFechar.Location = new System.Drawing.Point(741, 34);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(30, 29);
+            this.btnFechar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnFechar.TabIndex = 37;
+            this.btnFechar.TabStop = false;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
             // FrmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -104,6 +141,8 @@
             this.BackgroundImage = global::Sessao2.ModuloAdm.Properties.Resources.modelo_formulario;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(940, 499);
+            this.Controls.Add(this.btnFechar);
+            this.Controls.Add(this.btnMinimizar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCampeonatos);
@@ -117,6 +156,8 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,6 +170,8 @@
         private System.Windows.Forms.Button btnCampeonatos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnMinimizar;
+        private System.Windows.Forms.PictureBox btnFechar;
     }
 }
 
