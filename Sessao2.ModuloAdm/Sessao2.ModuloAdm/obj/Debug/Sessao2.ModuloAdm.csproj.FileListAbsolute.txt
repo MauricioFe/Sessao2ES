@@ -11,3 +11,6 @@ C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.FrmGerenciaJogos.resources
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.FrmGerenciaJogadores.resources
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.FrmGerenciaCampeonatos.resources
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloAdm\Sessao2.ModuloAdm\obj\Debug\Sessao2.ModuloAdm.csproj.CopyComplete

@@ -39,7 +39,7 @@ namespace Sessao2Api.Controllers
             return Ok("Operação realizada com sucesso");
         }
 
-        [Route("atualizar/{codCamp}/{codtime1}/{codtime2}")]
+        [Route("atualizar/{codCamp}")]
         public IActionResult Put(int codCamp, [FromBody] Campeonatos campeonatos)
         {
             if (campeonatos == null)
@@ -50,7 +50,7 @@ namespace Sessao2Api.Controllers
             return Ok("Operação realizada com sucesso");
         }
 
-        [Route("excluir/{codCamp}/{codtime1}/{codtime2}")]
+        [Route("excluir/{codCamp}")]
         public IActionResult Delete(int codCamp)
         {
             _dal.Remove(codCamp);

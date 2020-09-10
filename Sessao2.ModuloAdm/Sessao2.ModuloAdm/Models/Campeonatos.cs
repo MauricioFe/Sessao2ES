@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sessao2.ModuloAdm.Models
 {
-    class Campeonatos
+    public class Campeonatos
     {
         public int Cod_camp { get; set; }
         public string Dsc_camp { get; set; }

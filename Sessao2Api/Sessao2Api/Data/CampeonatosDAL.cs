@@ -27,7 +27,7 @@ namespace Sessao2Api.Data
         SqlDataAdapter adapter;
         public void Add(Campeonatos campeonatos)
         {
-            cmd = new SqlCommand($"insert into campeonatos values ( {campeonatos.Cod_camp},  '{campeonatos.Dsc_camp}',  {campeonatos.Ano}, '{campeonatos.Tipo}', '{campeonatos.Data_ini}', '{campeonatos.Data_fim}', {campeonatos.Def_tipo} )", conn);
+            cmd = new SqlCommand($"insert into campeonatos values ( {campeonatos.Cod_camp},  '{campeonatos.Dsc_camp}',  {campeonatos.Ano}, '{campeonatos.Tipo}', '{campeonatos.Data_ini.ToString("yyyy-MM-dd")}', '{campeonatos.Data_fim.ToString("yyyy-MM-dd")}', '{campeonatos.Def_tipo}')", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -60,7 +60,7 @@ namespace Sessao2Api.Data
 
         public void Remove(int codCampeonato)
         {
-            cmd = new SqlCommand($"Delete from Campeonatos where cod_camp ={codCampeonato}");
+            cmd = new SqlCommand($"Delete from Campeonatos where cod_camp ={codCampeonato}", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -68,7 +68,7 @@ namespace Sessao2Api.Data
 
         public void Update(Campeonatos campeonatos, int codCampeonato)
         {
-            cmd = new SqlCommand($"Update campeonatos set dsc_camp = '{campeonatos.Dsc_camp}',  ano = {campeonatos.Ano}, tipo ='{campeonatos.Tipo}', data_ini = '{campeonatos.Data_ini}', data_fim = '{campeonatos.Data_fim}', def_tipo = {campeonatos.Def_tipo}  where cod_camp ={codCampeonato}");
+            cmd = new SqlCommand($"Update campeonatos set dsc_camp = '{campeonatos.Dsc_camp}',  ano = {campeonatos.Ano}, tipo ='{campeonatos.Tipo}', data_ini = '{campeonatos.Data_ini.ToString("yyyy-MM-dd")}', data_fim = '{campeonatos.Data_fim.ToString("yyyy-MM-dd")}', def_tipo = {campeonatos.Def_tipo}  where cod_camp ={codCampeonato}", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();

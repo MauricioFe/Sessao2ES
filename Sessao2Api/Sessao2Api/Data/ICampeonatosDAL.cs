@@ -11,6 +11,6 @@ namespace Sessao2Api.Data
         IEnumerable<Campeonatos> GetAll();
         void Add(Campeonatos campeonatos);
         void Update(Campeonatos campeonatos, int codCampeonato);
-        void Remove(int id);
+        void Remove(int codCampeonato);
     }
 }
