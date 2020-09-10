@@ -12,5 +12,6 @@ namespace Sessao2Api.Data
         void Add(Campeonatos campeonatos);
         void Update(Campeonatos campeonatos, int codCampeonato);
         void Remove(int codCampeonato);
+        bool ValidaEdicaoData(int codCamp, int Ano, DateTime dataFim, DateTime dataInicio);
     }
 }

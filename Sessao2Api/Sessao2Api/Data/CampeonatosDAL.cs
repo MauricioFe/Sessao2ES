@@ -73,5 +73,11 @@ namespace Sessao2Api.Data
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public bool ValidaEdicaoData(int codCamp, int Ano, DateTime dataFim, DateTime dataInicio)
+        {
+            cmd = new SqlCommand($"select * from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp where campeonatos.cod_camp = {codCamp} and jogos.data between '{dataInicio}' and '{dataFim}' or DATEPART(YEAR,jogos.data) = {Ano}", conn);
+
+        }
     }
 }
