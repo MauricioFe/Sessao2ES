@@ -28,7 +28,7 @@ namespace Sessao2Api.Data
         SqlDataAdapter adapter;
         public void Add(Jogadores jogadores)
         {
-            cmd = new SqlCommand($"insert into jogadores values ( {jogadores.Cod_jog},  '{jogadores.Dat_nasc.ToString("yyyy-MM-dd")}',  {jogadores.Salario.ToString().Replace(",",".")}, {jogadores.Cod_pos}, '{jogadores.Nom_jog}', {jogadores.Cod_time} )", conn);
+            cmd = new SqlCommand($"insert into jogadores values ( {jogadores.Cod_jog},  '{jogadores.DataNascimento}',  {jogadores.Salario.ToString().Replace(",",".")}, {jogadores.Posicao}, '{jogadores.Nome}', {jogadores.Time} )", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -46,13 +46,13 @@ namespace Sessao2Api.Data
             {
                 Jogadores jogadores = new Jogadores();
                 jogadores.Cod_jog = Convert.ToInt32(item[0]);
-                jogadores.Dat_nasc = Convert.ToDateTime(item[1]);
+                jogadores.DataNascimento = item[1].ToString();
                 jogadores.Salario= Convert.ToDecimal(item[2]);
-                jogadores.Cod_pos= Convert.ToInt32(item[3]);
-                jogadores.Nom_jog= item[4].ToString();
-                jogadores.Cod_time = Convert.ToInt32(item[5]);
-                jogadores.Time = item[6].ToString();
-                jogadores.Posicao = item[7].ToString();
+                jogadores.Posicao= Convert.ToInt32(item[3]);
+                jogadores.Nome= item[4].ToString();
+                jogadores.Time = Convert.ToInt32(item[5]);
+                jogadores.TimeStr = item[6].ToString();
+                jogadores.PosicaoStr = item[7].ToString();
                 jogadoresList.Add(jogadores);
             }
             conn.Close();
@@ -70,7 +70,7 @@ namespace Sessao2Api.Data
 
         public void Update(Jogadores jogadores, int codJogadores)
         {
-            cmd = new SqlCommand($"Update jogadores set dat_nasc = '{jogadores.Dat_nasc.ToString("yyyy-MM-dd")}',  salario = {jogadores.Salario.ToString().Replace(",", ".")}, cod_pos = {jogadores.Cod_pos}, nom_jog = '{jogadores.Nom_jog}', cod_time ={jogadores.Cod_time}  where  cod_Jog ={codJogadores} ", conn);
+            cmd = new SqlCommand($"Update jogadores set dat_nasc = '{jogadores.DataNascimento}',  salario = {jogadores.Salario.ToString().Replace(",", ".")}, cod_pos = {jogadores.Posicao}, nom_jog = '{jogadores.Nome}', cod_time ={jogadores.Time}  where  cod_Jog ={codJogadores} ", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();

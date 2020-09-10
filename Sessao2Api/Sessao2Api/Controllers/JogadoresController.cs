@@ -29,22 +29,44 @@ namespace Sessao2Api.Controllers
 
         [HttpPost]
         [Route("cadastrar")]
-        public IActionResult Post([FromBody] Jogadores jogadores)
+        public IActionResult Post([FromHeader] string tokenTowersAdm, [FromBody] Jogadores jogadores)
         {
+            if (tokenTowersAdm == null || tokenTowersAdm != "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7")
+            {
+                return BadRequest(new
+                {
+                    Result = "authentication_error",
+                    Mesage = "Você não está autorizado a acessar esses dados"
+                });
+            }
             if (jogadores == null)
             {
-                return BadRequest();
+                return BadRequest(new
+                {
+                    Result = "error",
+                    Mesage = "Contact the admnistrator"
+                });
             }
-            int idade = new DateTime(DateTime.Now.Subtract(jogadores.Dat_nasc).Ticks).Year;
-            DateTime anosPercorridos = jogadores.Dat_nasc.AddYears(idade);
+            DateTime dataNascimento = DateTime.Parse(jogadores.DataNascimento.Insert(4, "-").Insert(7, "-"));
+            int idade = new DateTime(DateTime.Now.Subtract(dataNascimento).Ticks).Year;
+            DateTime anosPercorridos = dataNascimento.AddYears(idade);
             if (anosPercorridos > DateTime.Now)
             {
                 idade -= 1;
             }
             if (idade < 17)
             {
-                return BadRequest("A idade do jogador deve ser maior que 17");
+                return BadRequest(new
+                {
+                    Result = "Business_rule_error",
+                    Mesage = "A idade do jogador deve ser maior que 17"
+                });
             }
+            foreach (var item in _dal.GetAll())
+            {
+                jogadores.Cod_jog = item.Cod_jog;
+            }
+            jogadores.Cod_jog++;
             _dal.Add(jogadores);
 
             return Ok(new
@@ -55,11 +77,38 @@ namespace Sessao2Api.Controllers
         }
 
         [Route("atualizar/{codJogador}")]
-        public IActionResult Put(int codJogador, [FromBody] Jogadores jogadores)
+        public IActionResult Put([FromHeader] string tokenTowersAdm, int codJogador, [FromBody] Jogadores jogadores)
         {
+            if (tokenTowersAdm == null || tokenTowersAdm != "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7")
+            {
+                return BadRequest(new
+                {
+                    Result = "authentication_error",
+                    Mesage = "Você não está autorizado a acessar esses dados"
+                });
+            }
             if (jogadores == null)
             {
-                return BadRequest();
+                return BadRequest(new
+                {
+                    Result = "error",
+                    Mesage = "Contact the admnistrator"
+                });
+            }
+            DateTime dataNascimento = DateTime.Parse(jogadores.DataNascimento.Insert(4, "-").Insert(7, "-"));
+            int idade = new DateTime(DateTime.Now.Subtract(dataNascimento).Ticks).Year;
+            DateTime anosPercorridos = dataNascimento.AddYears(idade);
+            if (anosPercorridos > DateTime.Now)
+            {
+                idade -= 1;
+            }
+            if (idade < 17)
+            {
+                return BadRequest(new
+                {
+                    Result = "Business_rule_error",
+                    Mesage = "A idade do jogador deve ser maior que 17"
+                });
             }
             _dal.Update(jogadores, codJogador);
 
@@ -71,8 +120,16 @@ namespace Sessao2Api.Controllers
         }
 
         [Route("excluir/{codJogador}")]
-        public IActionResult Delete(int codJogador)
+        public IActionResult Delete([FromHeader] string tokenTowersAdm, int codJogador)
         {
+            if (tokenTowersAdm == null || tokenTowersAdm != "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7")
+            {
+                return BadRequest(new
+                {
+                    Result = "authentication_error",
+                    Mesage = "Você não está autorizado a acessar esses dados"
+                });
+            }
             _dal.Remove(codJogador);
 
             return Ok(new
