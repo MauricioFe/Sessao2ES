@@ -50,7 +50,9 @@
             this.codPosicao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSalario = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogadores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExcluir
@@ -265,6 +267,16 @@
             this.txtSalario.Size = new System.Drawing.Size(174, 25);
             this.txtSalario.TabIndex = 3;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sessao2.ModuloAdm.Properties.Resources.logo1;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(166, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
             // FrmGerenciaJogadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 20F);
@@ -272,6 +284,7 @@
             this.BackgroundImage = global::Sessao2.ModuloAdm.Properties.Resources.modelo_formulario;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1073, 650);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtSalario);
             this.Controls.Add(this.btnExcluir);
@@ -294,6 +307,7 @@
             this.Text = "FrmGerenciaJogadores";
             this.Load += new System.EventHandler(this.FrmGerenciaJogadores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogadores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,5 +337,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codJogador;
         private System.Windows.Forms.DataGridViewTextBoxColumn codTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn codPosicao;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

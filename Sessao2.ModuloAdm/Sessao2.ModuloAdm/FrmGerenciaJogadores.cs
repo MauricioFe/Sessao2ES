@@ -130,6 +130,7 @@ namespace Sessao2.ModuloAdm
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     var result = await client.PostAsync($"{FrmMenu.URI}/historicos/cadastrar", content);
+                    
                 }
             }
             catch (Exception)
@@ -150,8 +151,18 @@ namespace Sessao2.ModuloAdm
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     var result = await cliente.PutAsync($"{FrmMenu.URI}/jogadores/atualizar/{codJogador}", content);
-                    AtaulizaGridAsync();
-                    MessageBox.Show("Editado com sucesso");
+                   
+                    if (result.IsSuccessStatusCode)
+                    {
+                        Historicos historicos = new Historicos();
+                        historicos.Cod_jog = jogadores.Cod_jog;
+                        historicos.Dat_ini = DateTime.Now.Date;
+                        historicos.Cod_time = jogadores.Cod_time;
+                        PostHistorico(historicos);
+                        AtaulizaGridAsync();
+                        MessageBox.Show("Editado com sucesso");
+                    }
+                   
                 }
             }
             catch (Exception)

@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.dgvJogos = new System.Windows.Forms.DataGridView();
+            this.Campeonato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Resultado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codCamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codTime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codTime2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codEstadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboTime1 = new System.Windows.Forms.ComboBox();
             this.cboTime2 = new System.Windows.Forms.ComboBox();
             this.cboCampeonato = new System.Windows.Forms.ComboBox();
@@ -44,17 +54,9 @@
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.Campeonato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Resultado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codCamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codTime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codTime2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codEstadio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvJogos
@@ -76,6 +78,66 @@
             this.dgvJogos.Size = new System.Drawing.Size(612, 235);
             this.dgvJogos.TabIndex = 0;
             this.dgvJogos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJogos_CellClick);
+            // 
+            // Campeonato
+            // 
+            this.Campeonato.HeaderText = "Campeonato";
+            this.Campeonato.Name = "Campeonato";
+            this.Campeonato.ReadOnly = true;
+            // 
+            // Time1
+            // 
+            this.Time1.HeaderText = "Time1";
+            this.Time1.Name = "Time1";
+            this.Time1.ReadOnly = true;
+            // 
+            // Time2
+            // 
+            this.Time2.HeaderText = "Time2";
+            this.Time2.Name = "Time2";
+            this.Time2.ReadOnly = true;
+            // 
+            // Estadio
+            // 
+            this.Estadio.HeaderText = "Estadio";
+            this.Estadio.Name = "Estadio";
+            this.Estadio.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // Resultado
+            // 
+            this.Resultado.HeaderText = "Resultado";
+            this.Resultado.Name = "Resultado";
+            this.Resultado.ReadOnly = true;
+            // 
+            // codCamp
+            // 
+            this.codCamp.HeaderText = "codCamp";
+            this.codCamp.Name = "codCamp";
+            this.codCamp.Visible = false;
+            // 
+            // codTime1
+            // 
+            this.codTime1.HeaderText = "codTime1";
+            this.codTime1.Name = "codTime1";
+            this.codTime1.Visible = false;
+            // 
+            // codTime2
+            // 
+            this.codTime2.HeaderText = "codTime2";
+            this.codTime2.Name = "codTime2";
+            this.codTime2.Visible = false;
+            // 
+            // codEstadio
+            // 
+            this.codEstadio.HeaderText = "codEstadio";
+            this.codEstadio.Name = "codEstadio";
+            this.codEstadio.Visible = false;
             // 
             // cboTime1
             // 
@@ -241,65 +303,15 @@
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // Campeonato
+            // pictureBox1
             // 
-            this.Campeonato.HeaderText = "Campeonato";
-            this.Campeonato.Name = "Campeonato";
-            this.Campeonato.ReadOnly = true;
-            // 
-            // Time1
-            // 
-            this.Time1.HeaderText = "Time1";
-            this.Time1.Name = "Time1";
-            this.Time1.ReadOnly = true;
-            // 
-            // Time2
-            // 
-            this.Time2.HeaderText = "Time2";
-            this.Time2.Name = "Time2";
-            this.Time2.ReadOnly = true;
-            // 
-            // Estadio
-            // 
-            this.Estadio.HeaderText = "Estadio";
-            this.Estadio.Name = "Estadio";
-            this.Estadio.ReadOnly = true;
-            // 
-            // Data
-            // 
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            this.Data.ReadOnly = true;
-            // 
-            // Resultado
-            // 
-            this.Resultado.HeaderText = "Resultado";
-            this.Resultado.Name = "Resultado";
-            this.Resultado.ReadOnly = true;
-            // 
-            // codCamp
-            // 
-            this.codCamp.HeaderText = "codCamp";
-            this.codCamp.Name = "codCamp";
-            this.codCamp.Visible = false;
-            // 
-            // codTime1
-            // 
-            this.codTime1.HeaderText = "codTime1";
-            this.codTime1.Name = "codTime1";
-            this.codTime1.Visible = false;
-            // 
-            // codTime2
-            // 
-            this.codTime2.HeaderText = "codTime2";
-            this.codTime2.Name = "codTime2";
-            this.codTime2.Visible = false;
-            // 
-            // codEstadio
-            // 
-            this.codEstadio.HeaderText = "codEstadio";
-            this.codEstadio.Name = "codEstadio";
-            this.codEstadio.Visible = false;
+            this.pictureBox1.Image = global::Sessao2.ModuloAdm.Properties.Resources.logo1;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(166, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmGerenciaJogos
             // 
@@ -308,6 +320,7 @@
             this.BackgroundImage = global::Sessao2.ModuloAdm.Properties.Resources.modelo_formulario;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1073, 650);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnSalvar);
@@ -332,6 +345,7 @@
             this.Text = "FrmGerenciaJogos";
             this.Load += new System.EventHandler(this.FrmGerenciaJogos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,5 +379,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codTime1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codTime2;
         private System.Windows.Forms.DataGridViewTextBoxColumn codEstadio;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
