@@ -20,6 +20,7 @@ namespace Sessao2Api.Data
         {
             _conn = config.GetConnectionString("DefaultConnection");
             conn = new SqlConnection(_conn);
+            ValidaEdicaoData(3, 2021, Convert.ToDateTime("2020-04-08"), Convert.ToDateTime("2020-11-08"));
         }
 
         SqlCommand cmd;
@@ -60,10 +61,19 @@ namespace Sessao2Api.Data
 
         public void Remove(int codCampeonato)
         {
-            cmd = new SqlCommand($"Delete from Campeonatos where cod_camp ={codCampeonato}", conn);
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            try
+            {
+                cmd = new SqlCommand($"Delete from Campeonatos where cod_camp ={codCampeonato}", conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+           
         }
 
         public void Update(Campeonatos campeonatos, int codCampeonato)
@@ -74,10 +84,15 @@ namespace Sessao2Api.Data
             conn.Close();
         }
 
-        public bool ValidaEdicaoData(int codCamp, int Ano, DateTime dataFim, DateTime dataInicio)
+        public bool ValidaEdicaoData(int codCamp, int Ano, DateTime dataInicio, DateTime dataFim)
         {
-            cmd = new SqlCommand($"select * from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp where campeonatos.cod_camp = {codCamp} and jogos.data between '{dataInicio}' and '{dataFim}' or DATEPART(YEAR,jogos.data) = {Ano}", conn);
-
+            cmd = new SqlCommand($"select * from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp where campeonatos.cod_camp = {codCamp} and jogos.data not between '{dataInicio.ToString("yyyy-MM-dd")}' and '{dataFim.ToString("yyyy-MM-dd")}' and DATEPART(YEAR,jogos.data) = {Ano}", conn);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            conn.Open();
+            adapter.Fill(dt);
+            conn.Close();
+            return dt.Rows.Count > 0;
         }
     }
 }

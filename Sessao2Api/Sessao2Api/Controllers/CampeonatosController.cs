@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Sessao2Api.Data;
@@ -29,11 +30,40 @@ namespace Sessao2Api.Controllers
 
         [HttpPost]
         [Route("cadastrar")]
-        public IActionResult Post([FromBody] Campeonatos campeonatos)
+        public IActionResult Post([FromHeader] string tokenTowersAdm, [FromBody] Campeonatos campeonatos)
         {
+            if (tokenTowersAdm == null || tokenTowersAdm != "a5b01115-7d82-4f6a-bc45-9fd49eacd2e2")
+            {
+                return BadRequest(new
+                {
+                    Result = "authentication_error",
+                    Mesage = "Você não está autorizado a acessar esses dados"
+                });
+            }
             if (campeonatos == null)
             {
-                return BadRequest();
+                return BadRequest(new
+                {
+                    Result = "error",
+                    Mesage = "Contact the admnistrator"
+                });
+            }
+            if (campeonatos.Ano != campeonatos.Data_fim.Year && campeonatos.Ano != campeonatos.Data_ini.Year)
+            {
+
+                return BadRequest(new
+                {
+                    Result = "Business_rule_error",
+                    Mesage = "As datas não podem ser de anos diferentes"
+                });
+            }
+            if (campeonatos.Data_ini.AddMonths(2) > campeonatos.Data_fim)
+            {
+                return BadRequest(new
+                {
+                    Result = "Business_rule_error",
+                    Mesage = "Um campeonato tem que ter uma duração de no mínimo dois meses"
+                });
             }
             _dal.Add(campeonatos);
             return Ok("Operação realizada com sucesso");
@@ -46,6 +76,14 @@ namespace Sessao2Api.Controllers
             {
                 return BadRequest();
             }
+            if (campeonatos.Ano != campeonatos.Data_fim.Year && campeonatos.Ano != campeonatos.Data_ini.Year)
+            {
+                return BadRequest("As datas não podem ser de anos diferentes");
+            }
+            if (_dal.ValidaEdicaoData(codCamp, campeonatos.Ano, campeonatos.Data_ini, campeonatos.Data_fim))
+            {
+                return BadRequest("Não é possível editar a data desse campeonato pois ainda tem jogos para acontecer");
+            }
             _dal.Update(campeonatos, codCamp);
             return Ok("Operação realizada com sucesso");
         }
@@ -54,7 +92,8 @@ namespace Sessao2Api.Controllers
         public IActionResult Delete(int codCamp)
         {
             _dal.Remove(codCamp);
-            return Ok("Operação realizada com sucesso"); 
+
+            return Ok("Operação realizada com sucesso");
         }
     }
 }
