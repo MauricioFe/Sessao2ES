@@ -81,6 +81,9 @@
     <Compile Include="Models\Jogos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmGerenciaCampeonatos.resx">
+      <DependentUpon>FrmGerenciaCampeonatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmGerenciaJogadores.resx">
       <DependentUpon>FrmGerenciaJogadores.cs</DependentUpon>
     </EmbeddedResource>

@@ -59,7 +59,7 @@ namespace Sessao2.ModuloAdm
                     if (result.IsSuccessStatusCode)
                     {
                         AtaulizaGridAsync();
-                       
+
                         MessageBox.Show("Inserido com sucesso");
                     }
                     else
@@ -203,6 +203,9 @@ namespace Sessao2.ModuloAdm
             AtualizaCboTime1();
             AtualizaCboTime2();
             AtualizaCboEstadios();
+            FrmMenu.ArredondaButton(btnSalvar);
+            FrmMenu.ArredondaButton(btnEditar);
+            FrmMenu.ArredondaButton(btnExcluir);
         }
 
         private void dgvJogos_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -77,6 +77,9 @@ namespace Sessao2.ModuloAdm
             AtualizaCboTime();
             AtaulizaGridAsync();
             AtualizaCboPosicao();
+            FrmMenu.ArredondaButton(btnSalvar);
+            FrmMenu.ArredondaButton(btnEditar);
+            FrmMenu.ArredondaButton(btnExcluir);
         }
 
 
