@@ -31,6 +31,7 @@ namespace Sessao2.ModuloAdm
             GraphPath.AddArc(Rect.X, Rect.Y + Rect.Height - 50, 50, 50, 90, 90);
             btn.Region = new Region(GraphPath);
         }
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             ArredondaButton(btnJogos);
