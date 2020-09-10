@@ -94,6 +94,11 @@ namespace Sessao2.ModuloAdm
                     var result = await cliente.PostAsync($"{FrmMenu.URI}/jogadores/cadastrar", content);
                     if (result.IsSuccessStatusCode)
                     {
+                        Historicos historicos = new Historicos();
+                        historicos.Cod_jog = CodJogador;
+                        historicos.Dat_ini = DateTime.Now.Date;
+                        historicos.Cod_time = jogadores.Cod_time;
+                        PostHistorico(historicos);
                         AtaulizaGridAsync();
                         MessageBox.Show("Inserido com sucesso");
                     }
@@ -110,6 +115,26 @@ namespace Sessao2.ModuloAdm
 
             }
 
+        }
+        private async void PostHistorico(Historicos historicos)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var parseJson = new DataContractJsonSerializer(typeof(Historicos));
+                    MemoryStream memory = new MemoryStream();
+                    parseJson.WriteObject(memory, historicos);
+                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = await client.PostAsync($"{FrmMenu.URI}/histoicos/cadastrar", content);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
         public async void Put(Jogadores jogadores, int codJogador)
         {
@@ -207,7 +232,7 @@ namespace Sessao2.ModuloAdm
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            
+
             if (txtNome.Text != "" && txtSalario.Text != "" && cboPosicao.Text != "" && cboTime.Text != "" && dtpDataNascimento.Value != null)
             {
                 Delete(CodJogador);

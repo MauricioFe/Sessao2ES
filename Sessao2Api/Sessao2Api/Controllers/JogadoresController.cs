@@ -36,7 +36,6 @@ namespace Sessao2Api.Controllers
                 return BadRequest();
             }
             int idade = new DateTime(DateTime.Now.Subtract(jogadores.Dat_nasc).Ticks).Year;
-            int meses = 0;
             DateTime anosPercorridos = jogadores.Dat_nasc.AddYears(idade);
             if (anosPercorridos > DateTime.Now)
             {
@@ -46,8 +45,6 @@ namespace Sessao2Api.Controllers
             {
                 return BadRequest("A idade do jogador deve ser maior que 17");
             }
-
-            
             _dal.Add(jogadores);
             return Ok("Operação realizada com sucesso");
         }

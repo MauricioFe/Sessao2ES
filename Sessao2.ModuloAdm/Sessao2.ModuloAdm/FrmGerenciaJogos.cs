@@ -59,6 +59,7 @@ namespace Sessao2.ModuloAdm
                     if (result.IsSuccessStatusCode)
                     {
                         AtaulizaGridAsync();
+                        PostHistorico();
                         MessageBox.Show("Inserido com sucesso");
                     }
                     else
@@ -75,6 +76,28 @@ namespace Sessao2.ModuloAdm
             }
 
         }
+
+        private async void PostHistorico(Historicos historicos)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var parseJson = new DataContractJsonSerializer(typeof(Historicos));
+                    MemoryStream memory = new MemoryStream();
+                    parseJson.WriteObject(memory, historicos);
+                    var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var result = await client.PostAsync($"{FrmMenu.URI}/histoicos/cadastrar", content);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async void Put(Jogos jogos, int cod_camp, int cod_time1, int cod_time2)
         {
             try
