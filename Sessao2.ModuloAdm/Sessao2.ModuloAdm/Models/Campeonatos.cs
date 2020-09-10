@@ -9,11 +9,11 @@ namespace Sessao2.ModuloAdm.Models
     public class Campeonatos
     {
         public int Cod_camp { get; set; }
-        public string Dsc_camp { get; set; }
+        public string Descricao { get; set; }
         public int Ano { get; set; }
         public string Tipo { get; set; }
-        public DateTime Data_ini { get; set; }
-        public DateTime Data_fim { get; set; }
+        public string DataInicio { get; set; }
+        public string DataFim { get; set; }
         public string Def_tipo { get; set; }
     }
 }

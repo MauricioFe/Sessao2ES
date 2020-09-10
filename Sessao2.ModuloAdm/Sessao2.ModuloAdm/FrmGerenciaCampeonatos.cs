@@ -65,6 +65,7 @@ namespace Sessao2.ModuloAdm
                 {
                     var parseJson = new JavaScriptSerializer().Serialize(campeonatos);
                     var content = new StringContent(parseJson, Encoding.UTF8, "application/json");
+                    client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
                     var result = await client.PostAsync($"{FrmMenu.URI}/campeonatos/cadastrar", content);
                     if (result.IsSuccessStatusCode)
                     {
@@ -90,6 +91,7 @@ namespace Sessao2.ModuloAdm
                 {
                     var parseJson = new JavaScriptSerializer().Serialize(campeonatos);
                     var content = new StringContent(parseJson, Encoding.UTF8, "application/json");
+                    client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
                     var result = await client.PutAsync($"{FrmMenu.URI}/campeonatos/atualizar/{codCampeonato}", content);
                     if (result.IsSuccessStatusCode)
                     {
@@ -113,6 +115,7 @@ namespace Sessao2.ModuloAdm
             {
                 using (var client = new HttpClient())
                 {
+                    client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
                     var result = await client.DeleteAsync($"{FrmMenu.URI}/campeonatos/excluir/{codCampeonato}");
                     if (result.IsSuccessStatusCode)
                     {
@@ -141,11 +144,11 @@ namespace Sessao2.ModuloAdm
                     campeonatos.Cod_camp = Convert.ToInt32(dgvCampeonato.Rows[i].Cells["Cod_camp"].Value);
                 }
                 campeonatos.Cod_camp++;
-                campeonatos.Dsc_camp = txtDescrição.Text;
+                campeonatos.Descricao = txtDescrição.Text;
                 campeonatos.Ano = Convert.ToInt32(txtAno.Text);
                 campeonatos.Tipo = cboTipo.Text.Substring(0, 1);
-                campeonatos.Data_ini = dtpDataInicio.Value.Date;
-                campeonatos.Data_fim = dtpDataFim.Value.Date;
+                campeonatos.DataInicio = dtpDataInicio.Value.Date.ToString("yyyyMMdd");
+                campeonatos.DataFim = dtpDataFim.Value.Date.ToString("yyyyMMdd");
                 campeonatos.Def_tipo = txtTipo.Text == " " ? null : txtTipo.Text;
                 Post(campeonatos);
             }
@@ -179,11 +182,11 @@ namespace Sessao2.ModuloAdm
             if (txtDescrição.Text != "" && txtAno.Text != "" && cboTipo.Text != "")
             {
                 campeonatos.Cod_camp = codCampeonato;
-                campeonatos.Dsc_camp = txtDescrição.Text;
+                campeonatos.Descricao = txtDescrição.Text;
                 campeonatos.Ano = Convert.ToInt32(txtAno.Text);
                 campeonatos.Tipo = cboTipo.Text.Substring(0, 1);
-                campeonatos.Data_ini = dtpDataInicio.Value.Date;
-                campeonatos.Data_fim = dtpDataFim.Value.Date;
+                campeonatos.DataInicio = dtpDataInicio.Value.Date.ToString("yyyyMMdd");
+                campeonatos.DataFim = dtpDataFim.Value.Date.ToString("yyyyMMdd");
                 campeonatos.Def_tipo = txtTipo.Text == " " ? null : txtTipo.Text;
                 Put(campeonatos, codCampeonato);
             }
