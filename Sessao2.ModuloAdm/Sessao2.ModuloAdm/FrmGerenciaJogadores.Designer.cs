@@ -40,8 +40,6 @@
             this.cboPosicao = new System.Windows.Forms.ComboBox();
             this.cboTime = new System.Windows.Forms.ComboBox();
             this.dgvJogadores = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtSalario = new System.Windows.Forms.TextBox();
             this.NomeJogador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataNascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Salario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +48,8 @@
             this.codJogador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codPosicao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtSalario = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJogadores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,7 +151,7 @@
             this.txtNome.Location = new System.Drawing.Point(300, 127);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(174, 25);
-            this.txtNome.TabIndex = 22;
+            this.txtNome.TabIndex = 1;
             // 
             // dtpDataNascimento
             // 
@@ -159,7 +159,7 @@
             this.dtpDataNascimento.Location = new System.Drawing.Point(480, 127);
             this.dtpDataNascimento.Name = "dtpDataNascimento";
             this.dtpDataNascimento.Size = new System.Drawing.Size(167, 25);
-            this.dtpDataNascimento.TabIndex = 21;
+            this.dtpDataNascimento.TabIndex = 2;
             // 
             // cboPosicao
             // 
@@ -167,7 +167,7 @@
             this.cboPosicao.Location = new System.Drawing.Point(597, 188);
             this.cboPosicao.Name = "cboPosicao";
             this.cboPosicao.Size = new System.Drawing.Size(198, 28);
-            this.cboPosicao.TabIndex = 20;
+            this.cboPosicao.TabIndex = 5;
             // 
             // cboTime
             // 
@@ -175,7 +175,7 @@
             this.cboTime.Location = new System.Drawing.Point(346, 188);
             this.cboTime.Name = "cboTime";
             this.cboTime.Size = new System.Drawing.Size(205, 28);
-            this.cboTime.TabIndex = 18;
+            this.cboTime.TabIndex = 4;
             // 
             // dgvJogadores
             // 
@@ -194,25 +194,6 @@
             this.dgvJogadores.Size = new System.Drawing.Size(544, 235);
             this.dgvJogadores.TabIndex = 16;
             this.dgvJogadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJogadores_CellClick);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(130)))), ((int)(((byte)(53)))));
-            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(650, 108);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 17);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "Salário";
-            // 
-            // txtSalario
-            // 
-            this.txtSalario.Location = new System.Drawing.Point(653, 127);
-            this.txtSalario.Name = "txtSalario";
-            this.txtSalario.Size = new System.Drawing.Size(174, 25);
-            this.txtSalario.TabIndex = 32;
             // 
             // NomeJogador
             // 
@@ -264,6 +245,25 @@
             this.codPosicao.Name = "codPosicao";
             this.codPosicao.ReadOnly = true;
             this.codPosicao.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(130)))), ((int)(((byte)(53)))));
+            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(650, 108);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 17);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Salário";
+            // 
+            // txtSalario
+            // 
+            this.txtSalario.Location = new System.Drawing.Point(653, 127);
+            this.txtSalario.Name = "txtSalario";
+            this.txtSalario.Size = new System.Drawing.Size(174, 25);
+            this.txtSalario.TabIndex = 3;
             // 
             // FrmGerenciaJogadores
             // 

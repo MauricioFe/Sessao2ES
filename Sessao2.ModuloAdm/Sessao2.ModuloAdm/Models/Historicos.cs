@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sessao2.ModuloAdm.Models
 {
-    class Historicos
+    public class Historicos
     {
         public int Cod_jog { get; set; }
         public DateTime Dat_ini { get; set; }
         public int Cod_time { get; set; }
-        public DateTime Dat_fim { get; set; }
+        public Nullable<DateTime> Dat_fim { get; set; }
     }
 }

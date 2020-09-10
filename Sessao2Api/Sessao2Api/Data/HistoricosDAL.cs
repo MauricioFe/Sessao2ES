@@ -28,7 +28,7 @@ namespace Sessao2Api.Data
         SqlDataAdapter adapter;
         public void Add(Historicos historicos)
         {
-            cmd = new SqlCommand($"insert into historicos values ( {historicos.Cod_jog},  '{historicos.Dat_ini.ToString("yyyy-MM-dd")}',  {historicos.Cod_time}, '{historicos.Dat_fim.ToString("yyyy-MM-dd")}')", conn);
+            cmd = new SqlCommand($"insert into historicos values ( {historicos.Cod_jog},  '{historicos.Dat_ini.ToString("yyyy-MM-dd")}',  {historicos.Cod_time}, '{historicos.Dat_fim}')", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -47,10 +47,10 @@ namespace Sessao2Api.Data
                 Historicos historicos = new Historicos();
                 historicos.Cod_jog = Convert.ToInt32(item[0]);
                 historicos.Dat_ini = Convert.ToDateTime(item[1]);
-                historicos.Dat_fim= Convert.ToDateTime(item[1]);
-                historicos.Cod_time = Convert.ToInt32(item[5]);
-                historicos.Time = item[6].ToString();
-                historicos.Jogador = item[7].ToString();
+                historicos.Dat_fim = Convert.ToDateTime(item[2].ToString() == "" ? "01/01/0001 00:00:00" : item[2]);
+                historicos.Cod_time = Convert.ToInt32(item[3]);
+                historicos.Time = item[4].ToString();
+                historicos.Jogador = item[5].ToString();
                 historicosList.Add(historicos);
             }
             conn.Close();

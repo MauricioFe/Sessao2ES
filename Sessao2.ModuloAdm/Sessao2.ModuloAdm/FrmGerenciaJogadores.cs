@@ -84,6 +84,7 @@ namespace Sessao2.ModuloAdm
         {
             try
             {
+
                 using (var cliente = new HttpClient())
                 {
                     var parseJson = new DataContractJsonSerializer(typeof(Jogadores));
@@ -95,7 +96,7 @@ namespace Sessao2.ModuloAdm
                     if (result.IsSuccessStatusCode)
                     {
                         Historicos historicos = new Historicos();
-                        historicos.Cod_jog = CodJogador;
+                        historicos.Cod_jog = jogadores.Cod_jog;
                         historicos.Dat_ini = DateTime.Now.Date;
                         historicos.Cod_time = jogadores.Cod_time;
                         PostHistorico(historicos);
@@ -122,12 +123,13 @@ namespace Sessao2.ModuloAdm
             {
                 using (var client = new HttpClient())
                 {
+
                     var parseJson = new DataContractJsonSerializer(typeof(Historicos));
                     MemoryStream memory = new MemoryStream();
                     parseJson.WriteObject(memory, historicos);
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                    var result = await client.PostAsync($"{FrmMenu.URI}/histoicos/cadastrar", content);
+                    var result = await client.PostAsync($"{FrmMenu.URI}/historicos/cadastrar", content);
                 }
             }
             catch (Exception)

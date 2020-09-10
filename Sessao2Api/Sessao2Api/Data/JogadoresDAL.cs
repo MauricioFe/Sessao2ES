@@ -28,7 +28,7 @@ namespace Sessao2Api.Data
         SqlDataAdapter adapter;
         public void Add(Jogadores jogadores)
         {
-            cmd = new SqlCommand($"insert into jogadores values ( {jogadores.Cod_jog},  '{jogadores.Dat_nasc.ToString("yyyy-MM-dd")}',  {jogadores.Salario}, {jogadores.Cod_pos}, '{jogadores.Nom_jog}', {jogadores.Cod_time} )", conn);
+            cmd = new SqlCommand($"insert into jogadores values ( {jogadores.Cod_jog},  '{jogadores.Dat_nasc.ToString("yyyy-MM-dd")}',  {jogadores.Salario.ToString().Replace(",",".")}, {jogadores.Cod_pos}, '{jogadores.Nom_jog}', {jogadores.Cod_time} )", conn);
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
