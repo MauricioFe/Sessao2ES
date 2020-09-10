@@ -34,14 +34,14 @@ namespace Sessao2.ModuloAdm
                 foreach (var item in jogadoresList)
                 {
                     int n = dgvJogadores.Rows.Add();
-                    dgvJogadores.Rows[n].Cells[0].Value = item.Nom_jog;
-                    dgvJogadores.Rows[n].Cells[1].Value = item.Dat_nasc;
+                    dgvJogadores.Rows[n].Cells[0].Value = item.Nome;
+                    dgvJogadores.Rows[n].Cells[1].Value = item.DataNascimento;
                     dgvJogadores.Rows[n].Cells[2].Value = item.Salario;
                     dgvJogadores.Rows[n].Cells[3].Value = item.Time;
                     dgvJogadores.Rows[n].Cells[4].Value = item.Posicao;
                     dgvJogadores.Rows[n].Cells[5].Value = item.Cod_jog;
-                    dgvJogadores.Rows[n].Cells[6].Value = item.Cod_time;
-                    dgvJogadores.Rows[n].Cells[7].Value = item.Cod_pos;
+                    dgvJogadores.Rows[n].Cells[6].Value = item.Time;
+                    dgvJogadores.Rows[n].Cells[7].Value = item.Posicao;
                 }
             }
         }
@@ -88,20 +88,21 @@ namespace Sessao2.ModuloAdm
             try
             {
 
-                using (var cliente = new HttpClient())
+                using (var client = new HttpClient())
                 {
                     var parseJson = new DataContractJsonSerializer(typeof(Jogadores));
                     MemoryStream memory = new MemoryStream();
                     parseJson.WriteObject(memory, jogadores);
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                    var result = await cliente.PostAsync($"{FrmMenu.URI}/jogadores/cadastrar", content);
+                    var result = await client.PostAsync($"{FrmMenu.URI}/jogadores/cadastrar", content);
                     if (result.IsSuccessStatusCode)
                     {
                         Historicos historicos = new Historicos();
                         historicos.Cod_jog = jogadores.Cod_jog;
                         historicos.Dat_ini = DateTime.Now.Date;
-                        historicos.Cod_time = jogadores.Cod_time;
+                        historicos.Cod_time = jogadores.Time;
                         PostHistorico(historicos);
                         AtaulizaGridAsync();
                         MessageBox.Show("Inserido com sucesso");
@@ -131,6 +132,7 @@ namespace Sessao2.ModuloAdm
                     MemoryStream memory = new MemoryStream();
                     parseJson.WriteObject(memory, historicos);
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
                     var result = await client.PostAsync($"{FrmMenu.URI}/historicos/cadastrar", content);
                     
@@ -146,21 +148,22 @@ namespace Sessao2.ModuloAdm
         {
             try
             {
-                using (var cliente = new HttpClient())
+                using (var client = new HttpClient())
                 {
                     var parseJson = new DataContractJsonSerializer(typeof(Jogadores));
                     MemoryStream memory = new MemoryStream();
                     parseJson.WriteObject(memory, jogadores);
                     var jsonString = Encoding.UTF8.GetString(memory.ToArray());
+                    client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
                     var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                    var result = await cliente.PutAsync($"{FrmMenu.URI}/jogadores/atualizar/{codJogador}", content);
+                    var result = await client.PutAsync($"{FrmMenu.URI}/jogadores/atualizar/{codJogador}", content);
                    
                     if (result.IsSuccessStatusCode)
                     {
                         Historicos historicos = new Historicos();
                         historicos.Cod_jog = jogadores.Cod_jog;
                         historicos.Dat_ini = DateTime.Now.Date;
-                        historicos.Cod_time = jogadores.Cod_time;
+                        historicos.Cod_time = jogadores.Time;
                         PostHistorico(historicos);
                         AtaulizaGridAsync();
                         MessageBox.Show("Editado com sucesso");
@@ -178,9 +181,10 @@ namespace Sessao2.ModuloAdm
         {
             try
             {
-                using (var cliente = new HttpClient())
+                using (var client = new HttpClient())
                 {
-                    var result = await cliente.DeleteAsync($"{FrmMenu.URI}/jogadores/excluir/{codJogador}");
+                    client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
+                    var result = await client.DeleteAsync($"{FrmMenu.URI}/jogadores/excluir/{codJogador}");
                     AtaulizaGridAsync();
                     MessageBox.Show("Deletado com sucesso");
                 }
@@ -203,11 +207,11 @@ namespace Sessao2.ModuloAdm
                     jogadores.Cod_jog = Convert.ToInt32(dgvJogadores.Rows[i].Cells[5].Value);
                 }
                 jogadores.Cod_jog++;
-                jogadores.Nom_jog = txtNome.Text;
+                jogadores.Nome = txtNome.Text;
                 jogadores.Salario = Decimal.Parse(txtSalario.Text);
-                jogadores.Cod_pos = int.Parse(cboPosicao.SelectedValue.ToString());
-                jogadores.Cod_time = int.Parse(cboTime.SelectedValue.ToString());
-                jogadores.Dat_nasc = dtpDataNascimento.Value;
+                jogadores.Posicao = int.Parse(cboPosicao.SelectedValue.ToString());
+                jogadores.Time = int.Parse(cboTime.SelectedValue.ToString());
+                jogadores.DataNascimento = dtpDataNascimento.Value.ToString("yyyyMMdd");
                 Post(jogadores);
             }
             else
@@ -233,11 +237,11 @@ namespace Sessao2.ModuloAdm
             {
 
                 jogadores.Cod_jog = CodJogador;
-                jogadores.Nom_jog = txtNome.Text;
+                jogadores.Nome = txtNome.Text;
                 jogadores.Salario = Decimal.Parse(txtSalario.Text);
-                jogadores.Cod_pos = int.Parse(cboPosicao.SelectedValue.ToString());
-                jogadores.Cod_time = int.Parse(cboTime.SelectedValue.ToString());
-                jogadores.Dat_nasc = dtpDataNascimento.Value;
+                jogadores.Posicao = int.Parse(cboPosicao.SelectedValue.ToString());
+                jogadores.Time = int.Parse(cboTime.SelectedValue.ToString());
+                jogadores.DataNascimento = dtpDataNascimento.Value.ToString("yyyyMMdd");
                 Put(jogadores, CodJogador);
             }
             else

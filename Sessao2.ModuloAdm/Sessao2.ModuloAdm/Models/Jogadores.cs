@@ -9,12 +9,12 @@ namespace Sessao2.ModuloAdm.Models
     public class Jogadores
     {
         public int Cod_jog { get; set; }
-        public DateTime Dat_nasc { get; set; }
+        public string DataNascimento { get; set; }
         public decimal Salario { get; set; }
-        public int Cod_pos { get; set; }
-        public string Nom_jog { get; set; }
-        public int Cod_time { get; set; }
-        public string Time { get; set; }
-        public string Posicao { get; set; }
+        public int Posicao { get; set; }
+        public string Nome { get; set; }
+        public int Time { get; set; }
+        public string TimeStr { get; set; }
+        public string PosicaoStr { get; set; }
     }
 }
