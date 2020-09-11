@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace Sessao2.ModuloMarketing
@@ -29,9 +31,36 @@ namespace Sessao2.ModuloMarketing
             GraphPath.AddArc(Rect.X, Rect.Y + Rect.Height - 50, 50, 50, 90, 90);
             btn.Region = new Region(GraphPath);
         }
+        public async void AtaulizaGridAsync()
+        {
+            List<Jogos> jogosList = new List<Jogos>();
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{URI}/jogos");
+                var jogos = await response.Content.ReadAsStringAsync();
+                jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
+                //dgvJogos.DataSource = jogosList;
+                dgvJogos.Rows.Clear();
+                foreach (var item in jogosList)
+                {
+                    int n = dgvJogos.Rows.Add();
+                    dgvJogos.Rows[n].Cells[0].Value = item.Campeonatos;
+                    dgvJogos.Rows[n].Cells[1].Value = item.Time1;
+                    dgvJogos.Rows[n].Cells[2].Value = item.Time2;
+                    dgvJogos.Rows[n].Cells[3].Value = item.Estadio;
+                    dgvJogos.Rows[n].Cells[4].Value = item.Data;
+                    dgvJogos.Rows[n].Cells[5].Value = item.Resultado;
+                    dgvJogos.Rows[n].Cells[6].Value = item.Cod_camp;
+                    dgvJogos.Rows[n].Cells[7].Value = item.Cod_time1;
+                    dgvJogos.Rows[n].Cells[8].Value = item.Cod_time2;
+                    dgvJogos.Rows[n].Cells[9].Value = item.Cod_estadio;
+
+                }
+            }
+        }
         private void FrmMenu_Load(object sender, EventArgs e)
         {
-
+            ArredondaButton(btnEscalar);
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -42,6 +71,11 @@ namespace Sessao2.ModuloMarketing
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnEscalar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
