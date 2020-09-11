@@ -35,6 +35,9 @@ namespace Sessao2.ModuloAdm
         private void FrmGerenciaCampeonatos_Load(object sender, EventArgs e)
         {
             AtualizaGrid();
+            FrmMenu.ArredondaButton(btnSalvar);
+            FrmMenu.ArredondaButton(btnEditar);
+            FrmMenu.ArredondaButton(btnExcluir);
         }
         public async void AtualizaGrid()
         {
