@@ -1,6 +1,6 @@
 ﻿namespace Sessao2.ModuloMarketing
 {
-    partial class Form1
+    partial class FrmMenu
     {
         /// <summary>
         /// Required designer variable.
