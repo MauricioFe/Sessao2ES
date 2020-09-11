@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sessao2.ModuloMarketing.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -61,6 +62,7 @@ namespace Sessao2.ModuloMarketing
         private void FrmMenu_Load(object sender, EventArgs e)
         {
             ArredondaButton(btnEscalar);
+            AtaulizaGridAsync();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)

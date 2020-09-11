@@ -1,0 +1,10 @@
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\bin\Debug\Sessao2.ModuloMarketing.exe.config
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\bin\Debug\Sessao2.ModuloMarketing.exe
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\bin\Debug\Sessao2.ModuloMarketing.pdb
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.csprojAssemblyReference.cache
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.FrmMenu.resources
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.Properties.Resources.resources
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.csproj.GenerateResource.cache
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.csproj.CoreCompileInputs.cache
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.exe
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.pdb
