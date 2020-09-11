@@ -152,7 +152,7 @@ namespace Sessao2.ModuloAdm
                 var campeonatos = await response.Content.ReadAsStringAsync();
                 campeonatosList = new JavaScriptSerializer().Deserialize<List<Campeonatos>>(campeonatos);
                 cboCampeonato.DataSource = campeonatosList;
-                cboCampeonato.DisplayMember = "Dsc_camp";
+                cboCampeonato.DisplayMember = "Descricao";
                 cboCampeonato.ValueMember = "Cod_camp";
             }
         }

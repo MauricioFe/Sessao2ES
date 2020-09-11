@@ -185,8 +185,15 @@ namespace Sessao2.ModuloAdm
                 {
                     client.DefaultRequestHeaders.Add("tokenTowersAdm", "a5b01115-7d82-4f6a-bc45-9fd49eacd2e7");
                     var result = await client.DeleteAsync($"{FrmMenu.URI}/jogadores/excluir/{codJogador}");
-                    AtaulizaGridAsync();
-                    MessageBox.Show("Deletado com sucesso");
+                    if (result.IsSuccessStatusCode)
+                    {
+                        AtaulizaGridAsync();
+                        MessageBox.Show("Deletado com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao realizar requisição");
+                    }
                 }
             }
             catch (Exception)
