@@ -19,7 +19,13 @@ namespace Sessao2.ModuloMarketing
 
         private void FrmMontarTime_Load(object sender, EventArgs e)
         {
+            FrmMenu.ArredondaButton(btnArte);
+            GerarCamisas();
+        }
 
+        private void GerarCamisas()
+        {
+            throw new NotImplementedException();
         }
     }
 }

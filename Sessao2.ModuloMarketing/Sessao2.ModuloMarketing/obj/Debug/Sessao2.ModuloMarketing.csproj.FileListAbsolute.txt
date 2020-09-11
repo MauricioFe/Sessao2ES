@@ -8,3 +8,4 @@ C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.csproj.CoreCompileInputs.cache
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.exe
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.pdb
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloMarketing\Sessao2.ModuloMarketing\obj\Debug\Sessao2.ModuloMarketing.FrmMontarTime.resources
