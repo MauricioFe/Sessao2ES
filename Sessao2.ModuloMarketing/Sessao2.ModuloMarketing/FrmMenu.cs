@@ -16,5 +16,19 @@ namespace Sessao2.ModuloMarketing
         {
             InitializeComponent();
         }
+
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
