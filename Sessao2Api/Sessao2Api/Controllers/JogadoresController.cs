@@ -27,6 +27,13 @@ namespace Sessao2Api.Controllers
             return _dal.GetAll();
         }
 
+        [HttpGet]
+        [Route("times/{codTime}")]
+        public IEnumerable<Jogadores> GetByTime(int codTime)
+        {
+            return _dal.GetByTime(codTime);
+        }
+
         [HttpPost]
         [Route("cadastrar")]
         public IActionResult Post([FromHeader] string tokenTowersAdm, [FromBody] Jogadores jogadores)

@@ -21,8 +21,8 @@ namespace Sessao2.ModuloMarketing
             InitializeComponent();
         }
         public static string URI = "http://localhost:5005/wstowers/api";
-        public static int time1 = 0;
-        public static int time2 = 0;
+        int time1 = 0;
+        int time2 = 0;
         public static void ArredondaButton(Button btn)
         {
             Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
@@ -80,8 +80,17 @@ namespace Sessao2.ModuloMarketing
         {
             if (rbtTime1.Text != "Time 1" && rbtTime2.Text != "Time 2")
             {
-                FrmMontarTime form = new FrmMontarTime();
-                form.ShowDialog();
+
+                if (rbtTime1.Checked)
+                {
+                    FrmMontarTime form = new FrmMontarTime(time1);
+                    form.ShowDialog();
+                }
+                else if (rbtTime2.Checked)
+                {
+                    FrmMontarTime form = new FrmMontarTime(time2);
+                    form.ShowDialog();
+                }
             }
             else
             {
