@@ -53,7 +53,9 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Jogadores.cs" />
     <Compile Include="Models\Jogos.cs" />
+    <Compile Include="Models\Times.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMenu.resx">

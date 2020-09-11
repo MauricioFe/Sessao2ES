@@ -97,6 +97,7 @@
             this.dgvJogos.Name = "dgvJogos";
             this.dgvJogos.Size = new System.Drawing.Size(601, 203);
             this.dgvJogos.TabIndex = 38;
+            this.dgvJogos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJogos_CellClick);
             // 
             // rbtTime1
             // 

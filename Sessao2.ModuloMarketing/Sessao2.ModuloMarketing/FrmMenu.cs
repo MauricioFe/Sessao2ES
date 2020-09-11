@@ -21,7 +21,9 @@ namespace Sessao2.ModuloMarketing
             InitializeComponent();
         }
         public static string URI = "http://localhost:5005/wstowers/api";
+        int time1 = 0;
 
+        int time2 = 0;
         public static void ArredondaButton(Button btn)
         {
             Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
@@ -77,7 +79,23 @@ namespace Sessao2.ModuloMarketing
 
         private void btnEscalar_Click(object sender, EventArgs e)
         {
+            if (rbtTime1.Text != "Time 1" && rbtTime2.Text != "Time 2")
+            {
+                FrmMontarTime form = new FrmMontarTime();
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um dos jogos");
+            }
+        }
 
+        private void dgvJogos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            rbtTime1.Text = dgvJogos.Rows[e.RowIndex].Cells[1].Value.ToString();
+            rbtTime2.Text = dgvJogos.Rows[e.RowIndex].Cells[2].Value.ToString();
+            time1 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[7].Value.ToString());
+            time2 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[8].Value.ToString());
         }
     }
 }
