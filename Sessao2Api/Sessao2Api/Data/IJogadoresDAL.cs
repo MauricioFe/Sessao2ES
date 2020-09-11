@@ -12,5 +12,6 @@ namespace Sessao2Api.Data
         void Add(Jogadores jogadores);
         void Update(Jogadores jogadores, int cod_jogadores);
         bool Remove(int cod_jogadores);
+        IEnumerable<Jogadores> GetByTime(int codTime);
     }
 }

@@ -85,5 +85,26 @@ namespace Sessao2Api.Data
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+
+        public IEnumerable<Jogadores> GetByTime(int codTime)
+        {
+
+            List<Jogadores> jogadoresList = new List<Jogadores>();
+            cmd = new SqlCommand($"select j.nom_jog, p.dsc_pos from jogadores as j inner join posicoes as p on j.cod_pos = p.cod_pos where j.cod_time = {codTime}", conn);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            conn.Open();
+            adapter.Fill(dt);
+            foreach (DataRow item in dt.Rows)
+            {
+                Jogadores jogadores = new Jogadores();
+                jogadores.PosicaoStr = item[1].ToString();
+                jogadores.Nome = item[0].ToString();               
+                jogadoresList.Add(jogadores);
+            }
+            conn.Close();
+
+            return jogadoresList;
+        }
     }
 }

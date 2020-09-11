@@ -21,9 +21,8 @@ namespace Sessao2.ModuloMarketing
             InitializeComponent();
         }
         public static string URI = "http://localhost:5005/wstowers/api";
-        int time1 = 0;
-
-        int time2 = 0;
+        public static int time1 = 0;
+        public static int time2 = 0;
         public static void ArredondaButton(Button btn)
         {
             Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
