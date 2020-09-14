@@ -21,8 +21,8 @@ namespace Sessao2.ModuloMarketing
             InitializeComponent();
         }
         public static string URI = "http://localhost:5005/wstowers/api";
-        int time1 = 0;
-        int time2 = 0;
+        int idtime1 = 0;
+        int idtime2 = 0;
         public static void ArredondaButton(Button btn)
         {
             Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
@@ -83,12 +83,12 @@ namespace Sessao2.ModuloMarketing
 
                 if (rbtTime1.Checked)
                 {
-                    FrmMontarTime form = new FrmMontarTime(time1);
+                    FrmMontarTime form = new FrmMontarTime(idtime1);
                     form.ShowDialog();
                 }
                 else if (rbtTime2.Checked)
                 {
-                    FrmMontarTime form = new FrmMontarTime(time2);
+                    FrmMontarTime form = new FrmMontarTime(idtime2);
                     form.ShowDialog();
                 }
             }
@@ -102,8 +102,8 @@ namespace Sessao2.ModuloMarketing
         {
             rbtTime1.Text = dgvJogos.Rows[e.RowIndex].Cells[1].Value.ToString();
             rbtTime2.Text = dgvJogos.Rows[e.RowIndex].Cells[2].Value.ToString();
-            time1 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[7].Value.ToString());
-            time2 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[8].Value.ToString());
+            idtime1 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[7].Value.ToString());
+            idtime2 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[8].Value.ToString());
         }
     }
 }

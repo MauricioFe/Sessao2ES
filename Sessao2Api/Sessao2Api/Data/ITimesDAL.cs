@@ -9,8 +9,5 @@ namespace Sessao2Api.Data
     public interface ITimesDAL
     {
         IEnumerable<Times> GetAll();
-        //void add(times jogos);
-        //void update(times jogos, int codcampeonato, int codtime1, int codtime2);
-        //void remove(int codcampeonato, int codtime1, int codtime2);
     }
 }

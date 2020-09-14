@@ -26,35 +26,5 @@ namespace Sessao2Api.Controllers
         {
             return _dal.GetAll();
         }
-
-        //[HttpPost]
-        //[Route("cadastrar")]
-        //public IActionResult Post([FromBody] Times times)
-        //{
-        //    if (times == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    _dal.Add(times);
-        //    return Ok("Operação realizada com sucesso");
-        //}
-
-        //[Route("atualizar/{codCamp}/{codtime1}/{codtime2}")]
-        //public IActionResult Put(int codCamp, [FromBody] Times times)
-        //{
-        //    if (times == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    _dal.Update(times, codCamp);
-        //    return Ok("Operação realizada com sucesso");
-        //}
-
-        //[Route("excluir/{codCamp}/{codtime1}/{codtime2}")]
-        //public IActionResult Delete(int codCamp)
-        //{
-        //    _dal.Remove(codCamp);
-        //    return Ok("Operação realizada com sucesso"); 
-        //}
     }
 }
