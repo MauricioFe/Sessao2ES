@@ -65,7 +65,7 @@ namespace Sessao2.ModuloMarketing
             pnlJogador.Controls.Add(lblNome);
             pnlJogador.Controls.Add(lblPosicao);
             pnlJogador.Controls.Add(ptbCamisa);
-            pnlJogador.BackColor = Color.Red;
+            pnlJogador.BackColor = Color.Transparent;
             pnlJogador.Location = new System.Drawing.Point(500 + location, 64);
             pnlJogador.Name = "pnlJogador" + idForName;
             pnlJogador.BringToFront();
@@ -212,5 +212,11 @@ namespace Sessao2.ModuloMarketing
         }
         Point dragPoint = Point.Empty;
         bool dragging = false;
+
+        private void btnArte_Click(object sender, EventArgs e)
+        {
+            FrmArte form = new FrmArte();
+            form.ShowDialog();
+        }
     }
 }

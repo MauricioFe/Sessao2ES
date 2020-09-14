@@ -59,6 +59,7 @@
             this.btnArte.TabIndex = 44;
             this.btnArte.Text = "Gerar Arte";
             this.btnArte.UseVisualStyleBackColor = false;
+            this.btnArte.Click += new System.EventHandler(this.btnArte_Click);
             // 
             // label1
             // 
