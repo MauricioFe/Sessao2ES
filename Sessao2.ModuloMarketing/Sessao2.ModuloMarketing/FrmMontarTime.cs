@@ -58,6 +58,7 @@ namespace Sessao2.ModuloMarketing
         int location = 0;
         PictureBox ptbCamisa;
         Panel pnlJogador;
+        List<Panel> panelListJogador = new List<Panel>();
         private Panel GetPanelTimes(int idForName, PictureBox ptbCamisa, Label lblNome, Label lblPosicao)
         {
 
@@ -75,6 +76,7 @@ namespace Sessao2.ModuloMarketing
             pnlJogador.MouseMove += pnlJogador_MouseMove;
             pnlJogador.MouseUp += pnlJogador_MouseUp;
             location += 150;
+            panelListJogador.Add(pnlJogador);
             return pnlJogador;
         }
 
@@ -243,6 +245,26 @@ namespace Sessao2.ModuloMarketing
             graphics.CopyFromScreen(this.Bounds.X + 12, this.Bounds.Y + 35, 0, 0, pictureBox1.Size);
             FrmArte form = new FrmArte(jogos, nomesSuplentes, printscreen);
             form.ShowDialog();
+        }
+
+        private void lblMudar_Click(object sender, EventArgs e)
+        {
+            ColorDialog minhasCores = new ColorDialog();
+            // Não permite ao usuário selecionar uma cor customizada
+            minhasCores.AllowFullOpen = false;
+            // Permite o usuário obter ajuda 
+            minhasCores.ShowHelp = true;
+            // Define a cor inicial selecionada para a cor atual
+            minhasCores.Color = Color.White;
+            // Atualiza a cor no TextBox 
+            if (minhasCores.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var item in panelListJogador)
+                {
+                    item.BackColor = minhasCores.Color;
+                }
+               
+            }
         }
     }
 }

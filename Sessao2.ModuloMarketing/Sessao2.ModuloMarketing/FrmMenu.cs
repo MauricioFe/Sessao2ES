@@ -39,7 +39,7 @@ namespace Sessao2.ModuloMarketing
             List<Jogos> jogosList = new List<Jogos>();
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync($"{URI}/jogos");
+                var response = await client.GetAsync($"{URI}/jogos/arte");
                 var jogos = await response.Content.ReadAsStringAsync();
                 jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
                 //dgvJogos.DataSource = jogosList;

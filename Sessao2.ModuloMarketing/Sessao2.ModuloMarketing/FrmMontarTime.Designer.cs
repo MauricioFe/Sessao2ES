@@ -32,11 +32,13 @@
             this.btnArte = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMudar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBox1.Image = global::Sessao2.ModuloMarketing.Properties.Resources.background_campo;
             this.pictureBox1.Location = new System.Drawing.Point(5, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
@@ -83,11 +85,24 @@
             this.panel1.Size = new System.Drawing.Size(727, 428);
             this.panel1.TabIndex = 46;
             // 
+            // lblMudar
+            // 
+            this.lblMudar.AutoSize = true;
+            this.lblMudar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblMudar.ForeColor = System.Drawing.Color.Red;
+            this.lblMudar.Location = new System.Drawing.Point(460, 481);
+            this.lblMudar.Name = "lblMudar";
+            this.lblMudar.Size = new System.Drawing.Size(174, 18);
+            this.lblMudar.TabIndex = 47;
+            this.lblMudar.Text = "Mudar cor da camisa";
+            this.lblMudar.Click += new System.EventHandler(this.lblMudar_Click);
+            // 
             // FrmMontarTime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1199, 597);
+            this.Controls.Add(this.lblMudar);
             this.Controls.Add(this.btnArte);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -111,5 +126,6 @@
         private System.Windows.Forms.Button btnArte;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblMudar;
     }
 }

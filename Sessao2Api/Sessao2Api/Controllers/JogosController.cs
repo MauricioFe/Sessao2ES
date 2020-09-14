@@ -26,6 +26,12 @@ namespace Sessao2Api.Controllers
         {
             return _dal.GetAll();
         }
+        [HttpGet]
+        [Route("arte")]
+        public IEnumerable<Jogos> GetArt()
+        {
+            return _dal.GetJogosArte();
+        }
 
         [HttpPost]
         [Route("cadastrar")]
