@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -45,7 +46,16 @@ namespace Sessao2.ModuloMarketing
         {
             Bitmap bitmapArte = new Bitmap(this.Width, this.Height);
             this.DrawToBitmap(bitmapArte, new Rectangle(0, 0, this.Width, this.Height));
-            bitmapArte.Save(@"C:\Users\mauri\Desktop\Bacon.jpg", ImageFormat.Jpeg);
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Image files (*.png) | *.png";
+            save.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            if (save.ShowDialog() ==DialogResult.OK)
+            {
+                bitmapArte.Save(save.FileName, ImageFormat.Png);
+            }
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = save.FileName;
+            Process.Start(start);
             this.Dispose();
         }
         int location = 0;
