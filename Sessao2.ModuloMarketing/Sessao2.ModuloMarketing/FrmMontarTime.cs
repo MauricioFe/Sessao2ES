@@ -234,23 +234,15 @@ namespace Sessao2.ModuloMarketing
                                 }
                             }
                         }
-                        
+
                     }
                 }
             }
-            //Definimos qual a dimensão do bitmap
-            //A utilização do Bounds.Width irá permitir que o programa "saiba" onde começa a aplicação
             Bitmap printscreen = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            pictureBox1.DrawToBitmap(printscreen, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
-            String path;
-
-
+            Graphics graphics = Graphics.FromImage(printscreen);
+            graphics.CopyFromScreen(this.Bounds.X + 12, this.Bounds.Y + 35, 0, 0, pictureBox1.Size);
             FrmArte form = new FrmArte(jogos, nomesSuplentes, printscreen);
             form.ShowDialog();
-
-
-            
-            
         }
     }
 }
