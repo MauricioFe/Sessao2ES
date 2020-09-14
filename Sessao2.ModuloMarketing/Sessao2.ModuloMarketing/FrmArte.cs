@@ -49,6 +49,7 @@ namespace Sessao2.ModuloMarketing
             SaveFileDialog save = new SaveFileDialog();
             save.Filter = "Image files (*.png) | *.png";
             save.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            save.FileName = "arteWS";
             if (save.ShowDialog() ==DialogResult.OK)
             {
                 bitmapArte.Save(save.FileName, ImageFormat.Png);
