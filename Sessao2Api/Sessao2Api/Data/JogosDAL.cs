@@ -177,5 +177,22 @@ namespace Sessao2Api.Data
 
             return jogosList;
         }
+
+        //public IEnumerable<Jogos> GetJogosDiferencaSalarialMaiorQue50()
+        //{
+        //    List<Jogos> jogosList = new List<Jogos>();
+        //    cmd = new SqlCommand($"select jogos.cod_camp, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time inner join jogadores as jo2 on jo2.cod_time = t2.cod_time Group by jogos.cod_camp, jogos.cod_time1, jogos.cod_time2 having(SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo.salario) * 0.5 OR (SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo2.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo2.salario) * 0.5", conn);
+        //    adapter = new SqlDataAdapter(cmd);
+        //    dt = new DataTable();
+        //    conn.Open();
+        //    adapter.Fill(dt);
+        //    foreach (DataRow item in dt.Rows)
+        //    {
+               
+        //    }
+        //    conn.Close();
+
+        //    return jogosList;
+        //}
     }
 }
