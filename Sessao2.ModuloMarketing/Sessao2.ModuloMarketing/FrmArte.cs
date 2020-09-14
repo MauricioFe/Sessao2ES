@@ -13,21 +13,32 @@ namespace Sessao2.ModuloMarketing
 {
     public partial class FrmArte : Form
     {
-        public FrmArte(Jogos jogos, Jogadores jogadores)
+        Jogos jogos;
+        List<Jogadores> jogadoresList;
+        public FrmArte(Jogos jogos, List<Jogadores> jogadoresList)
         {
             InitializeComponent();
-            lblCampeonato.Text.ToUpper();
-            lblTime1.Text.ToUpper();
-            lblTime2.Text.ToUpper();
+            this.jogos= jogos;
+            this.jogadoresList = jogadoresList;
+            lblCampeonato.Text = jogos.Campeonatos.ToUpper();
+            lblTime1.Text= jogos.Time1.ToUpper();
+            lblTime2.Text= jogos.Time2.ToUpper();
             lblSeuTime.Text.ToUpper();
             lblSuplentes.Text.ToUpper();
-            lblData.Text.ToUpper();
-            lblEstadio.Text.ToUpper();
+            lblData.Text = jogos.Data.Date.ToString("dd/MM/yyyy").ToUpper();
+            lblEstadio.Text=jogos.Estadio.ToUpper();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
+
+        private void FrmArte_Load(object sender, EventArgs e)
+        {
+   
+        }
+
+
     }
 }
