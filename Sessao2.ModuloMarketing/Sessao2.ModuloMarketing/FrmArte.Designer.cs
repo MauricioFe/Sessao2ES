@@ -38,7 +38,9 @@
             this.lblEstadio = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.ptbEscalacao = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbEscalacao)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -140,12 +142,21 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "X";
             // 
+            // ptbEscalacao
+            // 
+            this.ptbEscalacao.Location = new System.Drawing.Point(12, 254);
+            this.ptbEscalacao.Name = "ptbEscalacao";
+            this.ptbEscalacao.Size = new System.Drawing.Size(324, 356);
+            this.ptbEscalacao.TabIndex = 11;
+            this.ptbEscalacao.TabStop = false;
+            // 
             // FrmArte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(45)))), ((int)(((byte)(158)))));
             this.ClientSize = new System.Drawing.Size(548, 687);
+            this.Controls.Add(this.ptbEscalacao);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lblEstadio);
@@ -165,6 +176,7 @@
             this.Text = "FrmArte";
             this.Load += new System.EventHandler(this.FrmArte_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbEscalacao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Label lblEstadio;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox ptbEscalacao;
     }
 }

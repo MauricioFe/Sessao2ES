@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -51,6 +52,7 @@ namespace Sessao2.ModuloMarketing
                 this.Controls.Add(GetPanelTimes(cont, GetptbCamisa(), GetlblNome(item.Nome), GetlblPosicao(item.PosicaoStr)));
             }
             this.Controls.SetChildIndex(pictureBox1, 10000);
+            this.Controls.SetChildIndex(panel1, 10000);
             int zIndex = this.Controls.GetChildIndex(pictureBox1);
         }
         int location = 0;
@@ -213,8 +215,42 @@ namespace Sessao2.ModuloMarketing
 
         private void btnArte_Click(object sender, EventArgs e)
         {
-            FrmArte form = new FrmArte(jogos, jogadoresList);
+            List<string> nomesSuplentes = new List<string>();
+            foreach (var item in this.Controls)
+            {
+                if (item is Panel)
+                {
+                    Panel pnlSuplentes = (Panel)item;
+                    if (pnlSuplentes.Location.X > 460)
+                    {
+                        foreach (var label in pnlSuplentes.Controls)
+                        {
+                            if (label is Label)
+                            {
+                                Label lblSuplentes = (Label)label;
+                                if (lblSuplentes.Name.Contains("Nome"))
+                                {
+                                    nomesSuplentes.Add(lblSuplentes.Text);
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            //Definimos qual a dimensão do bitmap
+            //A utilização do Bounds.Width irá permitir que o programa "saiba" onde começa a aplicação
+            Bitmap printscreen = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.DrawToBitmap(printscreen, new Rectangle(0, 0, pictureBox1.Width, pictureBox1.Height));
+            String path;
+
+
+            FrmArte form = new FrmArte(jogos, nomesSuplentes, printscreen);
             form.ShowDialog();
+
+
+            
+            
         }
     }
 }
