@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sessao2.ModuloMarketing.Models
 {
-    class Jogadores
+    public class Jogadores
     {
         public int Cod_jog { get; set; }
         public string DataNascimento { get; set; }

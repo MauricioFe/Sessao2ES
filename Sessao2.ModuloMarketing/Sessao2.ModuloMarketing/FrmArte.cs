@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sessao2.ModuloMarketing.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace Sessao2.ModuloMarketing
 {
     public partial class FrmArte : Form
     {
-        public FrmArte()
+        public FrmArte(Jogos jogos, Jogadores jogadores)
         {
             InitializeComponent();
             lblCampeonato.Text.ToUpper();

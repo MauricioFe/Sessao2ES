@@ -23,6 +23,7 @@ namespace Sessao2.ModuloMarketing
         public static string URI = "http://localhost:5005/wstowers/api";
         int idtime1 = 0;
         int idtime2 = 0;
+        Jogos jogo = new Jogos();
         public static void ArredondaButton(Button btn)
         {
             Rectangle Rect = new Rectangle(0, 0, btn.Width, btn.Height);
@@ -83,12 +84,12 @@ namespace Sessao2.ModuloMarketing
 
                 if (rbtTime1.Checked)
                 {
-                    FrmMontarTime form = new FrmMontarTime(idtime1);
+                    FrmMontarTime form = new FrmMontarTime(idtime1, jogo);
                     form.ShowDialog();
                 }
                 else if (rbtTime2.Checked)
                 {
-                    FrmMontarTime form = new FrmMontarTime(idtime2);
+                    FrmMontarTime form = new FrmMontarTime(idtime2, jogo);
                     form.ShowDialog();
                 }
             }
@@ -104,6 +105,12 @@ namespace Sessao2.ModuloMarketing
             rbtTime2.Text = dgvJogos.Rows[e.RowIndex].Cells[2].Value.ToString();
             idtime1 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[7].Value.ToString());
             idtime2 = int.Parse(dgvJogos.Rows[e.RowIndex].Cells[8].Value.ToString());
+            jogo.Campeonatos = dgvJogos.Rows[e.RowIndex].Cells[0].Value.ToString();
+            jogo.Time1 = dgvJogos.Rows[e.RowIndex].Cells[1].Value.ToString();
+            jogo.Time2 = dgvJogos.Rows[e.RowIndex].Cells[2].Value.ToString();
+            jogo.Data = Convert.ToDateTime(dgvJogos.Rows[e.RowIndex].Cells[4].Value.ToString());
+            jogo.Estadio = dgvJogos.Rows[e.RowIndex].Cells[3].Value.ToString();
+
         }
     }
 }

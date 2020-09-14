@@ -20,15 +20,13 @@ namespace Sessao2.ModuloMarketing
             InitializeComponent();
         }
         int codTime = 0;
-        public FrmMontarTime(int codTime)
+        Jogos jogos;
+        public FrmMontarTime(int codTime, Jogos jogos)
         {
             InitializeComponent();
             this.codTime = codTime;
             GerarCamisas(codTime);
- 
-          
-        
-
+            this.jogos = jogos;
         }
 
         private void FrmMontarTime_Load(object sender, EventArgs e)
@@ -215,7 +213,7 @@ namespace Sessao2.ModuloMarketing
 
         private void btnArte_Click(object sender, EventArgs e)
         {
-            FrmArte form = new FrmArte();
+            FrmArte form = new FrmArte(jogos, jogadoresList);
             form.ShowDialog();
         }
     }
