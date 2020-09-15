@@ -9,7 +9,9 @@ namespace Sessao2Api.Data
     public interface IJogosDAL
     {
         IEnumerable<Jogos> GetAll();
-        //IEnumerable<Jogos> GetJogosDiferencaSalarialMaiorQue50();
+        IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias();
+        IEnumerable<Jogos> GetJogosDiferencaSalarialMaiorQue50();
+        IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu();
         IEnumerable<Jogos> GetJogosArte();
         void Add(Jogos jogos);
         void Update(Jogos jogos, int codCampeonato, int codTime1, int codTime2);
