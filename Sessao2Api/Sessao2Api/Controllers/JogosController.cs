@@ -32,7 +32,12 @@ namespace Sessao2Api.Controllers
         {
             return _dal.GetJogosArte();
         }
-
+        [HttpGet]
+        [Route("GetJogosDiferencaSalarialMaiorQue50")]
+        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50()
+        {
+            return _dal.GetJogosDiferencaSalarialMaiorQue50();
+        }
         [HttpPost]
         [Route("cadastrar")]
         public IActionResult Post([FromBody] Jogos jogos)

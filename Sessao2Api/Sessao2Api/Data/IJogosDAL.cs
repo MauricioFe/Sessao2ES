@@ -10,7 +10,7 @@ namespace Sessao2Api.Data
     {
         IEnumerable<Jogos> GetAll();
         IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias();
-        IEnumerable<Jogos> GetJogosDiferencaSalarialMaiorQue50();
+        IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50();
         IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu();
         IEnumerable<Jogos> GetJogosArte();
         void Add(Jogos jogos);

@@ -190,11 +190,16 @@ namespace Sessao2Api.Data
             return jogosList;
         }
 
-        public IEnumerable<Jogos> GetJogosDiferencaSalarialMaiorQue50()
+        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50()
         {
 
-            List<Jogos> jogosList = new List<Jogos>();
-            cmd = new SqlCommand($"select jogos.cod_camp, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time inner join jogadores as jo2 on jo2.cod_time = t2.cod_time Group by jogos.cod_camp, jogos.cod_time1, jogos.cod_time2 having(SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo.salario) * 0.5 OR (SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo2.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo2.salario) * 0.5", conn);
+            List<Jogos> jogosList1 = new List<Jogos>();
+            List<Jogos> jogosList2 = new List<Jogos>();
+            List<Jogos> jogosList3 = new List<Jogos>();
+            List<Jogos> jogosList4 = new List<Jogos>();
+            List<Jogos> jogosList5 = new List<Jogos>();
+            List<List<Jogos>> teste = new List<List<Jogos>>();
+            cmd = new SqlCommand("select jogos.cod_camp, jogos.data, jogos.resultado, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time inner join jogadores as jo2 on jo2.cod_time = t2.cod_time Group by jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, jogos.data, campeonatos.dsc_camp, t1.nom_time, t2.nom_time, jogos.resultado having(SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo.salario) * 0.5 OR (SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo2.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo2.salario) * 0.5", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             conn.Open();
@@ -205,49 +210,66 @@ namespace Sessao2Api.Data
                 var salario1 = Convert.ToDecimal(item["salario1"]);
                 var salario2 = Convert.ToDecimal(item["salario2"]);
                 var codCamp = Convert.ToInt32(item["cod_camp"]);
-                List<Jogos> grupo1 = new List<Jogos>();
-                List<Jogos> grupo2 = new List<Jogos>();
-                List<Jogos> grupo3 = new List<Jogos>();
-                List<Jogos> grupo4 = new List<Jogos>();
-                List<Jogos> grupo5 = new List<Jogos>();
-                //switch (codCamp)
-                //{
-                //    case 1:
-                //        grupo1.Add(codCamp);
-                //        grupo1.Add(salario1);
-                //        grupo1.Add(salario2);
-                //        break;
-                //    case 2:
-                //        grupo2.Add(codCamp);
-                //        grupo2.Add(salario1);
-                //        grupo2.Add(salario2);
-                //        break;
-                //    case 3:
-                //        grupo3.Add(codCamp);
-                //        grupo3.Add(salario1);
-                //        grupo3.Add(salario2);
-                //        break;
-                //    case 4:
-                //        grupo4.Add(codCamp);
-                //        grupo4.Add(salario1);
-                //        grupo4.Add(salario2);
-                //        break;
-                //    case 5:
-                //        grupo5.Add(codCamp);
-                //        grupo5.Add(salario1);
-                //        grupo5.Add(salario2);
-                //        break;
-
-                //}
-                i++;
-                foreach (var item1 in grupo1)
+                
+                switch (codCamp)
                 {
-                    Console.WriteLine(item1);
-                }    
+                    case 1:
+                        Jogos jogos = new Jogos();
+                        jogos.Campeonatos = item["dsc_camp"].ToString();
+                        jogos.Data = DateTime.Parse(item["data"].ToString());
+                        jogos.Time1 = item["time1"].ToString();
+                        jogos.Time2 = item["time2"].ToString();
+                        jogos.Resultado = Convert.ToInt32(item["resultado"]);
+                        jogosList1.Add(jogos);
+                        break;
+                    case 2:
+                        Jogos jogos2 = new Jogos();
+                        jogos2.Campeonatos = item["dsc_camp"].ToString();
+                        jogos2.Data = DateTime.Parse(item["data"].ToString());
+                        jogos2.Time1 = item["time1"].ToString();
+                        jogos2.Time2 = item["time2"].ToString();
+                        jogos2.Resultado = Convert.ToInt32(item["resultado"]);
+                        jogosList2.Add(jogos2);
+                        break;
+                    case 3:
+                        Jogos jogos3 = new Jogos();
+                        jogos3.Campeonatos = item["dsc_camp"].ToString();
+                        jogos3.Data = DateTime.Parse(item["data"].ToString());
+                        jogos3.Time1 = item["time1"].ToString();
+                        jogos3.Time2 = item["time2"].ToString();
+                        jogos3.Resultado = Convert.ToInt32(item["resultado"]);
+                        jogosList3.Add(jogos3);
+                        break;
+                    case 4:
+                        Jogos jogos4 = new Jogos();
+                        jogos4.Campeonatos = item["dsc_camp"].ToString();
+                        jogos4.Data = DateTime.Parse(item["data"].ToString());
+                        jogos4.Time1 = item["time1"].ToString();
+                        jogos4.Time2 = item["time2"].ToString();
+                        jogos4.Resultado = Convert.ToInt32(item["resultado"]);
+                        jogosList4.Add(jogos4);
+                        break;
+                    case 5:
+                        Jogos jogos5 = new Jogos();
+                        jogos5.Campeonatos = item["dsc_camp"].ToString();
+                        jogos5.Data = DateTime.Parse(item["data"].ToString());
+                        jogos5.Time1 = item["time1"].ToString();
+                        jogos5.Time2 = item["time2"].ToString();
+                        jogos5.Resultado = Convert.ToInt32(item["resultado"]);
+                        jogosList5.Add(jogos5);
+                        break;
+                }
+                i++;
+
             }
             conn.Close();
-
-            return jogosList;
+            teste.Add(jogosList1);
+            teste.Add(jogosList2);
+            teste.Add(jogosList3);
+            teste.Add(jogosList4);
+            teste.Add(jogosList5);
+            
+            return teste;
         }
 
         public IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu()
