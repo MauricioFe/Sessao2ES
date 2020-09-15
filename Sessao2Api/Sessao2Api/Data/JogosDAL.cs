@@ -194,7 +194,7 @@ namespace Sessao2Api.Data
         {
 
             List<Jogos> jogosList = new List<Jogos>();
-            cmd = new SqlCommand($"select jogos.cod_camp, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time inner join jogadores as jo2 on jo2.cod_time = t2.cod_time Group by jogos.cod_camp, jogos.cod_time1, jogos.cod_time2 having(SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo.salario) * 0.5 OR (SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo2.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo2.salario) * 0.5 Go", conn);
+            cmd = new SqlCommand($"select jogos.cod_camp, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time inner join jogadores as jo2 on jo2.cod_time = t2.cod_time Group by jogos.cod_camp, jogos.cod_time1, jogos.cod_time2 having(SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo.salario) * 0.5 OR (SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo2.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo2.salario) * 0.5", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             conn.Open();
@@ -204,47 +204,46 @@ namespace Sessao2Api.Data
             {
                 var salario1 = Convert.ToDecimal(item["salario1"]);
                 var salario2 = Convert.ToDecimal(item["salario2"]);
-                var codCamp = Convert.ToInt32(item["cond_camp"]);
-                decimal[] grupo1 = new decimal[dt.Rows.Count];
-                decimal[] grupo2 = new decimal[dt.Rows.Count];
-                decimal[] grupo3 = new decimal[dt.Rows.Count];
-                decimal[] grupo4 = new decimal[dt.Rows.Count];
-                decimal[] grupo5 = new decimal[dt.Rows.Count];
-                switch (codCamp)
-                {
-                    case 1:
-                        grupo1[i] = codCamp;
-                        grupo1[i] = salario1;
-                        grupo1[i] = salario2;
-                        break;
-                    case 2:
-                        grupo2[i] = codCamp;
-                        grupo2[i] = salario1;
-                        grupo2[i] = salario2;
-                        break;
-                    case 3:
-                        grupo3[i] = codCamp;
-                        grupo3[i] = salario1;
-                        grupo3[i] = salario2;
-                        break;
-                    case 4:
-                        grupo4[i] = codCamp;
-                        grupo4[i] = salario1;
-                        grupo4[i] = salario2;
-                        break;
-                    case 5:
-                        grupo4[i] = codCamp;
-                        grupo4[i] = salario1;
-                        grupo4[i] = salario2;
-                        break;
+                var codCamp = Convert.ToInt32(item["cod_camp"]);
+                List<Jogos> grupo1 = new List<Jogos>();
+                List<Jogos> grupo2 = new List<Jogos>();
+                List<Jogos> grupo3 = new List<Jogos>();
+                List<Jogos> grupo4 = new List<Jogos>();
+                List<Jogos> grupo5 = new List<Jogos>();
+                //switch (codCamp)
+                //{
+                //    case 1:
+                //        grupo1.Add(codCamp);
+                //        grupo1.Add(salario1);
+                //        grupo1.Add(salario2);
+                //        break;
+                //    case 2:
+                //        grupo2.Add(codCamp);
+                //        grupo2.Add(salario1);
+                //        grupo2.Add(salario2);
+                //        break;
+                //    case 3:
+                //        grupo3.Add(codCamp);
+                //        grupo3.Add(salario1);
+                //        grupo3.Add(salario2);
+                //        break;
+                //    case 4:
+                //        grupo4.Add(codCamp);
+                //        grupo4.Add(salario1);
+                //        grupo4.Add(salario2);
+                //        break;
+                //    case 5:
+                //        grupo5.Add(codCamp);
+                //        grupo5.Add(salario1);
+                //        grupo5.Add(salario2);
+                //        break;
 
-                }
+                //}
                 i++;
-                Console.WriteLine(grupo1);
-                Console.WriteLine(grupo2);
-                Console.WriteLine(grupo3);
-                Console.WriteLine(grupo4);
-                Console.WriteLine(grupo5);
+                foreach (var item1 in grupo1)
+                {
+                    Console.WriteLine(item1);
+                }    
             }
             conn.Close();
 
