@@ -15,7 +15,7 @@ namespace Sessao2Api.Data
         {
             _conn = config.GetConnectionString("DefaultConnection");
             conn = new SqlConnection(_conn);
-            GetJogosDiferencaSalarialMaiorQue50();
+            GetJogosAtuarIntervaloMenorQue3Dias();
         }
 
         SqlCommand cmd;
@@ -176,18 +176,60 @@ namespace Sessao2Api.Data
         public IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias()
         {
             List<Jogos> jogosList = new List<Jogos>();
-            cmd = new SqlCommand($"select jogos.cod_camp, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time inner join jogadores as jo2 on jo2.cod_time = t2.cod_time Group by jogos.cod_camp, jogos.cod_time1, jogos.cod_time2 having(SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo.salario) * 0.5 OR (SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo2.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo2.salario) * 0.5", conn);
+            List<Jogos> jogosList3Dias = new List<Jogos>();
+            cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 ", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             conn.Open();
             adapter.Fill(dt);
+            conn.Close();
+            int contador = 0;
+            int contador2 = 0;
             foreach (DataRow item in dt.Rows)
             {
-
+                Jogos jogos = new Jogos();
+                jogos.Cod_camp = Convert.ToInt32(item["cod_camp"]);
+                jogos.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
+                jogos.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
+                jogos.Data = Convert.ToDateTime(item["data"]);
+                jogosList.Add(jogos);
             }
-            conn.Close();
+            foreach (var item in jogosList)
+            {
+                var data = Convert.ToDateTime(item.Data);
+                var time1 = Convert.ToInt32(item.Cod_time1);
+                var time2 = Convert.ToInt32(item.Cod_time2);
+                var data3 = data.AddDays(3);
+                //time 1
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_time1 = {time1} and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                conn.Open();
+                adapter.Fill(dt);
+                conn.Close();
+                if (dt.Rows.Count > 0)
+                {
+                    Console.WriteLine("time1 está com um jogo com intervalo menor que 3 jogos");
+                    contador++;
+                }
+                //time 2
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_time1 ={time2} and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                conn.Open();
+                adapter.Fill(dt);
+                conn.Close();
+                if (dt.Rows.Count > 0)
+                {
+                    Console.WriteLine("time2 está com um jogo com intervalo menor que 3 jogos");
+                    contador2++;
+                }
+            }
 
-            return jogosList;
+
+            Console.WriteLine(contador);
+            Console.WriteLine(contador2);
+            return jogosList3Dias;
         }
 
         public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50()
@@ -210,7 +252,7 @@ namespace Sessao2Api.Data
                 var salario1 = Convert.ToDecimal(item["salario1"]);
                 var salario2 = Convert.ToDecimal(item["salario2"]);
                 var codCamp = Convert.ToInt32(item["cod_camp"]);
-                
+
                 switch (codCamp)
                 {
                     case 1:
@@ -268,7 +310,7 @@ namespace Sessao2Api.Data
             teste.Add(jogosList3);
             teste.Add(jogosList4);
             teste.Add(jogosList5);
-            
+
             return teste;
         }
 
