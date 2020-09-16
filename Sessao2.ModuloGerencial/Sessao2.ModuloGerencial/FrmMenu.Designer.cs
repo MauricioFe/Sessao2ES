@@ -31,7 +31,7 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnFechar = new System.Windows.Forms.PictureBox();
             this.btnJogos3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCampeonatos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnFechar)).BeginInit();
             this.SuspendLayout();
@@ -70,19 +70,20 @@
             this.btnJogos3.TabIndex = 3;
             this.btnJogos3.Text = "Jogos ";
             this.btnJogos3.UseVisualStyleBackColor = false;
+            this.btnJogos3.Click += new System.EventHandler(this.btnJogos_Click);
             // 
-            // button1
+            // btnCampeonatos
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(273, 237);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 62);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Campeonatos";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCampeonatos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
+            this.btnCampeonatos.FlatAppearance.BorderSize = 0;
+            this.btnCampeonatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCampeonatos.ForeColor = System.Drawing.Color.White;
+            this.btnCampeonatos.Location = new System.Drawing.Point(273, 237);
+            this.btnCampeonatos.Name = "btnCampeonatos";
+            this.btnCampeonatos.Size = new System.Drawing.Size(226, 62);
+            this.btnCampeonatos.TabIndex = 4;
+            this.btnCampeonatos.Text = "Campeonatos";
+            this.btnCampeonatos.UseVisualStyleBackColor = false;
             // 
             // FrmMenu
             // 
@@ -91,7 +92,7 @@
             this.BackgroundImage = global::Sessao2.ModuloGerencial.Properties.Resources.modelo_formulario;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(723, 454);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCampeonatos);
             this.Controls.Add(this.btnJogos3);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnMinimizar);
@@ -112,7 +113,7 @@
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.PictureBox btnFechar;
         private System.Windows.Forms.Button btnJogos3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCampeonatos;
     }
 }
 

@@ -31,5 +31,11 @@ namespace Sessao2.ModuloGerencial
         {
 
         }
+
+        private void btnJogos_Click(object sender, EventArgs e)
+        {
+            FrmRelatorioJogos form = new FrmRelatorioJogos();
+            form.ShowDialog();
+        }
     }
 }
