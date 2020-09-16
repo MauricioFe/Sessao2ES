@@ -58,6 +58,7 @@
     <Compile Include="FrmRelatorioJogos.Designer.cs">
       <DependentUpon>FrmRelatorioJogos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Jogos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMenu.resx">

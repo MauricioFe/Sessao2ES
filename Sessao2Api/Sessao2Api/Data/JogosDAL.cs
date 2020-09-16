@@ -347,6 +347,7 @@ namespace Sessao2Api.Data
                     jogos.Data = Convert.ToDateTime(item["data"]);
                     jogos.Time1 = item["time1"].ToString();
                     jogos.Time2 = item["time2"].ToString();
+                    jogos.Resultado = Convert.ToInt32(item["resultado"]);
                     jogosList.Add(jogos);
                 }
             }
