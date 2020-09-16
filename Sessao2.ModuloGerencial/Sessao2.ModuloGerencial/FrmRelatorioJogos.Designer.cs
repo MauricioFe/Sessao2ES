@@ -58,7 +58,7 @@
             "jogos em que o time de menor folha salarial venceu"});
             this.cboTipoRelatorio.Location = new System.Drawing.Point(191, 6);
             this.cboTipoRelatorio.Name = "cboTipoRelatorio";
-            this.cboTipoRelatorio.Size = new System.Drawing.Size(636, 25);
+            this.cboTipoRelatorio.Size = new System.Drawing.Size(673, 25);
             this.cboTipoRelatorio.TabIndex = 1;
             // 
             // btnJogos3
@@ -67,9 +67,9 @@
             this.btnJogos3.FlatAppearance.BorderSize = 0;
             this.btnJogos3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJogos3.ForeColor = System.Drawing.Color.White;
-            this.btnJogos3.Location = new System.Drawing.Point(833, 6);
+            this.btnJogos3.Location = new System.Drawing.Point(870, 6);
             this.btnJogos3.Name = "btnJogos3";
-            this.btnJogos3.Size = new System.Drawing.Size(107, 25);
+            this.btnJogos3.Size = new System.Drawing.Size(114, 25);
             this.btnJogos3.TabIndex = 4;
             this.btnJogos3.Text = "Enviar";
             this.btnJogos3.UseVisualStyleBackColor = false;
@@ -122,7 +122,7 @@
             this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(12, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(928, 547);
+            this.panel1.Size = new System.Drawing.Size(972, 595);
             this.panel1.TabIndex = 5;
             // 
             // FrmRelatorioJogos
@@ -130,7 +130,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(952, 596);
+            this.ClientSize = new System.Drawing.Size(1020, 644);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnJogos3);
             this.Controls.Add(this.cboTipoRelatorio);

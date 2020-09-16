@@ -147,7 +147,18 @@ namespace Sessao2.ModuloGerencial
             lblResultado.Name = "lblResultado";
             lblResultado.Size = new System.Drawing.Size(88, 17);
             lblResultado.TabIndex = 4;
-            lblResultado.Text = resultado == 1 ? "Vencedor: Casa" : "Vencedor: Fora";
+            if (resultado == 1)
+            {
+                lblResultado.Text = "Vencedor: Casa";
+            }else if (resultado == 2)
+            {
+                lblResultado.Text = "Vencedor: Fora";
+            }
+            else
+            {
+                lblResultado.Text = "Empate";
+            }
+           
             return lblResultado;
         }
 
@@ -175,6 +186,8 @@ namespace Sessao2.ModuloGerencial
 
         private async void GetJogosDiferencaSalarialMaiorQue50()
         {
+            locationCampeonatos =0;
+            locationJogos =0;
             using (var client = new HttpClient())
             {
                 var response = await client.GetAsync($"{URI}/GetJogosDiferencaSalarialMaiorQue50");
@@ -190,11 +203,15 @@ namespace Sessao2.ModuloGerencial
                             if (item.Cod_camp == cont)
                             {
                                 panel1.Controls.Add(GeraPanelCampeonato(item.Campeonatos));
-                                locationCampeonatos = (list.Count * GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")).Height + GeraPanelCampeonato(item.Campeonatos).Height);
+                                locationCampeonatos += (list.Count * GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")).Height + GeraPanelCampeonato(item.Campeonatos).Height);
                                 cont++;
+                                if (locationJogos != 0)
+                                {
+                                    locationJogos += 43;
+                                }
                             }
                             panel1.Controls.Add(GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")));
-                            locationJogos += GeraPanelCampeonato(item.Campeonatos).Height;
+                           locationJogos += GeraPanelCampeonato(item.Campeonatos).Height;
                         }
                     }
                 }
