@@ -40,10 +40,11 @@ namespace Sessao2Api.Controllers
         }
 
         [HttpGet]
-        [Route("GetJogosDiferencaSalarialMaiorQue50")]
-        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50()
+        [Route("GetJogosAtuarIntervaloMenorQue3Dias")]
+        public IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias()
         {
-            return _dal.GetJogosDiferencaSalarialMaiorQue50();
+            var teste = _dal.GetJogosAtuarIntervaloMenorQue3Dias().FirstOrDefault(j => j.Cod_camp == 4 && j.Cod_time1 == 4 && j.Cod_time2 == 5 && j.Data.ToString("yyyy-MM-dd") == "2020-01-25");
+            return _dal.GetJogosAtuarIntervaloMenorQue3Dias();
         }
 
         [HttpGet]
