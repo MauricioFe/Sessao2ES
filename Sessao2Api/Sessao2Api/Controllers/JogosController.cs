@@ -38,6 +38,14 @@ namespace Sessao2Api.Controllers
         {
             return _dal.GetJogosDiferencaSalarialMaiorQue50();
         }
+
+        [HttpGet]
+        [Route("GetJogosDiferencaSalarialMaiorQue50")]
+        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50()
+        {
+            return _dal.GetJogosDiferencaSalarialMaiorQue50();
+        }
+
         [HttpGet]
         [Route("GetJogosMenorFolhaSalarialVenceu")]
         public IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu()

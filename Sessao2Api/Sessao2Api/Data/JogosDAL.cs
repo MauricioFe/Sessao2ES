@@ -196,7 +196,7 @@ namespace Sessao2Api.Data
             }
             foreach (var item in jogosList)
             {
-                var data = Convert.ToDateTime(item.Data);
+                var data = Convert.ToDateTime(item.Data).AddDays(1);
                 var time1 = Convert.ToInt32(item.Cod_time1);
                 var time2 = Convert.ToInt32(item.Cod_time2);
                 var data3 = data.AddDays(3);
@@ -209,11 +209,18 @@ namespace Sessao2Api.Data
                 conn.Close();
                 if (dt.Rows.Count > 0)
                 {
-                    Console.WriteLine("time1 está com um jogo com intervalo menor que 3 jogos");
-                    contador++;
+                    foreach (DataRow jogoIntervaloMenor3 in dt.Rows)
+                    {
+                        Jogos jogo3Dias = new Jogos();
+                        jogo3Dias.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                        jogo3Dias.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                        jogo3Dias.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                        jogo3Dias.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                        jogosList3Dias.Add(jogo3Dias);
+                    }
                 }
                 //time 2
-                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_time1 ={time2} and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_time2 ={time2} and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 conn.Open();
@@ -221,14 +228,17 @@ namespace Sessao2Api.Data
                 conn.Close();
                 if (dt.Rows.Count > 0)
                 {
-                    Console.WriteLine("time2 está com um jogo com intervalo menor que 3 jogos");
-                    contador2++;
+                    foreach (DataRow jogoIntervaloMenor3 in dt.Rows)
+                    {
+                        Jogos jogo3Dias = new Jogos();
+                        jogo3Dias.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                        jogo3Dias.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                        jogo3Dias.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                        jogo3Dias.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                        jogosList3Dias.Add(jogo3Dias);
+                    }
                 }
             }
-
-
-            Console.WriteLine(contador);
-            Console.WriteLine(contador2);
             return jogosList3Dias;
         }
 
