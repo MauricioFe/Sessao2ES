@@ -183,8 +183,6 @@ namespace Sessao2Api.Data
             conn.Open();
             adapter.Fill(dt);
             conn.Close();
-            int contador = 0;
-            int contador2 = 0;
             foreach (DataRow item in dt.Rows)
             {
                 Jogos jogos = new Jogos();
@@ -199,9 +197,10 @@ namespace Sessao2Api.Data
                 var data = Convert.ToDateTime(item.Data).AddDays(1);
                 var time1 = Convert.ToInt32(item.Cod_time1);
                 var time2 = Convert.ToInt32(item.Cod_time2);
-                var data3 = data.AddDays(3);
+                var cod_camp = Convert.ToInt32(item.Cod_camp);
+                var data3 = data.AddDays(2);
                 //time 1
-                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_time1 = {time1} and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time1} or jogos.cod_time2 = {time1}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 conn.Open();
@@ -220,7 +219,7 @@ namespace Sessao2Api.Data
                     }
                 }
                 //time 2
-                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_time2 ={time2} and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time2} or jogos.cod_time2 = {time2}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 conn.Open();
@@ -327,7 +326,7 @@ namespace Sessao2Api.Data
         public IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu()
         {
             List<Jogos> jogosList = new List<Jogos>();
-            cmd = new SqlCommand("select jogos.resultado, jogos.data, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from jogos " +
+            cmd = new SqlCommand("select jogos.cod_camp as cod_camp,jogos.cod_time1, jogos.cod_time2 ,jogos.resultado, jogos.data, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from jogos " +
                 "inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time " +
                 "inner join jogadores as jo2 on jo2.cod_time = t2.cod_time inner join campeonatos on jogos.cod_camp = campeonatos.cod_camp group by jogos.cod_time1, jogos.cod_time2, " +
                 "jogos.cod_camp, resultado, t1.nom_time, t2.nom_time, campeonatos.dsc_camp, jogos.data having resultado <> 0", conn);
@@ -343,6 +342,9 @@ namespace Sessao2Api.Data
                 if (salario1 > salario2 && resultado == 2)
                 {
                     Jogos jogos = new Jogos();
+                    jogos.Cod_camp = Convert.ToInt32(item["cod_camp"]);
+                    jogos.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
+                    jogos.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
                     jogos.Campeonatos = item["dsc_camp"].ToString();
                     jogos.Data = Convert.ToDateTime(item["data"]);
                     jogos.Time1 = item["time1"].ToString();

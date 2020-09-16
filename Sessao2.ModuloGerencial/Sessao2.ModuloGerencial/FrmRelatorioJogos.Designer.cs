@@ -31,6 +31,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnJogos3 = new System.Windows.Forms.Button();
+            this.lblData = new System.Windows.Forms.Label();
+            this.lblResultado = new System.Windows.Forms.Label();
+            this.lblTime2 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblTime1 = new System.Windows.Forms.Label();
+            this.lblCampeonato = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -68,6 +74,48 @@
             this.btnJogos3.Text = "Enviar";
             this.btnJogos3.UseVisualStyleBackColor = false;
             // 
+            // lblData
+            // 
+            this.lblData.Location = new System.Drawing.Point(0, 0);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(100, 23);
+            this.lblData.TabIndex = 0;
+            // 
+            // lblResultado
+            // 
+            this.lblResultado.Location = new System.Drawing.Point(0, 0);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(100, 23);
+            this.lblResultado.TabIndex = 0;
+            // 
+            // lblTime2
+            // 
+            this.lblTime2.Location = new System.Drawing.Point(0, 0);
+            this.lblTime2.Name = "lblTime2";
+            this.lblTime2.Size = new System.Drawing.Size(100, 23);
+            this.lblTime2.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 0;
+            // 
+            // lblTime1
+            // 
+            this.lblTime1.Location = new System.Drawing.Point(0, 0);
+            this.lblTime1.Name = "lblTime1";
+            this.lblTime1.Size = new System.Drawing.Size(100, 23);
+            this.lblTime1.TabIndex = 0;
+            // 
+            // lblCampeonato
+            // 
+            this.lblCampeonato.Location = new System.Drawing.Point(0, 0);
+            this.lblCampeonato.Name = "lblCampeonato";
+            this.lblCampeonato.Size = new System.Drawing.Size(100, 23);
+            this.lblCampeonato.TabIndex = 0;
+            // 
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(12, 37);
@@ -102,6 +150,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnJogos3;
+        private System.Windows.Forms.Label lblCampeonato;
+        private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.Label lblTime2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTime1;
         private System.Windows.Forms.Panel panel1;
     }
 }
