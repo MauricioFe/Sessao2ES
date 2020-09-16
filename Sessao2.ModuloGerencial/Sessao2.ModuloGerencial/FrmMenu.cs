@@ -17,7 +17,17 @@ namespace Sessao2.ModuloGerencial
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void FrmMenu_Load(object sender, EventArgs e)
         {
 
         }
