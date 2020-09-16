@@ -266,6 +266,7 @@ namespace Sessao2Api.Data
                 {
                     case 1:
                         Jogos jogos = new Jogos();
+                        jogos.Cod_camp = Convert.ToInt32(item["cod_camp"]);
                         jogos.Campeonatos = item["dsc_camp"].ToString();
                         jogos.Data = DateTime.Parse(item["data"].ToString());
                         jogos.Time1 = item["time1"].ToString();
@@ -275,6 +276,7 @@ namespace Sessao2Api.Data
                         break;
                     case 2:
                         Jogos jogos2 = new Jogos();
+                        jogos2.Cod_camp = Convert.ToInt32(item["cod_camp"]);
                         jogos2.Campeonatos = item["dsc_camp"].ToString();
                         jogos2.Data = DateTime.Parse(item["data"].ToString());
                         jogos2.Time1 = item["time1"].ToString();
@@ -284,6 +286,7 @@ namespace Sessao2Api.Data
                         break;
                     case 3:
                         Jogos jogos3 = new Jogos();
+                        jogos3.Cod_camp = Convert.ToInt32(item["cod_camp"]);
                         jogos3.Campeonatos = item["dsc_camp"].ToString();
                         jogos3.Data = DateTime.Parse(item["data"].ToString());
                         jogos3.Time1 = item["time1"].ToString();
@@ -293,6 +296,7 @@ namespace Sessao2Api.Data
                         break;
                     case 4:
                         Jogos jogos4 = new Jogos();
+                        jogos4.Cod_camp = Convert.ToInt32(item["cod_camp"]);
                         jogos4.Campeonatos = item["dsc_camp"].ToString();
                         jogos4.Data = DateTime.Parse(item["data"].ToString());
                         jogos4.Time1 = item["time1"].ToString();
@@ -302,6 +306,7 @@ namespace Sessao2Api.Data
                         break;
                     case 5:
                         Jogos jogos5 = new Jogos();
+                        jogos5.Cod_camp = Convert.ToInt32(item["cod_camp"]);
                         jogos5.Campeonatos = item["dsc_camp"].ToString();
                         jogos5.Data = DateTime.Parse(item["data"].ToString());
                         jogos5.Time1 = item["time1"].ToString();

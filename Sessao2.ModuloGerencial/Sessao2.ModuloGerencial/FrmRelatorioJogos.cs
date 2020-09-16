@@ -44,7 +44,7 @@ namespace Sessao2.ModuloGerencial
                         {
                             if (cont > 0)
                             {
-                                locationCampeonatos = pnlCampeonato.Height + (pnlJogos.Height * list.Count);
+                                locationCampeonatos = GeraPanelCampeonato(item.Campeonatos).Height + (GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")).Height * list.Count);
                                 locationJogos = locationCampeonatos++;
                             }
                             else
@@ -62,30 +62,29 @@ namespace Sessao2.ModuloGerencial
             }
         }
 
-        Panel pnlCampeonato;
+
+
         int locationCampeonatos = 0;
         public Panel GeraPanelCampeonato(string camp)
         {
-            pnlCampeonato = new Panel();
+            Panel pnlCampeonato = new Panel();
             pnlCampeonato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(107)))));
             pnlCampeonato.ForeColor = System.Drawing.Color.White;
             pnlCampeonato.Location = new System.Drawing.Point(0, 0 + locationCampeonatos);
             pnlCampeonato.Name = "pnlCampeonato";
-            pnlCampeonato.Size = new System.Drawing.Size(928, 36);
+            pnlCampeonato.Size = new System.Drawing.Size(928, 43);
             pnlCampeonato.TabIndex = 0;
             pnlCampeonato.Controls.Add(GeraLabelCameonato(camp));
-            locationCampeonatos += 200;
             return pnlCampeonato;
         }
-        Panel pnlJogos;
         int locationJogos = 0;
         public Panel GeraPanelJogos(string time1, string time2, int resultado, string data)
         {
-            pnlJogos = new Panel();
+            Panel pnlJogos = new Panel();
             pnlJogos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             pnlJogos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             pnlJogos.ForeColor = System.Drawing.Color.White;
-            pnlJogos.Location = new System.Drawing.Point(0, 36 + locationJogos);
+            pnlJogos.Location = new System.Drawing.Point(0, 43 + locationJogos);
             pnlJogos.Name = "pnlJogos";
             pnlJogos.Size = new System.Drawing.Size(928, 43);
             pnlJogos.TabIndex = 1;
@@ -93,7 +92,6 @@ namespace Sessao2.ModuloGerencial
             pnlJogos.Controls.Add(GeraLabelTime1(time1));
             pnlJogos.Controls.Add(GeraLabelTime2(time2));
             pnlJogos.Controls.Add(GeraLabelResultado(resultado));
-            locationJogos += 200;
             return pnlJogos;
         }
         private Label GeraLabelCameonato(string camp)
@@ -159,6 +157,48 @@ namespace Sessao2.ModuloGerencial
             if (cboTipoRelatorio.SelectedIndex == 2)
             {
                 GetJogosMenorSalarioGanhador();
+            } 
+            else if(cboTipoRelatorio.SelectedIndex == 1)
+            {
+                GetJogosDiferencaSalarialMaiorQue50();
+            }
+            else
+            {
+                GetJogosAtuarIntervaloMenorQue3Dias();
+            }
+        }
+
+        private async void GetJogosAtuarIntervaloMenorQue3Dias()
+        {
+            
+        }
+
+        private async void GetJogosDiferencaSalarialMaiorQue50()
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{URI}/GetJogosDiferencaSalarialMaiorQue50");
+                var jogos = await response.Content.ReadAsStringAsync();
+                jogosList = new JavaScriptSerializer().Deserialize<List<List<Jogos>>>(jogos);
+                int cont = 1;
+                foreach (var list in jogosList)
+                {
+                    if (list.Count > 0)
+                    {
+                        foreach (var item in list)
+                        {
+                            if (item.Cod_camp == cont)
+                            {
+                                panel1.Controls.Add(GeraPanelCampeonato(item.Campeonatos));
+                                locationCampeonatos = (list.Count * GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")).Height + GeraPanelCampeonato(item.Campeonatos).Height);
+                                cont++;
+                            }
+                            panel1.Controls.Add(GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")));
+                            locationJogos += GeraPanelCampeonato(item.Campeonatos).Height;
+                        }
+                    }
+                }
+
             }
         }
     }
