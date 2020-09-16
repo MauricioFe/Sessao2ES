@@ -323,9 +323,14 @@ namespace Sessao2Api.Data
             return teste;
         }
 
-        public IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu()
+        public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu()
         {
-            List<Jogos> jogosList = new List<Jogos>();
+            List<List<Jogos>> jogosList = new List<List<Jogos>>();
+            List<Jogos> jogosList1 = new List<Jogos>();
+            List<Jogos> jogosList2 = new List<Jogos>();
+            List<Jogos> jogosList3 = new List<Jogos>();
+            List<Jogos> jogosList4 = new List<Jogos>();
+            List<Jogos> jogosList5 = new List<Jogos>();
             cmd = new SqlCommand("select jogos.cod_camp as cod_camp,jogos.cod_time1, jogos.cod_time2 ,jogos.resultado, jogos.data, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from jogos " +
                 "inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time " +
                 "inner join jogadores as jo2 on jo2.cod_time = t2.cod_time inner join campeonatos on jogos.cod_camp = campeonatos.cod_camp group by jogos.cod_time1, jogos.cod_time2, " +
@@ -336,25 +341,85 @@ namespace Sessao2Api.Data
             adapter.Fill(dt);
             foreach (DataRow item in dt.Rows)
             {
+                var cod_camp = Convert.ToDecimal(item["cod_camp"]);
                 var salario1 = Convert.ToDecimal(item["salario1"]);
                 var salario2 = Convert.ToDecimal(item["salario2"]);
                 var resultado = Convert.ToInt32(item["resultado"]);
                 if (salario1 > salario2 && resultado == 2)
                 {
-                    Jogos jogos = new Jogos();
-                    jogos.Cod_camp = Convert.ToInt32(item["cod_camp"]);
-                    jogos.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
-                    jogos.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
-                    jogos.Campeonatos = item["dsc_camp"].ToString();
-                    jogos.Data = Convert.ToDateTime(item["data"]);
-                    jogos.Time1 = item["time1"].ToString();
-                    jogos.Time2 = item["time2"].ToString();
-                    jogos.Resultado = Convert.ToInt32(item["resultado"]);
-                    jogosList.Add(jogos);
+                    switch (cod_camp)
+                    {
+                        case 1:
+                            Jogos jogos1 = new Jogos();
+                            jogos1.Cod_camp = Convert.ToInt32(item["cod_camp"]);
+                            jogos1.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
+                            jogos1.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
+                            jogos1.Campeonatos = item["dsc_camp"].ToString();
+                            jogos1.Data = Convert.ToDateTime(item["data"]);
+                            jogos1.Time1 = item["time1"].ToString();
+                            jogos1.Time2 = item["time2"].ToString();
+                            jogos1.Resultado = Convert.ToInt32(item["resultado"]);
+                            jogosList1.Add(jogos1);
+                            break;
+                        case 2:
+                            Jogos jogos2 = new Jogos();
+                            jogos2.Cod_camp = Convert.ToInt32(item["cod_camp"]);
+                            jogos2.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
+                            jogos2.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
+                            jogos2.Campeonatos = item["dsc_camp"].ToString();
+                            jogos2.Data = Convert.ToDateTime(item["data"]);
+                            jogos2.Time1 = item["time1"].ToString();
+                            jogos2.Time2 = item["time2"].ToString();
+                            jogos2.Resultado = Convert.ToInt32(item["resultado"]);
+                            jogosList2.Add(jogos2);
+                            break;
+                        case 3:
+                            Jogos jogos3 = new Jogos();
+                            jogos3.Cod_camp = Convert.ToInt32(item["cod_camp"]);
+                            jogos3.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
+                            jogos3.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
+                            jogos3.Campeonatos = item["dsc_camp"].ToString();
+                            jogos3.Data = Convert.ToDateTime(item["data"]);
+                            jogos3.Time1 = item["time1"].ToString();
+                            jogos3.Time2 = item["time2"].ToString();
+                            jogos3.Resultado = Convert.ToInt32(item["resultado"]);
+                            jogosList3.Add(jogos3);
+                            break;
+                        case 4:
+                            Jogos jogos4 = new Jogos();
+                            jogos4.Cod_camp = Convert.ToInt32(item["cod_camp"]);
+                            jogos4.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
+                            jogos4.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
+                            jogos4.Campeonatos = item["dsc_camp"].ToString();
+                            jogos4.Data = Convert.ToDateTime(item["data"]);
+                            jogos4.Time1 = item["time1"].ToString();
+                            jogos4.Time2 = item["time2"].ToString();
+                            jogos4.Resultado = Convert.ToInt32(item["resultado"]);
+                            jogosList3.Add(jogos4);
+                            break;
+                        case 5:
+                            Jogos jogos5 = new Jogos();
+                            jogos5.Cod_camp = Convert.ToInt32(item["cod_camp"]);
+                            jogos5.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
+                            jogos5.Cod_time2 = Convert.ToInt32(item["cod_time2"]);
+                            jogos5.Campeonatos = item["dsc_camp"].ToString();
+                            jogos5.Data = Convert.ToDateTime(item["data"]);
+                            jogos5.Time1 = item["time1"].ToString();
+                            jogos5.Time2 = item["time2"].ToString();
+                            jogos5.Resultado = Convert.ToInt32(item["resultado"]);
+                            jogosList3.Add(jogos5);
+                            break;
+                    }
+
                 }
             }
             conn.Close();
 
+            jogosList.Add(jogosList1);
+            jogosList.Add(jogosList2);
+            jogosList.Add(jogosList3);
+            jogosList.Add(jogosList4);
+            jogosList.Add(jogosList5);
             return jogosList;
         }
     }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboTipoRelatorio = new System.Windows.Forms.ComboBox();
             this.btnJogos3 = new System.Windows.Forms.Button();
             this.lblData = new System.Windows.Forms.Label();
             this.lblResultado = new System.Windows.Forms.Label();
@@ -49,17 +49,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Selecione um relatório";
             // 
-            // comboBox1
+            // cboTipoRelatorio
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboTipoRelatorio.FormattingEnabled = true;
+            this.cboTipoRelatorio.Items.AddRange(new object[] {
             "Jogos que fizeram uma equipe atuar em um intervalo menor que 3 dia",
             "Jogos em que a diferença salarial de um time para o outro seja menor que 50%",
             "jogos em que o time de menor folha salarial venceu"});
-            this.comboBox1.Location = new System.Drawing.Point(191, 6);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(636, 25);
-            this.comboBox1.TabIndex = 1;
+            this.cboTipoRelatorio.Location = new System.Drawing.Point(191, 6);
+            this.cboTipoRelatorio.Name = "cboTipoRelatorio";
+            this.cboTipoRelatorio.Size = new System.Drawing.Size(636, 25);
+            this.cboTipoRelatorio.TabIndex = 1;
             // 
             // btnJogos3
             // 
@@ -73,6 +73,7 @@
             this.btnJogos3.TabIndex = 4;
             this.btnJogos3.Text = "Enviar";
             this.btnJogos3.UseVisualStyleBackColor = false;
+            this.btnJogos3.Click += new System.EventHandler(this.btnJogos3_Click);
             // 
             // lblData
             // 
@@ -131,7 +132,7 @@
             this.ClientSize = new System.Drawing.Size(952, 596);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnJogos3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboTipoRelatorio);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -148,7 +149,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboTipoRelatorio;
         private System.Windows.Forms.Button btnJogos3;
         private System.Windows.Forms.Label lblCampeonato;
         private System.Windows.Forms.Label lblData;

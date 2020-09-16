@@ -18,14 +18,14 @@ namespace Sessao2.ModuloGerencial
         public FrmRelatorioJogos()
         {
             InitializeComponent();
-            
+
         }
         string URI = "http://localhost:5005/wstowers/api/jogos";
-        List<Jogos> jogosList = new List<Jogos>();
+        List<List<Jogos>> jogosList = new List<List<Jogos>>();
         private void FrmRelatorioJogos_Load(object sender, EventArgs e)
         {
-            GetJogosMenorSalarioGanhador();
-            
+
+
         }
         public async void GetJogosMenorSalarioGanhador()
         {
@@ -34,37 +34,58 @@ namespace Sessao2.ModuloGerencial
             {
                 var response = await client.GetAsync($"{URI}/GetJogosMenorFolhaSalarialVenceu");
                 var jogos = await response.Content.ReadAsStringAsync();
-                string cod_campTemp = null;
-                jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
-                foreach (var item in jogosList)
+                jogosList = new JavaScriptSerializer().Deserialize<List<List<Jogos>>>(jogos);
+                int cont = 0;
+                foreach (var list in jogosList)
                 {
-                    cod_campTemp = item.Campeonatos
-                    panel1.Controls.Add(GeraPanelCampeonato(item.Campeonatos));
-                    panel1.Controls.Add(GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")));
+                    if (list.Count > 0)
+                    {
+                        foreach (var item in list)
+                        {
+                            if (cont > 0)
+                            {
+                                locationCampeonatos = pnlCampeonato.Height + (pnlJogos.Height * list.Count);
+                                locationJogos = locationCampeonatos++;
+                            }
+                            else
+                            {
+                                locationCampeonatos = 0;
+                                locationJogos = 0;
+                            }
+                            panel1.Controls.Add(GeraPanelCampeonato(item.Campeonatos));
+                            panel1.Controls.Add(GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")));
+                            cont++;
+                        }
+                    }
                 }
+
             }
         }
-        int location = 0;
+
+        Panel pnlCampeonato;
+        int locationCampeonatos = 0;
         public Panel GeraPanelCampeonato(string camp)
         {
-            Panel pnlCampeonato = new Panel();
+            pnlCampeonato = new Panel();
             pnlCampeonato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(187)))), ((int)(((byte)(107)))));
             pnlCampeonato.ForeColor = System.Drawing.Color.White;
-            pnlCampeonato.Location = new System.Drawing.Point(0, 0);
+            pnlCampeonato.Location = new System.Drawing.Point(0, 0 + locationCampeonatos);
             pnlCampeonato.Name = "pnlCampeonato";
             pnlCampeonato.Size = new System.Drawing.Size(928, 36);
             pnlCampeonato.TabIndex = 0;
             pnlCampeonato.Controls.Add(GeraLabelCameonato(camp));
+            locationCampeonatos += 200;
             return pnlCampeonato;
         }
-
+        Panel pnlJogos;
+        int locationJogos = 0;
         public Panel GeraPanelJogos(string time1, string time2, int resultado, string data)
         {
-            Panel pnlJogos = new Panel();
+            pnlJogos = new Panel();
             pnlJogos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(89)))), ((int)(((byte)(89)))));
             pnlJogos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             pnlJogos.ForeColor = System.Drawing.Color.White;
-            pnlJogos.Location = new System.Drawing.Point(0, 36 + location);
+            pnlJogos.Location = new System.Drawing.Point(0, 36 + locationJogos);
             pnlJogos.Name = "pnlJogos";
             pnlJogos.Size = new System.Drawing.Size(928, 43);
             pnlJogos.TabIndex = 1;
@@ -72,8 +93,7 @@ namespace Sessao2.ModuloGerencial
             pnlJogos.Controls.Add(GeraLabelTime1(time1));
             pnlJogos.Controls.Add(GeraLabelTime2(time2));
             pnlJogos.Controls.Add(GeraLabelResultado(resultado));
-            location += 43;
-
+            locationJogos += 200;
             return pnlJogos;
         }
         private Label GeraLabelCameonato(string camp)
@@ -99,7 +119,7 @@ namespace Sessao2.ModuloGerencial
             return lblData;
         }
 
-        private Label GeraLabelTime1 (string time1)
+        private Label GeraLabelTime1(string time1)
         {
             Label lblTime1 = new Label();
             lblTime1.AutoSize = true;
@@ -129,9 +149,17 @@ namespace Sessao2.ModuloGerencial
             lblResultado.Name = "lblResultado";
             lblResultado.Size = new System.Drawing.Size(88, 17);
             lblResultado.TabIndex = 4;
-            lblResultado.Text = resultado ==1 ?"Vencedor: Casa": "Vencedor: Fora";
+            lblResultado.Text = resultado == 1 ? "Vencedor: Casa" : "Vencedor: Fora";
             return lblResultado;
         }
 
+        private void btnJogos3_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            if (cboTipoRelatorio.SelectedIndex == 2)
+            {
+                GetJogosMenorSalarioGanhador();
+            }
+        }
     }
 }

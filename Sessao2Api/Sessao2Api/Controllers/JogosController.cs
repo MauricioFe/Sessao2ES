@@ -49,7 +49,7 @@ namespace Sessao2Api.Controllers
 
         [HttpGet]
         [Route("GetJogosMenorFolhaSalarialVenceu")]
-        public IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu()
+        public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu()
         {
             return _dal.GetJogosMenorFolhaSalarialVenceu();
         }

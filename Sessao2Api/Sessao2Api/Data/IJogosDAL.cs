@@ -11,7 +11,7 @@ namespace Sessao2Api.Data
         IEnumerable<Jogos> GetAll();
         IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias();
         IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50();
-        IEnumerable<Jogos> GetJogosMenorFolhaSalarialVenceu();
+        IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu();
         IEnumerable<Jogos> GetJogosArte();
         void Add(Jogos jogos);
         void Update(Jogos jogos, int codCampeonato, int codTime1, int codTime2);
