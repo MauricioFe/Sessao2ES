@@ -20,6 +20,7 @@ namespace Sessao2Api.Data
         {
             _conn = config.GetConnectionString("DefaultConnection");
             conn = new SqlConnection(_conn);
+            GetCampeonatosResultado();
         }
 
         SqlCommand cmd;
