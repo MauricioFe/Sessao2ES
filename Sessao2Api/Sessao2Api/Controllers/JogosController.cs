@@ -69,7 +69,7 @@ namespace Sessao2Api.Controllers
         [Route("wstowers/api/relatorios/GetJogosMenorFolhaSalarialVenceu")]
         public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu([FromHeader] string tokenTowersGerencia, [FromHeader] string tipoRetorno)
         {
-            
+
             if (tokenTowersGerencia != "fb29e141-7b39-46a0-a36d-e5ae3c828da9")
             {
                 return null;
