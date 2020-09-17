@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml;
 using Microsoft.AspNetCore.Mvc;
 using Sessao2Api.Data;
 using Sessao2Api.Models;
@@ -10,7 +11,6 @@ using Sessao2Api.Models;
 
 namespace Sessao2Api.Controllers
 {
-    [Route("wstowers/api/[controller]")]
     [ApiController]
     public class JogosController : ControllerBase
     {
@@ -20,52 +20,69 @@ namespace Sessao2Api.Controllers
         {
             _dal = dal;
         }
-
+        [Route("wstowers/api/[controller]")]
         [HttpGet]
         public IEnumerable<Jogos> Get()
         {
             return _dal.GetAll();
         }
         [HttpGet]
-        [Route("arte")]
+        [Route("wstowers/api/[controller]/arte")]
         public IEnumerable<Jogos> GetArt()
         {
             return _dal.GetJogosArte();
         }
         [HttpGet]
-        [Route("GetJogosDiferencaSalarialMaiorQue50")]
-        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50([FromHeader] string tokenTowersGerencia)
+        [Route("wstowers/api/relatorios/GetJogosDiferencaSalarialMaiorQue50")]
+        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50([FromHeader] string tokenTowersGerencia, [FromHeader] string tipoRetorno)
         {
             if (tokenTowersGerencia != "fb29e141-7b39-46a0-a36d-e5ae3c828da9")
             {
                 return null;
+            }
+            if (tipoRetorno == "XML")
+            {
+                HttpContext.Response.ContentType = "Application/xml";
+                return _dal.GetJogosDiferencaSalarialMaiorQue50();
             }
             return _dal.GetJogosDiferencaSalarialMaiorQue50();
         }
 
         [HttpGet]
-        [Route("GetJogosAtuarIntervaloMenorQue3Dias")]
-        public IEnumerable<List<Jogos>> GetJogosAtuarIntervaloMenorQue3Dias([FromHeader] string tokenTowersGerencia)
+
+        [Route("wstowers/api/relatorios/GetJogosAtuarIntervaloMenorQue3Dias")]
+        public IEnumerable<List<Jogos>> GetJogosAtuarIntervaloMenorQue3Dias([FromHeader] string tokenTowersGerencia, [FromHeader] string tipoDeRetorno)
         {
             if (tokenTowersGerencia != "fb29e141-7b39-46a0-a36d-e5ae3c828da9")
             {
                 return null;
+            }
+            if (tipoDeRetorno == "XML")
+            {
+                HttpContext.Response.ContentType = "Application/xml";
+                return _dal.GetJogosAtuarIntervaloMenorQue3Dias();
             }
             return _dal.GetJogosAtuarIntervaloMenorQue3Dias();
         }
 
         [HttpGet]
-        [Route("GetJogosMenorFolhaSalarialVenceu")]
-        public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu([FromHeader] string tokenTowersGerencia)
+        [Route("wstowers/api/relatorios/GetJogosMenorFolhaSalarialVenceu")]
+        public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu([FromHeader] string tokenTowersGerencia, [FromHeader] string tipoRetorno)
         {
+            
             if (tokenTowersGerencia != "fb29e141-7b39-46a0-a36d-e5ae3c828da9")
             {
                 return null;
             }
+            if (tipoRetorno == "XML")
+            {
+                HttpContext.Response.ContentType = "Application/xml";
+                return _dal.GetJogosMenorFolhaSalarialVenceu();
+            }
             return _dal.GetJogosMenorFolhaSalarialVenceu();
         }
         [HttpPost]
-        [Route("cadastrar")]
+        [Route("wstowers/api/[controller]/cadastrar")]
         public IActionResult Post([FromBody] Jogos jogos)
         {
             if (jogos == null)
@@ -90,7 +107,7 @@ namespace Sessao2Api.Controllers
             return Ok("Operação realizada com sucesso");
         }
 
-        [Route("atualizar/{codCamp}/{codtime1}/{codtime2}")]
+        [Route("wstowers/api/[controller]/atualizar/{codCamp}/{codtime1}/{codtime2}")]
         public IActionResult Put(int codCamp, int codTime1, int codTime2, [FromBody] Jogos jogos)
         {
             if (jogos == null)
@@ -101,7 +118,7 @@ namespace Sessao2Api.Controllers
             return Ok("Operação realizada com sucesso");
         }
 
-        [Route("excluir/{codCamp}/{codtime1}/{codtime2}")]
+        [Route("wstowers/api/[controller]/excluir/{codCamp}/{codtime1}/{codtime2}")]
         public IActionResult Delete(int codCamp, int codTime1, int codTime2)
         {
             _dal.Remove(codCamp, codTime1, codTime2);

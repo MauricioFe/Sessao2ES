@@ -20,7 +20,7 @@ namespace Sessao2.ModuloGerencial
             InitializeComponent();
 
         }
-        string URI = "http://localhost:5005/wstowers/api/jogos";
+        string URI = "http://localhost:5005/wstowers/api/relatorios";
         List<List<Jogos>> jogosList = new List<List<Jogos>>();
         private void FrmRelatorioJogos_Load(object sender, EventArgs e)
         {

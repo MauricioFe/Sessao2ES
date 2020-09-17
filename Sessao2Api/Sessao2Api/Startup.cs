@@ -33,6 +33,7 @@ namespace Sessao2Api
             services.AddTransient<IPosicoesDAL, PosicoesDAL>();
             services.AddTransient<IEstadiosDAL, EstadiosDAL>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().AddXmlDataContractSerializerFormatters();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
