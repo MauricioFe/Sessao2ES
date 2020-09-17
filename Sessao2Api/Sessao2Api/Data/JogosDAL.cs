@@ -182,7 +182,7 @@ namespace Sessao2Api.Data
             List<Jogos> jogosList3Dias4 = new List<Jogos>();
             List<Jogos> jogosList3Dias5 = new List<Jogos>();
             List<List<Jogos>> jogosPorCampeonatoList = new List<List<Jogos>>();
-            cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 ", conn);
+            cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2,data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 ", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             conn.Open();
@@ -206,7 +206,7 @@ namespace Sessao2Api.Data
                 var cod_camp = Convert.ToInt32(item.Cod_camp);
                 var data3 = data.AddDays(2);
                 //time 1
-                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time1} or jogos.cod_time2 = {time1}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.resultado, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time1} or jogos.cod_time2 = {time1}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 conn.Open();
@@ -223,6 +223,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias1.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias1.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias1.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias1.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias1.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias1.Campeonatos= jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias1.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias1.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias1.Add(jogo3Dias1);
                                 break;
@@ -231,6 +235,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias2.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias2.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias2.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias2.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias2.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias2.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias2.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias2.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias2.Add(jogo3Dias2);
                                 break;
@@ -239,6 +247,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias3.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias3.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias3.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias3.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias3.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias3.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias3.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias3.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias3.Add(jogo3Dias3);
                                 break;
@@ -247,6 +259,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias4.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias4.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias4.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias4.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias4.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias4.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias4.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias4.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias4.Add(jogo3Dias4);
                                 break;
@@ -255,6 +271,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias5.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias5.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias5.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias5.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias5.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias5.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias5.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias5.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias5.Add(jogo3Dias5);
                                 break;
@@ -263,7 +283,7 @@ namespace Sessao2Api.Data
                     }
                 }
                 //time 2
-                cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time2} or jogos.cod_time2 = {time2}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.resultado, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time2} or jogos.cod_time2 = {time2}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 conn.Open();
@@ -280,6 +300,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias1.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias1.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias1.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias1.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias1.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias1.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias1.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias1.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias1.Add(jogo3Dias1);
                                 break;
@@ -288,6 +312,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias2.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias2.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias2.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias2.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias2.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias2.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias2.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias2.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias2.Add(jogo3Dias2);
                                 break;
@@ -296,6 +324,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias3.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias3.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias3.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias3.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias3.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias3.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias3.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias3.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias3.Add(jogo3Dias3);
                                 break;
@@ -304,6 +336,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias4.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias4.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias4.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias4.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias4.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias4.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias4.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias4.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias4.Add(jogo3Dias4);
                                 break;
@@ -312,6 +348,10 @@ namespace Sessao2Api.Data
                                 jogo3Dias5.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
                                 jogo3Dias5.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
                                 jogo3Dias5.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias5.Time1 = jogoIntervaloMenor3["time1"].ToString();
+                                jogo3Dias5.Time2 = jogoIntervaloMenor3["time2"].ToString();
+                                jogo3Dias5.Campeonatos = jogoIntervaloMenor3["dsc_camp"].ToString();
+                                jogo3Dias5.Resultado = Convert.ToInt32(jogoIntervaloMenor3["resultado"]);
                                 jogo3Dias5.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
                                 jogosList3Dias5.Add(jogo3Dias5);
                                 break;

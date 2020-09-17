@@ -181,7 +181,37 @@ namespace Sessao2.ModuloGerencial
 
         private async void GetJogosAtuarIntervaloMenorQue3Dias()
         {
-            
+            locationCampeonatos = 0;
+            locationJogos = 0;
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{URI}/GetJogosAtuarIntervaloMenorQue3Dias");
+                var jogos = await response.Content.ReadAsStringAsync();
+                jogosList = new JavaScriptSerializer().Deserialize<List<List<Jogos>>>(jogos);
+                int cont = 1;
+                foreach (var list in jogosList)
+                {
+                    if (list.Count > 0)
+                    {
+                        foreach (var item in list)
+                        {
+                            if (item.Cod_camp == cont)
+                            {
+                                panel1.Controls.Add(GeraPanelCampeonato(item.Campeonatos));
+                                locationCampeonatos += (list.Count * GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")).Height + GeraPanelCampeonato(item.Campeonatos).Height);
+                                cont++;
+                                if (locationJogos != 0)
+                                {
+                                    locationJogos += 43;
+                                }
+                            }
+                            panel1.Controls.Add(GeraPanelJogos(item.Time1, item.Time2, item.Resultado, item.Data.ToString("dd/MM/yyyy")));
+                            locationJogos += GeraPanelCampeonato(item.Campeonatos).Height;
+                        }
+                    }
+                }
+
+            }
         }
 
         private async void GetJogosDiferencaSalarialMaiorQue50()
