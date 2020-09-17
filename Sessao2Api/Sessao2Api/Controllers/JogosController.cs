@@ -34,23 +34,34 @@ namespace Sessao2Api.Controllers
         }
         [HttpGet]
         [Route("GetJogosDiferencaSalarialMaiorQue50")]
-        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50()
+        public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50([FromHeader] string tokenTowersGerencia)
         {
+            if (tokenTowersGerencia != "fb29e141-7b39-46a0-a36d-e5ae3c828da9")
+            {
+                return null;
+            }
             return _dal.GetJogosDiferencaSalarialMaiorQue50();
         }
 
         [HttpGet]
         [Route("GetJogosAtuarIntervaloMenorQue3Dias")]
-        public IEnumerable<List<Jogos>> GetJogosAtuarIntervaloMenorQue3Dias()
+        public IEnumerable<List<Jogos>> GetJogosAtuarIntervaloMenorQue3Dias([FromHeader] string tokenTowersGerencia)
         {
-            //var teste = _dal.GetJogosAtuarIntervaloMenorQue3Dias().FirstOrDefault(j => j.Cod_camp == 5 && j.Cod_time1 == 10 && j.Cod_time2 == 7 && j.Data.ToString("yyyy-MM-dd") == "2020-03-27");
+            if (tokenTowersGerencia != "fb29e141-7b39-46a0-a36d-e5ae3c828da9")
+            {
+                return null;
+            }
             return _dal.GetJogosAtuarIntervaloMenorQue3Dias();
         }
 
         [HttpGet]
         [Route("GetJogosMenorFolhaSalarialVenceu")]
-        public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu()
+        public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu([FromHeader] string tokenTowersGerencia)
         {
+            if (tokenTowersGerencia != "fb29e141-7b39-46a0-a36d-e5ae3c828da9")
+            {
+                return null;
+            }
             return _dal.GetJogosMenorFolhaSalarialVenceu();
         }
         [HttpPost]

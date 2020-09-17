@@ -32,6 +32,7 @@ namespace Sessao2.ModuloGerencial
 
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("tokenTowersGerencia", "fb29e141-7b39-46a0-a36d-e5ae3c828da9");
                 var response = await client.GetAsync($"{URI}/GetJogosMenorFolhaSalarialVenceu");
                 var jogos = await response.Content.ReadAsStringAsync();
                 jogosList = new JavaScriptSerializer().Deserialize<List<List<Jogos>>>(jogos);
@@ -197,6 +198,7 @@ namespace Sessao2.ModuloGerencial
             locationJogos = 0;
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("tokenTowersGerencia", "fb29e141-7b39-46a0-a36d-e5ae3c828da9");
                 var response = await client.GetAsync($"{URI}/GetJogosAtuarIntervaloMenorQue3Dias");
                 var jogos = await response.Content.ReadAsStringAsync();
                 jogosList = new JavaScriptSerializer().Deserialize<List<List<Jogos>>>(jogos);
@@ -232,6 +234,7 @@ namespace Sessao2.ModuloGerencial
             locationJogos =0;
             using (var client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("tokenTowersGerencia", "fb29e141-7b39-46a0-a36d-e5ae3c828da9");
                 var response = await client.GetAsync($"{URI}/GetJogosDiferencaSalarialMaiorQue50");
                 var jogos = await response.Content.ReadAsStringAsync();
                 jogosList = new JavaScriptSerializer().Deserialize<List<List<Jogos>>>(jogos);
