@@ -9,7 +9,7 @@ namespace Sessao2Api.Data
     public interface IJogosDAL
     {
         IEnumerable<Jogos> GetAll();
-        IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias();
+        IEnumerable<List<Jogos>> GetJogosAtuarIntervaloMenorQue3Dias();
         IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50();
         IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu();
         IEnumerable<Jogos> GetJogosArte();

@@ -41,9 +41,9 @@ namespace Sessao2Api.Controllers
 
         [HttpGet]
         [Route("GetJogosAtuarIntervaloMenorQue3Dias")]
-        public IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias()
+        public IEnumerable<List<Jogos>> GetJogosAtuarIntervaloMenorQue3Dias()
         {
-            var teste = _dal.GetJogosAtuarIntervaloMenorQue3Dias().FirstOrDefault(j => j.Cod_camp == 5 && j.Cod_time1 == 10 && j.Cod_time2 == 7 && j.Data.ToString("yyyy-MM-dd") == "2020-03-27");
+            //var teste = _dal.GetJogosAtuarIntervaloMenorQue3Dias().FirstOrDefault(j => j.Cod_camp == 5 && j.Cod_time1 == 10 && j.Cod_time2 == 7 && j.Data.ToString("yyyy-MM-dd") == "2020-03-27");
             return _dal.GetJogosAtuarIntervaloMenorQue3Dias();
         }
 

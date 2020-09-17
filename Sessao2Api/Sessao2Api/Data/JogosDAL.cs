@@ -173,10 +173,15 @@ namespace Sessao2Api.Data
             return jogosList;
         }
 
-        public IEnumerable<Jogos> GetJogosAtuarIntervaloMenorQue3Dias()
+        public IEnumerable<List<Jogos>> GetJogosAtuarIntervaloMenorQue3Dias()
         {
             List<Jogos> jogosList = new List<Jogos>();
-            List<Jogos> jogosList3Dias = new List<Jogos>();
+            List<Jogos> jogosList3Dias1 = new List<Jogos>();
+            List<Jogos> jogosList3Dias2 = new List<Jogos>();
+            List<Jogos> jogosList3Dias3 = new List<Jogos>();
+            List<Jogos> jogosList3Dias4 = new List<Jogos>();
+            List<Jogos> jogosList3Dias5 = new List<Jogos>();
+            List<List<Jogos>> jogosPorCampeonatoList = new List<List<Jogos>>();
             cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 ", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -185,6 +190,7 @@ namespace Sessao2Api.Data
             conn.Close();
             foreach (DataRow item in dt.Rows)
             {
+
                 Jogos jogos = new Jogos();
                 jogos.Cod_camp = Convert.ToInt32(item["cod_camp"]);
                 jogos.Cod_time1 = Convert.ToInt32(item["cod_time1"]);
@@ -210,12 +216,50 @@ namespace Sessao2Api.Data
                 {
                     foreach (DataRow jogoIntervaloMenor3 in dt.Rows)
                     {
-                        Jogos jogo3Dias = new Jogos();
-                        jogo3Dias.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
-                        jogo3Dias.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
-                        jogo3Dias.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
-                        jogo3Dias.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
-                        jogosList3Dias.Add(jogo3Dias);
+                        switch (cod_camp)
+                        {
+                            case 1:
+                                Jogos jogo3Dias1 = new Jogos();
+                                jogo3Dias1.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias1.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias1.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias1.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias1.Add(jogo3Dias1);
+                                break;
+                            case 2:
+                                Jogos jogo3Dias2 = new Jogos();
+                                jogo3Dias2.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias2.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias2.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias2.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias2.Add(jogo3Dias2);
+                                break;
+                            case 3:
+                                Jogos jogo3Dias3 = new Jogos();
+                                jogo3Dias3.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias3.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias3.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias3.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias3.Add(jogo3Dias3);
+                                break;
+                            case 4:
+                                Jogos jogo3Dias4 = new Jogos();
+                                jogo3Dias4.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias4.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias4.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias4.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias4.Add(jogo3Dias4);
+                                break;
+                            case 5:
+                                Jogos jogo3Dias5 = new Jogos();
+                                jogo3Dias5.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias5.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias5.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias5.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias5.Add(jogo3Dias5);
+                                break;
+                        }
+
                     }
                 }
                 //time 2
@@ -229,16 +273,58 @@ namespace Sessao2Api.Data
                 {
                     foreach (DataRow jogoIntervaloMenor3 in dt.Rows)
                     {
-                        Jogos jogo3Dias = new Jogos();
-                        jogo3Dias.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
-                        jogo3Dias.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
-                        jogo3Dias.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
-                        jogo3Dias.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
-                        jogosList3Dias.Add(jogo3Dias);
+                        switch (cod_camp)
+                        {
+                            case 1:
+                                Jogos jogo3Dias1 = new Jogos();
+                                jogo3Dias1.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias1.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias1.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias1.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias1.Add(jogo3Dias1);
+                                break;
+                            case 2:
+                                Jogos jogo3Dias2 = new Jogos();
+                                jogo3Dias2.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias2.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias2.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias2.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias2.Add(jogo3Dias2);
+                                break;
+                            case 3:
+                                Jogos jogo3Dias3 = new Jogos();
+                                jogo3Dias3.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias3.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias3.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias3.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias3.Add(jogo3Dias3);
+                                break;
+                            case 4:
+                                Jogos jogo3Dias4 = new Jogos();
+                                jogo3Dias4.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias4.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias4.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias4.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias4.Add(jogo3Dias4);
+                                break;
+                            case 5:
+                                Jogos jogo3Dias5 = new Jogos();
+                                jogo3Dias5.Cod_camp = Convert.ToInt32(jogoIntervaloMenor3["cod_camp"]);
+                                jogo3Dias5.Cod_time1 = Convert.ToInt32(jogoIntervaloMenor3["cod_time1"]);
+                                jogo3Dias5.Cod_time2 = Convert.ToInt32(jogoIntervaloMenor3["cod_time2"]);
+                                jogo3Dias5.Data = Convert.ToDateTime(jogoIntervaloMenor3["Data"]);
+                                jogosList3Dias5.Add(jogo3Dias5);
+                                break;
+                        }
                     }
                 }
             }
-            return jogosList3Dias;
+            jogosPorCampeonatoList.Add(jogosList3Dias1);
+            jogosPorCampeonatoList.Add(jogosList3Dias2);
+            jogosPorCampeonatoList.Add(jogosList3Dias3);
+            jogosPorCampeonatoList.Add(jogosList3Dias4);
+            jogosPorCampeonatoList.Add(jogosList3Dias5);
+            return jogosPorCampeonatoList;
         }
 
         public IEnumerable<List<Jogos>> GetJogosDiferencaSalarialMaiorQue50()
@@ -249,7 +335,7 @@ namespace Sessao2Api.Data
             List<Jogos> jogosList3 = new List<Jogos>();
             List<Jogos> jogosList4 = new List<Jogos>();
             List<Jogos> jogosList5 = new List<Jogos>();
-            List<List<Jogos>> teste = new List<List<Jogos>>();
+            List<List<Jogos>> jogosPorCampeonatoList = new List<List<Jogos>>();
             cmd = new SqlCommand("select jogos.cod_camp, jogos.data, jogos.resultado, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, SUM(jo.salario) as salario1, sum(jo2.salario) as salario2 from campeonatos inner join jogos on jogos.cod_camp = campeonatos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 inner join jogadores as jo on jo.cod_time = t1.cod_time inner join jogadores as jo2 on jo2.cod_time = t2.cod_time Group by jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, jogos.data, campeonatos.dsc_camp, t1.nom_time, t2.nom_time, jogos.resultado having(SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo.salario) * 0.5 OR (SUM(jo.salario) - SUM(jo2.salario)) > SUM(jo2.salario) * 0.5 OR(SUM(jo2.salario) - SUM(jo.salario)) > SUM(jo2.salario) * 0.5", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -319,13 +405,13 @@ namespace Sessao2Api.Data
 
             }
             conn.Close();
-            teste.Add(jogosList1);
-            teste.Add(jogosList2);
-            teste.Add(jogosList3);
-            teste.Add(jogosList4);
-            teste.Add(jogosList5);
+            jogosPorCampeonatoList.Add(jogosList1);
+            jogosPorCampeonatoList.Add(jogosList2);
+            jogosPorCampeonatoList.Add(jogosList3);
+            jogosPorCampeonatoList.Add(jogosList4);
+            jogosPorCampeonatoList.Add(jogosList5);
 
-            return teste;
+            return jogosPorCampeonatoList;
         }
 
         public IEnumerable<List<Jogos>> GetJogosMenorFolhaSalarialVenceu()
