@@ -90,6 +90,7 @@ namespace Sessao2.ModuloGerencial
             pnlJogos.TabIndex = 1;
             pnlJogos.Controls.Add(GeraLabelData(data));
             pnlJogos.Controls.Add(GeraLabelTime1(time1));
+            pnlJogos.Controls.Add(GeraLabelV());
             pnlJogos.Controls.Add(GeraLabelTime2(time2));
             pnlJogos.Controls.Add(GeraLabelResultado(resultado));
             return pnlJogos;
@@ -127,6 +128,17 @@ namespace Sessao2.ModuloGerencial
             lblTime1.TabIndex = 4;
             lblTime1.Text = time1;
             return lblTime1;
+        }   
+        private Label GeraLabelV()
+        {
+            Label lblV = new Label();
+            lblV.AutoSize = true;
+            lblV.Location = new System.Drawing.Point(140, 13);
+            lblV.Name = "lblV";
+            lblV.Size = new System.Drawing.Size(17, 18);
+            lblV.TabIndex = 1;
+            lblV.Text = "v";
+            return lblV;
         }
         private Label GeraLabelTime2(string time2)
         {

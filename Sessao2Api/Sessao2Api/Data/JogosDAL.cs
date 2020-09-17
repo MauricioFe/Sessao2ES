@@ -206,7 +206,7 @@ namespace Sessao2Api.Data
                 var cod_camp = Convert.ToInt32(item.Cod_camp);
                 var data3 = data.AddDays(2);
                 //time 1
-                cmd = new SqlCommand($"select jogos.cod_camp, jogos.resultado, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time1} or jogos.cod_time2 = {time1}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.resultado, c.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, jogos.cod_time1, jogos.cod_time2, data from jogos inner join campeonatos as c on c.cod_camp = jogos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where jogos.cod_camp = {cod_camp} and (jogos.cod_time1 = {time1} or jogos.cod_time2 = {time1}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 conn.Open();
@@ -283,7 +283,7 @@ namespace Sessao2Api.Data
                     }
                 }
                 //time 2
-                cmd = new SqlCommand($"select jogos.cod_camp, jogos.resultado, campeonatos.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, jogos.cod_time1, jogos.cod_time2, data from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where cod_camp = {cod_camp} and (jogos.cod_time1 = {time2} or jogos.cod_time2 = {time2}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
+                cmd = new SqlCommand($"select jogos.cod_camp, jogos.resultado, c.dsc_camp ,t1.nom_time as time1, t2.nom_time as time2, jogos.cod_time1, jogos.cod_time2, data from jogos inner join campeonatos as c on c.cod_camp = jogos.cod_camp inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where jogos.cod_camp = {cod_camp} and (jogos.cod_time1 = {time2} or jogos.cod_time2 = {time2}) and data between '{data.ToString("yyyy-MM-dd")}' and '{data3.ToString("yyyy-MM-dd")}'", conn);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 conn.Open();
