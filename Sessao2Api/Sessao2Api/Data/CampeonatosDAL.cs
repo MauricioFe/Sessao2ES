@@ -101,22 +101,81 @@ namespace Sessao2Api.Data
             List<Jogos> jogosList = new List<Jogos>();
             var codCamp = 0;
             var codTime = 0;
+            string nomeCamp = null;
+            string nomeTime = null;
             int vitoria = 0;
             int empate = 0;
             int derrota = 0;
-            int cont = 0;
+            cmd = new SqlCommand("select * from times", conn);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            conn.Open();
+            adapter.Fill(dt);
+            conn.Close();
+            foreach (DataRow times in dt.Rows)
+            {
+                codTime = Convert.ToInt32(times[0]);
+                nomeTime = times["nom_time"].ToString();
+                empate = 0;
+                vitoria = 0;
+                derrota = 0;
+                cmd = new SqlCommand("select * from Campeonatos", conn);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                conn.Open();
+                adapter.Fill(dt);
+                conn.Close();
+                foreach (DataRow campeonato in dt.Rows)
+                {
+                    codCamp = Convert.ToInt32(campeonato[0]);
+                    nomeCamp = campeonato["dsc_camp"].ToString();
+                    empate = 0;
+                    vitoria = 0;
+                    derrota = 0;
+                    cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, jogos.resultado from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where jogos.cod_camp = {codCamp} and(jogos.cod_time1 = {codTime} or jogos.cod_time2 = {codTime})", conn);
+                    adapter = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    conn.Open();
+                    adapter.Fill(dt);
+                    conn.Close();
 
-            //cmd = new SqlCommand("select * from times", conn);
-            //adapter = new SqlDataAdapter(cmd);
-            //dt = new DataTable();
-            //conn.Open();
-            //adapter.Fill(dt);
-            //conn.Close();
-            //foreach (DataRow item in dt.Rows)
-            //{
-            //    codTime = Convert.ToInt32(item[0]);
-            
-            return tabelaList;
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        if (Convert.ToInt32(item["resultado"]) == 0)
+                        {
+                            empate++;
+                        }
+                        else if (Convert.ToInt32(item["resultado"]) == 1 && Convert.ToInt32(item["cod_time1"]) == codTime)
+                        {
+                            vitoria++;
+                        }
+                        else if (Convert.ToInt32(item["resultado"]) == 2 && Convert.ToInt32(item["cod_time2"]) == codTime)
+                        {
+                            vitoria++;
+                        }
+                        else if (Convert.ToInt32(item["resultado"]) == 2 && Convert.ToInt32(item["cod_time1"]) == codTime)
+                        {
+                            derrota++;
+                        }
+                        else if (Convert.ToInt32(item["resultado"]) == 1 && Convert.ToInt32(item["cod_time2"]) == codTime)
+                        {
+                            derrota++;
+                        }
+                    }
+                    if (dt.Rows.Count > 0)
+                    {
+                        Tabela tabela = new Tabela();
+                        tabela.Campeonato = nomeCamp;
+                        tabela.Time = nomeTime;
+                        tabela.Vitorias = vitoria;
+                        tabela.Derrotas = derrota;
+                        tabela.Empate = empate;
+                        tabelaList.Add(tabela);
+                    }
+                }
+            }
+
+          return tabelaList;
 
         }
     }
