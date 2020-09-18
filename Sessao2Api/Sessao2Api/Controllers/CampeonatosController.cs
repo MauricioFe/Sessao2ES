@@ -28,6 +28,13 @@ namespace Sessao2Api.Controllers
             return _dal.GetAll();
         }
 
+        [HttpGet]
+        [Route("tabela")]
+        public IEnumerable<Tabela> GetTabela()
+        {
+            return _dal.GetTabelaCampeonatos();
+        }
+
         [HttpPost]
         [Route("cadastrar")]
         public IActionResult Post([FromHeader] string tokenTowersAdm, [FromBody] Campeonatos campeonatos)
