@@ -104,49 +104,18 @@ namespace Sessao2Api.Data
             int vitoria = 0;
             int empate = 0;
             int derrota = 0;
-            foreach (var item in GetAll())
-            {
-                codCamp = item.Cod_camp;
-                cmd = new SqlCommand("select * From times", conn);
-                adapter = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                conn.Open();
-                adapter.Fill(dt);
-                conn.Close();
-                foreach (DataRow linha in dt.Rows)
-                {
-                    codTime = Convert.ToInt32(linha[0]);
-                    cmd = new SqlCommand($"select jogos.cod_camp, jogos.cod_time1, jogos.cod_time2, jogos.resultado from jogos inner join times as t1 on t1.cod_time = jogos.cod_time1 inner join times as t2 on t2.cod_time = jogos.cod_time2 where jogos.cod_camp = {codCamp} and (jogos.cod_time1 = {codTime} or jogos.cod_time2 = {codTime})", conn);
-                    adapter = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    conn.Open();
-                    adapter.Fill(dt);
-                    conn.Close();
-                    foreach (DataRow linhaResultado in dt.Rows)
-                    {
-                        if (Convert.ToInt32(linhaResultado["resultado"]) == 0)
-                        {
-                            empate++;
-                        }
-                        else if (Convert.ToInt32(linhaResultado["resultado"]) == 1 && Convert.ToInt32(linhaResultado["cod_time1"]) == codTime)
-                        {
-                            vitoria++;
-                        }
-                        else if (Convert.ToInt32(linhaResultado["resultado"]) == 2 && Convert.ToInt32(linhaResultado["cod_time2"]) == codTime)
-                        {
-                            vitoria++;
-                        }
-                        else if (Convert.ToInt32(linhaResultado["resultado"]) == 2 && Convert.ToInt32(linhaResultado["cod_time1"]) == codTime)
-                        {
-                            derrota++;
-                        }
-                        else if (Convert.ToInt32(linhaResultado["resultado"]) == 1 && Convert.ToInt32(linhaResultado["cod_time2"]) == codTime)
-                        {
-                            derrota++;
-                        }
-                    }
-                }
-            }
+            int cont = 0;
+
+            //cmd = new SqlCommand("select * from times", conn);
+            //adapter = new SqlDataAdapter(cmd);
+            //dt = new DataTable();
+            //conn.Open();
+            //adapter.Fill(dt);
+            //conn.Close();
+            //foreach (DataRow item in dt.Rows)
+            //{
+            //    codTime = Convert.ToInt32(item[0]);
+            
             return tabelaList;
 
         }
