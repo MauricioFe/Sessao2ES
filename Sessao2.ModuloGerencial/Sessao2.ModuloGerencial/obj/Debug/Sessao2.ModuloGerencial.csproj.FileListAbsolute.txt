@@ -10,3 +10,4 @@ C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.pdb
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.FrmRelatorioJogos.resources
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.UcRelatorio.resources
+C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.FrmRelatoriosCampeonatos.resources

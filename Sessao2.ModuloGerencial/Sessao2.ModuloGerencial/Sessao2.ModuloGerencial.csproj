@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Models\Campeonato.cs" />
     <Compile Include="Models\Jogos.cs" />
+    <Compile Include="Models\Tabela.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UcRelatorio.cs">
@@ -81,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRelatorioJogos.resx">
       <DependentUpon>FrmRelatorioJogos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRelatoriosCampeonatos.resx">
+      <DependentUpon>FrmRelatoriosCampeonatos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
