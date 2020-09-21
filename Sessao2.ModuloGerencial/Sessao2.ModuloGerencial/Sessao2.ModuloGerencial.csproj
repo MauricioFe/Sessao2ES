@@ -60,6 +60,12 @@
     <Compile Include="FrmRelatorioJogos.Designer.cs">
       <DependentUpon>FrmRelatorioJogos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRelatoriosCampeonatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRelatoriosCampeonatos.Designer.cs">
+      <DependentUpon>FrmRelatoriosCampeonatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Campeonato.cs" />
     <Compile Include="Models\Jogos.cs" />
     <Compile Include="Program.cs" />

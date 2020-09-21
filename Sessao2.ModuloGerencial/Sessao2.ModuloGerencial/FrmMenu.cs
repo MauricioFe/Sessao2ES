@@ -40,8 +40,8 @@ namespace Sessao2.ModuloGerencial
 
         private void btnCampeonatos_Click(object sender, EventArgs e)
         {
-            //FrmRelatoriosCampeonatos form = new FrmRelatoriosCampeonatos();
-            //form.ShowDialog();
+            FrmRelatoriosCampeonatos form = new FrmRelatoriosCampeonatos();
+            form.ShowDialog();
         }
     }
 }
