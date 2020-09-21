@@ -37,5 +37,11 @@ namespace Sessao2.ModuloGerencial
             FrmRelatorioJogos form = new FrmRelatorioJogos();
             form.ShowDialog();
         }
+
+        private void btnCampeonatos_Click(object sender, EventArgs e)
+        {
+            //FrmRelatoriosCampeonatos form = new FrmRelatoriosCampeonatos();
+            //form.ShowDialog();
+        }
     }
 }

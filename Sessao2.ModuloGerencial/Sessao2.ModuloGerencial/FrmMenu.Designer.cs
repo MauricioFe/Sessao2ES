@@ -84,6 +84,7 @@
             this.btnCampeonatos.TabIndex = 4;
             this.btnCampeonatos.Text = "Campeonatos";
             this.btnCampeonatos.UseVisualStyleBackColor = false;
+            this.btnCampeonatos.Click += new System.EventHandler(this.btnCampeonatos_Click);
             // 
             // FrmMenu
             // 
