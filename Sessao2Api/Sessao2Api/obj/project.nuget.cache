@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PjmhqB07zVJIflMHsUQAmeINyvnAeuAAznGsQrCnfUf1wbiH6gcyYXzNXhcLhP+tVKKICB27Kjy1hM4IIovr5g==",
+  "dgSpecHash": "Za10KG3Ng7Q0PFsC/+3YWm2+vG+4y5/CzxlQryctLTCzeEcbE6cCf/bReflQkvL7gtUfhq+/GDiD8umwpxghyg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mauri\\Desktop\\Treinamento\\Provas Aprovadas\\Sessão 2\\Entregas\\Sessao2ES\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj",
+  "projectFilePath": "C:\\Users\\mauri\\Desktop\\Treinamento\\ProvasAprovadas\\Sessão 2\\Entregas\\Sessao2ES\\Sessao2Api\\Sessao2Api\\Sessao2Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mauri\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\mauri\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
