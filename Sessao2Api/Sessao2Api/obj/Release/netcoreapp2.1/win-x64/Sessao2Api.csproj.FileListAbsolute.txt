@@ -19,3 +19,24 @@ C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.dll
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.pdb
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.genruntimeconfig.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\appsettings.Development.json
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\appsettings.json
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\Properties\launchSettings.json
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\hostpolicy.dll
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\hostfxr.dll
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\Sessao2Api.exe
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\Sessao2Api.deps.json
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\Sessao2Api.runtimeconfig.json
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\Sessao2Api.runtimeconfig.dev.json
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\Sessao2Api.dll
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\bin\Release\netcoreapp2.1\win-x64\Sessao2Api.pdb
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.csprojAssemblyReference.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.AssemblyInfoInputs.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.AssemblyInfo.cs
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.csproj.CoreCompileInputs.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.RazorAssemblyInfo.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.RazorAssemblyInfo.cs
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.RazorTargetAssemblyInfo.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.dll
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.pdb
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2Api\Sessao2Api\obj\Release\netcoreapp2.1\win-x64\Sessao2Api.genruntimeconfig.cache

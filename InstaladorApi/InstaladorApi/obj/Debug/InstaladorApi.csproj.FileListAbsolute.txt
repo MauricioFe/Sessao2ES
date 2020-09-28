@@ -8,3 +8,13 @@ C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.exe
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.pdb
 C:\Users\mauri\Desktop\Treinamento\Provas Aprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.FrmApi.resources
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\bin\Debug\InstaladorApi.exe.config
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\bin\Debug\InstaladorApi.exe
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\bin\Debug\InstaladorApi.pdb
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.csprojAssemblyReference.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.FrmApi.resources
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.Properties.Resources.resources
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.csproj.GenerateResource.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.csproj.CoreCompileInputs.cache
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.exe
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\InstaladorApi\InstaladorApi\obj\Debug\InstaladorApi.pdb
