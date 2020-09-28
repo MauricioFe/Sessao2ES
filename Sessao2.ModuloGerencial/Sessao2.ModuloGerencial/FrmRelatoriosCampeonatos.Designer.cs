@@ -28,13 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.cboTipoRelatorio = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvTabela = new System.Windows.Forms.DataGridView();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabela)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEnviar
@@ -75,6 +80,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.chart1);
             this.panel1.Controls.Add(this.dgvTabela);
             this.panel1.Location = new System.Drawing.Point(24, 43);
             this.panel1.Name = "panel1";
@@ -84,11 +90,27 @@
             // dgvTabela
             // 
             this.dgvTabela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTabela.Location = new System.Drawing.Point(23, 26);
+            this.dgvTabela.Location = new System.Drawing.Point(3, 26);
             this.dgvTabela.Name = "dgvTabela";
-            this.dgvTabela.Size = new System.Drawing.Size(559, 324);
+            this.dgvTabela.Size = new System.Drawing.Size(504, 549);
             this.dgvTabela.TabIndex = 0;
             this.dgvTabela.Visible = false;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(528, 26);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(441, 549);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "chart1";
             // 
             // FrmRelatoriosCampeonatos
             // 
@@ -109,6 +131,7 @@
             this.Load += new System.EventHandler(this.FrmRelatoriosCampeonatos_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabela)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,5 +144,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvTabela;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
