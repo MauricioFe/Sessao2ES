@@ -67,6 +67,12 @@
     <Compile Include="FrmRelatoriosCampeonatos.Designer.cs">
       <DependentUpon>FrmRelatoriosCampeonatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmResultGraphClick.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmResultGraphClick.Designer.cs">
+      <DependentUpon>FrmResultGraphClick.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Campeonato.cs" />
     <Compile Include="Models\Jogos.cs" />
     <Compile Include="Models\Tabela.cs" />

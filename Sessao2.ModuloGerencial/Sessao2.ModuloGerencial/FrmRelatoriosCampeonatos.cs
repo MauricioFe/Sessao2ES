@@ -100,6 +100,7 @@ namespace Sessao2.ModuloGerencial
                 var jogos = await response.Content.ReadAsStringAsync();
                 var jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
                 FrmResultGraphClick form = new FrmResultGraphClick();
+                form.ShowDialog();
             }
         }
     }
