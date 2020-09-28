@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -16,6 +17,7 @@ namespace Sessao2.ModuloGerencial
             InitializeComponent();
         }
         string URI = "http://localhost:5005/wstowers/api/campeonatos";
+        string URI_JOGOS = "http://localhost:5005/wstowers/api";
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             if (cboTipoRelatorio.SelectedIndex == 0)
@@ -40,8 +42,10 @@ namespace Sessao2.ModuloGerencial
                 tabelaList = new JavaScriptSerializer().Deserialize<List<Tabela>>(tabela);
                 dgvTabela.DataSource = tabelaList;
                 chart1.DataSource = tabelaList;
+
                 foreach (var item in tabelaList)
                 {
+                    int n = dgvTabela.Rows.Add();
                     chart1.Series[0].Points.AddXY(item.Time + "\n" + item.Campeonato, item.Empate);
                     chart1.Series[1].Points.AddXY(item.Time, item.Vitorias);
                     chart1.Series[2].Points.AddXY(item.Time, item.Derrotas);
@@ -72,15 +76,30 @@ namespace Sessao2.ModuloGerencial
                 //Como o valor da posicao vem em pixels ele é um double com isso é arredondado para o inteiro mais proximo
                 pointEndX = Math.Round(pointEndX, 0);
 
-               //Aqui como o index de uma lista começa em 0 vou subtrair do pointEndX por 1 ja que a posição da
-               //primeira coluna é um e ficar compativel com o indice certo na lista.
+                //Aqui como o index de uma lista começa em 0 vou subtrair do pointEndX por 1 ja que a posição da
+                //primeira coluna é um e ficar compativel com o indice certo na lista.
                 int index = ((int)pointEndX) - 1;
                 //valido o index
                 if (index < 0 || index >= list.Count)
                     return;
                 //pego um objeto de tabela baseado no index clicado
                 var tabela = list[index];
-                MessageBox.Show(tabela.Campeonato + " " + tabela.Time);
+                
+                
+
+                
+                JogosTime(tabela.CodCamp, tabela.CodTime);
+            }
+        }
+
+        private async void JogosTime(int codCamp, int codTime)
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{URI}/jogos/{codCamp}/{codTime}");
+                var jogos = await response.Content.ReadAsStringAsync();
+                var jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
+                FrmResultGraphClick form = new FrmResultGraphClick();
             }
         }
     }

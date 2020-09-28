@@ -13,5 +13,7 @@ namespace Sessao2.ModuloGerencial.Models
         public int Derrotas { get; set; }
         public int Empate { get; set; }
         public int Vitorias { get; set; }
+        public int CodTime { get; set; }
+        public int CodCamp { get; set; }
     }
 }

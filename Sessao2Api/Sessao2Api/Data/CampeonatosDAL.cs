@@ -170,6 +170,8 @@ namespace Sessao2Api.Data
                         tabela.Vitorias = vitoria;
                         tabela.Derrotas = derrota;
                         tabela.Empate = empate;
+                        tabela.Codcamp = codCamp;
+                        tabela.CodTime = codTime;
                         tabelaList.Add(tabela);
                     }
                 }

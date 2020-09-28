@@ -553,5 +553,33 @@ namespace Sessao2Api.Data
             jogosList.Add(jogosList5);
             return jogosList;
         }
+
+        public IEnumerable<Jogos> GetTimeCampeonato(int codCamp, int codTime)
+        {
+            List<Jogos> jogosList = new List<Jogos>();
+            cmd = new SqlCommand($"select j.cod_camp, j.cod_time1,j.cod_time2, j.cod_estadio, j.data, j.resultado, c.dsc_camp, t1.nom_time, t2.nom_time, e.nom_est from jogos as j inner join campeonatos c on c.cod_camp = j.cod_camp inner join times as t1 on j.cod_time1 = t1.cod_time inner join times AS t2 on j.cod_time2 = t2.cod_time inner join estadios as e on j.cod_estadio = e.cod_est where (j.cod_time1 = {codTime} OR j.cod_time2 = {codTime}) AND j.cod_camp = {codCamp}", conn);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            conn.Open();
+            adapter.Fill(dt);
+            foreach (DataRow item in dt.Rows)
+            {
+                Jogos jogos = new Jogos();
+                jogos.Cod_camp = Convert.ToInt32(item[0]);
+                jogos.Cod_time1 = Convert.ToInt32(item[1]);
+                jogos.Cod_time2 = Convert.ToInt32(item[2]);
+                jogos.Cod_estadio = Convert.ToInt32(item[3]);
+                jogos.Data = Convert.ToDateTime(item[4]);
+                jogos.Resultado = Convert.ToInt32(item[5]);
+                jogos.Campeonatos = item[6].ToString();
+                jogos.Time1 = item[7].ToString();
+                jogos.Time2 = item[8].ToString();
+                jogos.Estadio = item[9].ToString();
+                jogosList.Add(jogos);
+            }
+            conn.Close();
+
+            return jogosList;
+        }
     }
 }
