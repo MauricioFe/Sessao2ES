@@ -45,7 +45,6 @@ namespace Sessao2.ModuloGerencial
 
                 foreach (var item in tabelaList)
                 {
-                    int n = dgvTabela.Rows.Add();
                     chart1.Series[0].Points.AddXY(item.Time + "\n" + item.Campeonato, item.Empate);
                     chart1.Series[1].Points.AddXY(item.Time, item.Vitorias);
                     chart1.Series[2].Points.AddXY(item.Time, item.Derrotas);
@@ -89,6 +88,7 @@ namespace Sessao2.ModuloGerencial
 
                 
                 JogosTime(tabela.CodCamp, tabela.CodTime);
+                MessageBox.Show("Aguarde alguns segundo para processar a requisicao");
             }
         }
 
@@ -96,10 +96,10 @@ namespace Sessao2.ModuloGerencial
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync($"{URI}/jogos/{codCamp}/{codTime}");
+                var response = await client.GetAsync($"{URI_JOGOS}/jogos/{codCamp}/{codTime}");
                 var jogos = await response.Content.ReadAsStringAsync();
                 var jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
-                FrmResultGraphClick form = new FrmResultGraphClick();
+                FrmResultGraphClick form = new FrmResultGraphClick(jogosList);
                 form.ShowDialog();
             }
         }

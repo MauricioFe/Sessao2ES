@@ -24,3 +24,4 @@ C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\
 C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.csproj.CoreCompileInputs.cache
 C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.exe
 C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.pdb
+C:\Users\mauri\Desktop\Treinamento\ProvasAprovadas\Sessão 2\Entregas\Sessao2ES\Sessao2.ModuloGerencial\Sessao2.ModuloGerencial\obj\Debug\Sessao2.ModuloGerencial.FrmResultGraphClick.resources

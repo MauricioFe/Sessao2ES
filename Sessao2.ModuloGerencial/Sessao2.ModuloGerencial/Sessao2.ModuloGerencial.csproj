@@ -93,6 +93,9 @@
     <EmbeddedResource Include="FrmRelatoriosCampeonatos.resx">
       <DependentUpon>FrmRelatoriosCampeonatos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmResultGraphClick.resx">
+      <DependentUpon>FrmResultGraphClick.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
