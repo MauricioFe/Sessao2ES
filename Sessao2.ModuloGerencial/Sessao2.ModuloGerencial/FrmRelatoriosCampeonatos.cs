@@ -70,6 +70,8 @@ namespace Sessao2.ModuloGerencial
             {
                 //pegando a posição aproximada a partir do click do mouse em pixels
                 var pointEndX = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                var bacon = chart1.Series[0].Name;
+
                 //instaciando a lista que está no data source do grafico
                 var list = (List<Tabela>)chart1.DataSource;
                 //Como o valor da posicao vem em pixels ele é um double com isso é arredondado para o inteiro mais proximo
@@ -82,11 +84,20 @@ namespace Sessao2.ModuloGerencial
                 if (index < 0 || index >= list.Count)
                     return;
                 //pego um objeto de tabela baseado no index clicado
+                int resultado;
                 var tabela = list[index];
-                
-                
+                if (bacon == "Empates")
+                {
 
-                
+                }
+                else if(bacon == "Vitorias")
+                {
+
+                }
+                else
+                {
+
+                }
                 JogosTime(tabela.CodCamp, tabela.CodTime);
                 MessageBox.Show("Aguarde alguns segundo para processar a requisicao");
             }
