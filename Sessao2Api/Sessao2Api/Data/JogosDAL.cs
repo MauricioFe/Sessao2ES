@@ -554,10 +554,10 @@ namespace Sessao2Api.Data
             return jogosList;
         }
 
-        public IEnumerable<Jogos> GetTimeCampeonato(int codCamp, int codTime)
+        public IEnumerable<Jogos> GetTimeCampeonato(int codCamp, int codTime, int resultado)
         {
             List<Jogos> jogosList = new List<Jogos>();
-            cmd = new SqlCommand($"select j.cod_camp, j.cod_time1,j.cod_time2, j.cod_estadio, j.data, j.resultado, c.dsc_camp, t1.nom_time, t2.nom_time, e.nom_est from jogos as j inner join campeonatos c on c.cod_camp = j.cod_camp inner join times as t1 on j.cod_time1 = t1.cod_time inner join times AS t2 on j.cod_time2 = t2.cod_time inner join estadios as e on j.cod_estadio = e.cod_est where (j.cod_time1 = {codTime} OR j.cod_time2 = {codTime}) AND j.cod_camp = {codCamp}", conn);
+            cmd = new SqlCommand($"select j.cod_camp, j.cod_time1,j.cod_time2, j.cod_estadio, j.data, j.resultado, c.dsc_camp, t1.nom_time, t2.nom_time, e.nom_est from jogos as j inner join campeonatos c on c.cod_camp = j.cod_camp inner join times as t1 on j.cod_time1 = t1.cod_time inner join times AS t2 on j.cod_time2 = t2.cod_time inner join estadios as e on j.cod_estadio = e.cod_est where (j.cod_time1 = {codTime} OR j.cod_time2 = {codTime}) AND j.cod_camp = {codCamp} and resultado = {resultado}", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             conn.Open();

@@ -70,7 +70,7 @@ namespace Sessao2.ModuloGerencial
             {
                 //pegando a posição aproximada a partir do click do mouse em pixels
                 var pointEndX = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                var bacon = chart1.Series[0].Name;
+                var bacon = result.Series.Name;
 
                 //instaciando a lista que está no data source do grafico
                 var list = (List<Tabela>)chart1.DataSource;
@@ -84,30 +84,29 @@ namespace Sessao2.ModuloGerencial
                 if (index < 0 || index >= list.Count)
                     return;
                 //pego um objeto de tabela baseado no index clicado
-                int resultado;
                 var tabela = list[index];
                 if (bacon == "Empates")
                 {
-
+                    JogosTime(tabela.CodCamp, tabela.CodTime, 0);
                 }
-                else if(bacon == "Vitorias")
+                else if (bacon == "Vitorias")
                 {
-
+                    JogosTime(tabela.CodCamp, tabela.CodTime, 1);
                 }
-                else
+                else if (bacon == "Derrotas")
                 {
-
+                    JogosTime(tabela.CodCamp, tabela.CodTime, 2);
                 }
-                JogosTime(tabela.CodCamp, tabela.CodTime);
+
                 MessageBox.Show("Aguarde alguns segundo para processar a requisicao");
             }
         }
 
-        private async void JogosTime(int codCamp, int codTime)
+        private async void JogosTime(int codCamp, int codTime, int resultado)
         {
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync($"{URI_JOGOS}/jogos/{codCamp}/{codTime}");
+                var response = await client.GetAsync($"{URI_JOGOS}/jogos/{codCamp}/{codTime}/{resultado}");
                 var jogos = await response.Content.ReadAsStringAsync();
                 var jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
                 FrmResultGraphClick form = new FrmResultGraphClick(jogosList);

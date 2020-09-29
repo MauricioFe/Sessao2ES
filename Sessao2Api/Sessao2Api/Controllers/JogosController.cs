@@ -27,10 +27,10 @@ namespace Sessao2Api.Controllers
             return _dal.GetAll();
         }
         [HttpGet]
-        [Route("wstowers/api/[controller]/{codCamp}/{codTime}")]
-        public IEnumerable<Jogos> GetByCampTime(int codCamp, int codTime)
+        [Route("wstowers/api/[controller]/{codCamp}/{codTime}/{resultado}")]
+        public IEnumerable<Jogos> GetByCampTime(int codCamp, int codTime, int resultado)
         {
-            return _dal.GetTimeCampeonato(codCamp, codTime);
+            return _dal.GetTimeCampeonato(codCamp, codTime, resultado);
         }
         [HttpGet]
         [Route("wstowers/api/[controller]/arte")]

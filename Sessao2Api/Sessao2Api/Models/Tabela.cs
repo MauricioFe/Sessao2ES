@@ -12,7 +12,8 @@ namespace Sessao2Api.Models
         public int Derrotas { get; set; }
         public int Empate { get; set; }
         public int Vitorias { get; set; }
-        public int CodTime { get;  set; }
-        public int Codcamp { get;  set; }
+        public int CodTime { get; set; }
+        public int Codcamp { get; set; }
+        public List<int> codTime1List { get; set; }
     }
 }

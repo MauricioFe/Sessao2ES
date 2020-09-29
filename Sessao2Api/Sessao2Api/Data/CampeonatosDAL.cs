@@ -138,9 +138,9 @@ namespace Sessao2Api.Data
                     conn.Open();
                     adapter.Fill(dt);
                     conn.Close();
-
                     foreach (DataRow item in dt.Rows)
                     {
+                        
                         if (Convert.ToInt32(item["resultado"]) == 0)
                         {
                             empate++;
@@ -161,6 +161,7 @@ namespace Sessao2Api.Data
                         {
                             derrota++;
                         }
+                        
                     }
                     if (dt.Rows.Count > 0)
                     {
@@ -177,7 +178,7 @@ namespace Sessao2Api.Data
                 }
             }
 
-          return tabelaList;
+            return tabelaList;
 
         }
     }
