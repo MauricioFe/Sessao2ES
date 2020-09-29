@@ -27,6 +27,11 @@ namespace Sessao2Api.Controllers
         {
             return _dal.GetAll();
         }
+        [HttpGet("pares")]
+        public IEnumerable<Campeonatos> GetPares()
+        {
+            return _dal.GetPares();
+        }
 
         [HttpGet]
         [Route("tabela")]

@@ -140,7 +140,7 @@ namespace Sessao2Api.Data
                     conn.Close();
                     foreach (DataRow item in dt.Rows)
                     {
-                        
+
                         if (Convert.ToInt32(item["resultado"]) == 0)
                         {
                             empate++;
@@ -161,7 +161,7 @@ namespace Sessao2Api.Data
                         {
                             derrota++;
                         }
-                        
+
                     }
                     if (dt.Rows.Count > 0)
                     {
@@ -180,6 +180,49 @@ namespace Sessao2Api.Data
 
             return tabelaList;
 
+        }
+
+        public IEnumerable<Campeonatos> GetPares()
+        {
+           List<Campeonatos> campeonatosList = new List<Campeonatos>();
+            cmd = new SqlCommand("select * from campeonatos where dat_ini between '2020-01-01' and '2020-03-20' OR dat_fim between '2020-01-01' and '2020-03-20'", conn);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            conn.Open();
+            adapter.Fill(dt);
+            foreach (DataRow item in dt.Rows)
+            {
+                Campeonatos campeonatos = new Campeonatos();
+                campeonatos.Cod_camp = Convert.ToInt32(item[0]);
+                campeonatos.Descricao = item[1].ToString();
+                campeonatos.Ano = Convert.ToInt32(item[2]);
+                campeonatos.Tipo = item[3].ToString();
+                campeonatos.DataInicio = item[4].ToString();
+                campeonatos.DataFim = item[5].ToString();
+                campeonatos.Def_tipo = item[6].ToString();
+                campeonatosList.Add(campeonatos);
+            }
+            conn.Close();
+            cmd = new SqlCommand("select * from campeonatos where dat_ini between '2020-07-01' and '2020-12-20' OR dat_fim between '2020-07-25' and '2020-12-20'", conn);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            conn.Open();
+            adapter.Fill(dt);
+            foreach (DataRow item in dt.Rows)
+            {
+                Campeonatos campeonatos = new Campeonatos();
+                campeonatos.Cod_camp = Convert.ToInt32(item[0]);
+                campeonatos.Descricao = item[1].ToString();
+                campeonatos.Ano = Convert.ToInt32(item[2]);
+                campeonatos.Tipo = item[3].ToString();
+                campeonatos.DataInicio = item[4].ToString();
+                campeonatos.DataFim = item[5].ToString();
+                campeonatos.Def_tipo = item[6].ToString();
+                campeonatosList.Add(campeonatos);
+            }
+            conn.Close();
+
+            return campeonatosList;
         }
     }
 }

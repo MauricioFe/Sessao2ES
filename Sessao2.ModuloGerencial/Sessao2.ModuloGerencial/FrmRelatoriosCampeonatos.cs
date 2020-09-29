@@ -1,6 +1,7 @@
 ﻿using Sessao2.ModuloGerencial.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
@@ -24,6 +25,13 @@ namespace Sessao2.ModuloGerencial
             {
                 dgvTabela.Visible = true;
                 chart1.Visible = true;
+                dgvPares.Visible = false;
+            }
+            else if (cboTipoRelatorio.SelectedIndex == 1)
+            {
+                dgvTabela.Visible = false;
+                chart1.Visible = false;
+                dgvPares.Visible = true;
             }
         }
 
@@ -111,6 +119,21 @@ namespace Sessao2.ModuloGerencial
                 var jogosList = new JavaScriptSerializer().Deserialize<List<Jogos>>(jogos);
                 FrmResultGraphClick form = new FrmResultGraphClick(jogosList);
                 form.ShowDialog();
+            }
+        }
+
+        private async void AtualizaGridPares()
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync($"{URI}/pares");
+                var campeonatos = await response.Content.ReadAsStringAsync();
+                var campeonatosList = new JavaScriptSerializer().Deserialize<List<Campeonato>>(campeonatos);
+                List<Pares> paresList
+                foreach (var item in campeonatosList)
+                {
+
+                }
             }
         }
     }

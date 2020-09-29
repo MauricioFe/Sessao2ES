@@ -39,9 +39,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvTabela = new System.Windows.Forms.DataGridView();
+            this.dgvPares = new System.Windows.Forms.DataGridView();
+            this.Campeonato1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Campeonato2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabela)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPares)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEnviar
@@ -82,6 +86,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.dgvPares);
             this.panel1.Controls.Add(this.chart1);
             this.panel1.Controls.Add(this.dgvTabela);
             this.panel1.Location = new System.Drawing.Point(24, 43);
@@ -127,6 +132,31 @@
             this.dgvTabela.TabIndex = 0;
             this.dgvTabela.Visible = false;
             // 
+            // dgvPares
+            // 
+            this.dgvPares.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPares.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Campeonato1,
+            this.Campeonato2});
+            this.dgvPares.Location = new System.Drawing.Point(3, 3);
+            this.dgvPares.Name = "dgvPares";
+            this.dgvPares.Size = new System.Drawing.Size(767, 382);
+            this.dgvPares.TabIndex = 2;
+            this.dgvPares.Visible = false;
+            // 
+            // Campeonato1
+            // 
+            this.Campeonato1.HeaderText = "Campeonato1";
+            this.Campeonato1.Name = "Campeonato1";
+            this.Campeonato1.ReadOnly = true;
+            // 
+            // Campeonato2
+            // 
+            this.Campeonato2.HeaderText = "Campeonato2";
+            this.Campeonato2.Name = "Campeonato2";
+            this.Campeonato2.ReadOnly = true;
+            // 
             // FrmRelatoriosCampeonatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -147,6 +177,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTabela)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPares)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +191,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvTabela;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataGridView dgvPares;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Campeonato1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Campeonato2;
     }
 }
