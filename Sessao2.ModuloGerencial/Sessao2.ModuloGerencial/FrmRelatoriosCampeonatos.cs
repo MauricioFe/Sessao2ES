@@ -133,35 +133,28 @@ namespace Sessao2.ModuloGerencial
                 List<Pares> paresList = new List<Pares>();
                 List<Campeonato> pares1 = campeonatosList[0];
                 List<Campeonato> pares2 = campeonatosList[1];
-                Pares par1 = new Pares();
-                par1.Campeonato1 = pares1[0].Descricao;
-                par1.Campeonato2 = pares1[1].Descricao;
-                Pares par2 = new Pares();
-                par2.Campeonato1 = pares1[0].Descricao;
-                par2.Campeonato2 = pares1[2].Descricao;
-                Pares par3 = new Pares();
-                par3.Campeonato1 = pares1[0].Descricao;
-                par3.Campeonato2 = pares1[3].Descricao;
-                Pares par4 = new Pares();
-                par4.Campeonato1 = pares1[1].Descricao;
-                par4.Campeonato2 = pares1[2].Descricao;
-                Pares par5 = new Pares();
-                par5.Campeonato1 = pares1[1].Descricao;
-                par5.Campeonato2 = pares1[3].Descricao;
-                Pares par6 = new Pares();
-                par6.Campeonato1 = pares1[2].Descricao;
-                par6.Campeonato2 = pares1[3].Descricao;
-                Pares par7 = new Pares();
-                par7.Campeonato1 = pares2[0].Descricao;
-                par7.Campeonato2 = pares2[1].Descricao;
-                paresList.Add(par1);
-                paresList.Add(par2);
-                paresList.Add(par3);
-                paresList.Add(par4);
-                paresList.Add(par5);
-                paresList.Add(par6);
-                paresList.Add(par7);
+                for (int j = 0; j < pares1.Count; j++)
+                {
+                    for (int i = j + 1; i < pares1.Count; i++)
+                    {
+                        Pares par = new Pares();
+                        par.Campeonato1 = pares1[j].Descricao;
+                        par.Campeonato2 = pares1[i].Descricao;
+                        paresList.Add(par);
+                    }
+                }
+                for (int j = 0; j < pares2.Count; j++)
+                {
+                    for (int i = j + 1; i < pares2.Count; i++)
+                    {
+                        Pares par = new Pares();
+                        par.Campeonato1 = pares2[j].Descricao;
+                        par.Campeonato2 = pares2[i].Descricao;
+                        paresList.Add(par);
+                    }
+                }
                 dgvPares.DataSource = paresList;
+
             }
         }
     }
