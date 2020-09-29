@@ -28,7 +28,7 @@ namespace Sessao2Api.Controllers
             return _dal.GetAll();
         }
         [HttpGet("pares")]
-        public IEnumerable<Campeonatos> GetPares()
+        public IEnumerable<List<Campeonatos>> GetPares()
         {
             return _dal.GetPares();
         }

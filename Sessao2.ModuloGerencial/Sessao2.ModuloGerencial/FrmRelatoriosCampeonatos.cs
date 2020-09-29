@@ -38,6 +38,7 @@ namespace Sessao2.ModuloGerencial
         private void FrmRelatoriosCampeonatos_Load(object sender, EventArgs e)
         {
             AtualizaGrid();
+            AtualizaGridPares();
         }
 
         List<Tabela> tabelaList = new List<Tabela>();
@@ -128,12 +129,39 @@ namespace Sessao2.ModuloGerencial
             {
                 var response = await client.GetAsync($"{URI}/pares");
                 var campeonatos = await response.Content.ReadAsStringAsync();
-                var campeonatosList = new JavaScriptSerializer().Deserialize<List<Campeonato>>(campeonatos);
-                List<Pares> paresList
-                foreach (var item in campeonatosList)
-                {
-
-                }
+                var campeonatosList = new JavaScriptSerializer().Deserialize<List<List<Campeonato>>>(campeonatos);
+                List<Pares> paresList = new List<Pares>();
+                List<Campeonato> pares1 = campeonatosList[0];
+                List<Campeonato> pares2 = campeonatosList[1];
+                Pares par1 = new Pares();
+                par1.Campeonato1 = pares1[0].Descricao;
+                par1.Campeonato2 = pares1[1].Descricao;
+                Pares par2 = new Pares();
+                par2.Campeonato1 = pares1[0].Descricao;
+                par2.Campeonato2 = pares1[2].Descricao;
+                Pares par3 = new Pares();
+                par3.Campeonato1 = pares1[0].Descricao;
+                par3.Campeonato2 = pares1[3].Descricao;
+                Pares par4 = new Pares();
+                par4.Campeonato1 = pares1[1].Descricao;
+                par4.Campeonato2 = pares1[2].Descricao;
+                Pares par5 = new Pares();
+                par5.Campeonato1 = pares1[1].Descricao;
+                par5.Campeonato2 = pares1[3].Descricao;
+                Pares par6 = new Pares();
+                par6.Campeonato1 = pares1[2].Descricao;
+                par6.Campeonato2 = pares1[3].Descricao;
+                Pares par7 = new Pares();
+                par7.Campeonato1 = pares2[0].Descricao;
+                par7.Campeonato2 = pares2[1].Descricao;
+                paresList.Add(par1);
+                paresList.Add(par2);
+                paresList.Add(par3);
+                paresList.Add(par4);
+                paresList.Add(par5);
+                paresList.Add(par6);
+                paresList.Add(par7);
+                dgvPares.DataSource = paresList;
             }
         }
     }

@@ -182,7 +182,7 @@ namespace Sessao2Api.Data
 
         }
 
-        public IEnumerable<Campeonatos> GetPares()
+        public IEnumerable<List<Campeonatos>> GetPares()
         {
            List<Campeonatos> campeonatosList = new List<Campeonatos>();
             cmd = new SqlCommand("select * from campeonatos where dat_ini between '2020-01-01' and '2020-03-20' OR dat_fim between '2020-01-01' and '2020-03-20'", conn);
@@ -203,6 +203,7 @@ namespace Sessao2Api.Data
                 campeonatosList.Add(campeonatos);
             }
             conn.Close();
+            List<Campeonatos> campeonatosList2 = new List<Campeonatos>();
             cmd = new SqlCommand("select * from campeonatos where dat_ini between '2020-07-01' and '2020-12-20' OR dat_fim between '2020-07-25' and '2020-12-20'", conn);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -218,11 +219,14 @@ namespace Sessao2Api.Data
                 campeonatos.DataInicio = item[4].ToString();
                 campeonatos.DataFim = item[5].ToString();
                 campeonatos.Def_tipo = item[6].ToString();
-                campeonatosList.Add(campeonatos);
+                campeonatosList2.Add(campeonatos);
             }
             conn.Close();
+            List<List<Campeonatos>> paresCampeonatos = new List<List<Campeonatos>>();
+            paresCampeonatos.Add(campeonatosList);
+            paresCampeonatos.Add(campeonatosList2);
 
-            return campeonatosList;
+            return paresCampeonatos;
         }
     }
 }
